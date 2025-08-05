@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class CreateWindow {
-
     public static void createWindow(ActionEvent event, String fxmlPath, String windowTitle) throws IOException {
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxmlPath));
