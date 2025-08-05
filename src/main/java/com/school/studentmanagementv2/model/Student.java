@@ -1,88 +1,91 @@
 package com.school.studentmanagementv2.model;
 
-public class Student {
-    private String id;
-    private String name;
-    private int age;
-    private String birthday;
-    private String address;
-    private String course;
-    private int year;
-    private String email;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
-    public Student(String id, String name, int age, String birthday, String address, String course, int year,
+public class Student {
+    private SimpleIntegerProperty id;
+    private SimpleStringProperty name;
+    private SimpleIntegerProperty age;
+    private SimpleStringProperty birthday;
+    private SimpleStringProperty address;
+    private SimpleStringProperty course;
+    private SimpleIntegerProperty year;
+    private SimpleStringProperty email;
+
+    public Student(int id, String name, int age, String birthday, String address, String course, int year,
             String email) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.birthday = birthday;
-        this.address = address;
-        this.course = course;
-        this.year = year;
-        this.email = email;
+        this.id = new SimpleIntegerProperty(id);
+        this.name = new SimpleStringProperty(name);
+        this.age = new SimpleIntegerProperty(age);
+        this.birthday = new SimpleStringProperty(birthday);
+        this.address = new SimpleStringProperty(address);
+        this.course = new SimpleStringProperty(course);
+        this.year = new SimpleIntegerProperty(year);
+        this.email = new SimpleStringProperty(email);
     }
 
-    public String getId() {
+    public SimpleIntegerProperty getId() {
         return this.id;
     }
 
-    public void setId(String id) {
+    public void setId(SimpleIntegerProperty id) {
         this.id = id;
     }
 
-    public String getName() {
+    public SimpleStringProperty getName() {
         return this.name;
     }
 
-    public void setName(String name) {
+    public void setName(SimpleStringProperty name) {
         this.name = name;
     }
 
-    public int getAge() {
+    public SimpleIntegerProperty getAge() {
         return this.age;
     }
 
-    public void setAge(int age) {
+    public void setAge(SimpleIntegerProperty age) {
         this.age = age;
     }
 
-    public String getBirthday() {
+    public SimpleStringProperty getBirthday() {
         return this.birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(SimpleStringProperty birthday) {
         this.birthday = birthday;
     }
 
-    public String getAddress() {
+    public SimpleStringProperty getAddress() {
         return this.address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(SimpleStringProperty address) {
         this.address = address;
     }
 
-    public String getCourse() {
+    public SimpleStringProperty getCourse() {
         return this.course;
     }
 
-    public void setCourse(String course) {
+    public void setCourse(SimpleStringProperty course) {
         this.course = course;
     }
 
-    public int getYear() {
+    public SimpleIntegerProperty getYear() {
         return this.year;
     }
 
-    public void setYear(int year) {
+    public void setYear(SimpleIntegerProperty year) {
         this.year = year;
     }
 
-    public String getEmail() {
+    public SimpleStringProperty getEmail() {
         return this.email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(SimpleStringProperty email) {
         this.email = email;
     }
 }

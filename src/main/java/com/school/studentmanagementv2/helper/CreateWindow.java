@@ -11,12 +11,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class CreateWindow {
-    public static void createWindow(ActionEvent event, String fxmlPath, String windowTitle) throws IOException {
+    public static void createWindow(ActionEvent event, String fxmlPath) throws IOException {
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxmlPath));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
-        stage.setTitle(windowTitle);
+        stage.setTitle("Student Management");
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(((Node) event.getSource()).getScene().getWindow());
         stage.setResizable(false);
