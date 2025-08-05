@@ -8,22 +8,23 @@ import javafx.fxml.FXML;
 import java.io.IOException;
 
 public class MainMenuController {
+    private static final String ADD_VIEW_FXML = "/com/school/studentmanagementv2/AddView.fxml";
+    private static final String DISPLAY_VIEW_FXML = "/com/school/studentmanagementv2/DisplayView.fxml";
+    private static final String SEARCH_VIEW_FXML = "/com/school/studentmanagementv2/SearchView.fxml";
 
     @FXML
     private void addStudentBtn(ActionEvent event) throws IOException {
-        CreateWindow.createWindow(event, "/com/school/studentmanagementv2/AddView.fxml", "Add Student");
+        CreateWindow.createWindow(event, ADD_VIEW_FXML, "Add Student");
     }
 
     @FXML
     private void displayStudentBtn(ActionEvent event) throws IOException {
-        CreateWindow.createWindow(event, "/com/school/studentmanagementv2/DisplayView.fxml", "Display Student");
-
+        CreateWindow.createWindow(event, DISPLAY_VIEW_FXML, "Display Students");
     }
 
     @FXML
     private void searchStudentBtn(ActionEvent event) throws IOException {
-        CreateWindow.createWindow(event, "/com/school/studentmanagementv2/SearchView.fxml", "Search Student");
-
+        CreateWindow.createWindow(event, SEARCH_VIEW_FXML, "Search Students");
     }
 
     @FXML
