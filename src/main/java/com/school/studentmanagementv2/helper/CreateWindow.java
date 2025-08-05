@@ -13,15 +13,15 @@ import java.io.IOException;
 public class CreateWindow {
 
     public static void createWindow(ActionEvent event, String fxmlPath, String windowTitle) throws IOException {
-        Stage addStudentStage = new Stage();
+        Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxmlPath));
         Scene scene = new Scene(fxmlLoader.load());
-        addStudentStage.setTitle(windowTitle);
-        addStudentStage.setScene(scene);
-        addStudentStage.initModality(Modality.APPLICATION_MODAL);
-        addStudentStage.initOwner(((Node) event.getSource()).getScene().getWindow());
-        addStudentStage.setResizable(false);
-        addStudentStage.setFullScreen(false);
-        addStudentStage.showAndWait();
+        stage.setScene(scene);
+        stage.setTitle(windowTitle);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(((Node) event.getSource()).getScene().getWindow());
+        stage.setResizable(false);
+        stage.setFullScreen(false);
+        stage.showAndWait();
     }
 }
