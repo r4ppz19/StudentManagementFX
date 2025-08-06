@@ -1,6 +1,6 @@
-package com.school.studentmanagementv2.helper;
+package com.school.studentmanagementfx.helper;
 
-import com.school.studentmanagementv2.Main;
+import com.school.studentmanagementfx.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;

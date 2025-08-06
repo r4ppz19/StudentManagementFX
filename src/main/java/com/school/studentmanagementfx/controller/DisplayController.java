@@ -1,6 +1,6 @@
-package com.school.studentmanagementv2.controller;
+package com.school.studentmanagementfx.controller;
 
-import com.school.studentmanagementv2.model.Student;
+import com.school.studentmanagementfx.model.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

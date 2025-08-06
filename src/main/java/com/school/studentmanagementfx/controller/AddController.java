@@ -1,4 +1,4 @@
-package com.school.studentmanagementv2.controller;
+package com.school.studentmanagementfx.controller;
 
 public class AddController {
 }

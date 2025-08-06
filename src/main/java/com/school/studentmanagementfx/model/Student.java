@@ -1,4 +1,4 @@
-package com.school.studentmanagementv2.model;
+package com.school.studentmanagementfx.model;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
