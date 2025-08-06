@@ -2,6 +2,7 @@ module com.school.studentmanagementfx {
     requires javafx.graphics;
     requires transitive javafx.controls;
     requires transitive javafx.fxml;
+    requires javafx.base;
 
     opens com.school.studentmanagementfx to javafx.fxml;
     opens com.school.studentmanagementfx.controller to javafx.fxml;

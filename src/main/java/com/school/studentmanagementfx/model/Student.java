@@ -1,38 +1,37 @@
 package com.school.studentmanagementfx.model;
 
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Student {
-    private SimpleIntegerProperty id;
+    private SimpleStringProperty id;
     private SimpleStringProperty name;
-    private SimpleIntegerProperty age;
+    private SimpleStringProperty age;
     private SimpleStringProperty birthday;
     private SimpleStringProperty address;
     private SimpleStringProperty course;
-    private SimpleIntegerProperty year;
+    private SimpleStringProperty year;
     private SimpleStringProperty email;
 
-    public Student(int id, String name, int age, String birthday, String address, String course, int year,
+    public Student(String id, String name, String age, String birthday, String address, String course, String year,
             String email) {
-        this.id = new SimpleIntegerProperty(id);
+        this.id = new SimpleStringProperty(id);
         this.name = new SimpleStringProperty(name);
-        this.age = new SimpleIntegerProperty(age);
+        this.age = new SimpleStringProperty(age);
         this.birthday = new SimpleStringProperty(birthday);
         this.address = new SimpleStringProperty(address);
         this.course = new SimpleStringProperty(course);
-        this.year = new SimpleIntegerProperty(year);
+        this.year = new SimpleStringProperty(year);
         this.email = new SimpleStringProperty(email);
     }
 
     // Getters
-    public SimpleIntegerProperty getId() {
+    public SimpleStringProperty getId() {
         return this.id;
     }
     public SimpleStringProperty getName() {
         return this.name;
     }
-    public SimpleIntegerProperty getAge() {
+    public SimpleStringProperty getAge() {
         return this.age;
     }
     public SimpleStringProperty getBirthday() {
@@ -44,7 +43,7 @@ public class Student {
     public SimpleStringProperty getCourse() {
         return this.course;
     }
-    public SimpleIntegerProperty getYear() {
+    public SimpleStringProperty getYear() {
         return this.year;
     }
     public SimpleStringProperty getEmail() {
@@ -52,13 +51,13 @@ public class Student {
     }
 
     // Setters
-    public void setId(SimpleIntegerProperty id) {
+    public void setId(SimpleStringProperty id) {
         this.id = id;
     }
     public void setName(SimpleStringProperty name) {
         this.name = name;
     }
-    public void setAge(SimpleIntegerProperty age) {
+    public void setAge(SimpleStringProperty age) {
         this.age = age;
     }
     public void setBirthday(SimpleStringProperty birthday) {
@@ -70,7 +69,7 @@ public class Student {
     public void setCourse(SimpleStringProperty course) {
         this.course = course;
     }
-    public void setYear(SimpleIntegerProperty year) {
+    public void setYear(SimpleStringProperty year) {
         this.year = year;
     }
     public void setEmail(SimpleStringProperty email) {

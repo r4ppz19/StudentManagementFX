@@ -1,5 +1,7 @@
 package com.school.studentmanagementfx.controller;
 
+import com.school.studentmanagementfx.model.Student;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -40,6 +42,32 @@ public class AddController {
 
     @FXML
     private void addBtn() {
+        ObservableList<Student> students = DisplayController.getStudentList();
+        students.add(getInfo());
+        clearFields();
+    }
 
+    private Student getInfo() {
+        String name = nameTextField.getText().trim();
+        String address = addressTextField.getText().trim();
+        String course = courseTextField.getText().trim();
+        String email = emailTextField.getText().trim();
+        String birthday = birthdayTextField.getText().trim();
+        String age = ageTextField.getText().trim();
+        String year = yearTextField.getText().trim();
+        String id = idTextField.getText().trim();
+
+        return new Student(id, name, age, birthday, address, course, year, email);
+    }
+
+    private void clearFields() {
+        idTextField.clear();
+        ageTextField.clear();
+        nameTextField.clear();
+        addressTextField.clear();
+        courseTextField.clear();
+        emailTextField.clear();
+        yearTextField.clear();
+        birthdayTextField.clear();
     }
 }
