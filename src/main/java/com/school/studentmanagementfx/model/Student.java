@@ -25,67 +25,57 @@ public class Student {
         this.email = new SimpleStringProperty(email);
     }
 
+    // Getters
     public SimpleIntegerProperty getId() {
         return this.id;
     }
-
-    public void setId(SimpleIntegerProperty id) {
-        this.id = id;
-    }
-
     public SimpleStringProperty getName() {
         return this.name;
     }
-
-    public void setName(SimpleStringProperty name) {
-        this.name = name;
-    }
-
     public SimpleIntegerProperty getAge() {
         return this.age;
     }
-
-    public void setAge(SimpleIntegerProperty age) {
-        this.age = age;
-    }
-
     public SimpleStringProperty getBirthday() {
         return this.birthday;
     }
-
-    public void setBirthday(SimpleStringProperty birthday) {
-        this.birthday = birthday;
-    }
-
     public SimpleStringProperty getAddress() {
         return this.address;
     }
-
-    public void setAddress(SimpleStringProperty address) {
-        this.address = address;
-    }
-
     public SimpleStringProperty getCourse() {
         return this.course;
     }
-
-    public void setCourse(SimpleStringProperty course) {
-        this.course = course;
-    }
-
     public SimpleIntegerProperty getYear() {
         return this.year;
     }
-
-    public void setYear(SimpleIntegerProperty year) {
-        this.year = year;
-    }
-
     public SimpleStringProperty getEmail() {
         return this.email;
     }
 
+    // Setters
+    public void setId(SimpleIntegerProperty id) {
+        this.id = id;
+    }
+    public void setName(SimpleStringProperty name) {
+        this.name = name;
+    }
+    public void setAge(SimpleIntegerProperty age) {
+        this.age = age;
+    }
+    public void setBirthday(SimpleStringProperty birthday) {
+        this.birthday = birthday;
+    }
+    public void setAddress(SimpleStringProperty address) {
+        this.address = address;
+    }
+    public void setCourse(SimpleStringProperty course) {
+        this.course = course;
+    }
+    public void setYear(SimpleIntegerProperty year) {
+        this.year = year;
+    }
     public void setEmail(SimpleStringProperty email) {
         this.email = email;
     }
+
+
 }
