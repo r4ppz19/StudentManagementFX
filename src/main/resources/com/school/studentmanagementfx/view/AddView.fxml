@@ -21,7 +21,7 @@
                <VBox alignment="CENTER_LEFT" prefHeight="13.0" prefWidth="253.0" spacing="5.0">
                   <children>
                      <Label text="ID" />
-                     <TextField />
+                     <TextField fx:id="idTextField" />
                   </children>
                   <VBox.margin>
                      <Insets />
@@ -30,7 +30,7 @@
                <VBox alignment="CENTER_LEFT" prefHeight="13.0" prefWidth="253.0" spacing="5.0">
                   <children>
                      <Label text="Name" />
-                     <TextField />
+                     <TextField fx:id="nameTextField" />
                   </children>
                   <VBox.margin>
                      <Insets />
@@ -39,7 +39,7 @@
                <VBox alignment="CENTER_LEFT" prefHeight="13.0" prefWidth="253.0" spacing="5.0">
                   <children>
                      <Label text="Age" />
-                     <TextField />
+                     <TextField fx:id="ageTextField" />
                   </children>
                   <VBox.margin>
                      <Insets />
@@ -48,7 +48,7 @@
                <VBox alignment="CENTER_LEFT" prefHeight="13.0" prefWidth="253.0" spacing="5.0">
                   <children>
                      <Label text="Birthday" />
-                     <TextField />
+                     <TextField fx:id="birthdayTextField" />
                   </children>
                   <VBox.margin>
                      <Insets />
@@ -75,7 +75,7 @@
                   <VBox alignment="CENTER_LEFT" prefHeight="13.0" prefWidth="253.0" spacing="5.0">
                      <children>
                         <Label text="Address" />
-                        <TextField />
+                        <TextField fx:id="addressTextField" />
                      </children>
                      <VBox.margin>
                         <Insets />
@@ -84,7 +84,7 @@
                   <VBox alignment="CENTER_LEFT" prefHeight="13.0" prefWidth="253.0" spacing="5.0">
                      <children>
                         <Label text="Course " />
-                        <TextField />
+                        <TextField fx:id="courseTextField" />
                      </children>
                      <VBox.margin>
                         <Insets />
@@ -93,7 +93,7 @@
                   <VBox alignment="CENTER_LEFT" prefHeight="13.0" prefWidth="253.0" spacing="5.0">
                      <children>
                         <Label text="Year" />
-                        <TextField />
+                        <TextField fx:id="yearTextField" />
                      </children>
                      <VBox.margin>
                         <Insets />
@@ -102,7 +102,7 @@
                   <VBox alignment="CENTER_LEFT" prefHeight="13.0" prefWidth="253.0" spacing="5.0">
                      <children>
                         <Label text="Email" />
-                        <TextField />
+                        <TextField fx:id="emailTextField" />
                      </children>
                      <VBox.margin>
                         <Insets />
