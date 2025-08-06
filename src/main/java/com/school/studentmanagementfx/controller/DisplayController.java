@@ -1,18 +1,12 @@
 package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.model.Student;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.school.studentmanagementfx.repository.StudentRepository;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 public class DisplayController {
-    private static final ObservableList<Student> students = FXCollections.observableArrayList();
-
-    public static ObservableList<Student> getStudentList() {
-        return  students;
-    }
 
     @FXML
     private TableView<Student> tableView;
@@ -63,10 +57,10 @@ public class DisplayController {
         yearColumn.setCellValueFactory(cellData -> cellData.getValue().getYear());
         emailColumn.setCellValueFactory(cellData -> cellData.getValue().getEmail());
 
-        tableView.setItems(students);
+        tableView.setItems(StudentRepository.getStudents());
     }
 
-    private void configureColumn(TableColumn<Student, ?> column) {
+    private void configureColumn(TableColumn<Student, String> column) {
         column.setReorderable(false);
         column.setSortable(false);
         column.setResizable(false);

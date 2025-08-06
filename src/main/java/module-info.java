@@ -11,4 +11,5 @@ module com.school.studentmanagementfx {
     exports com.school.studentmanagementfx;
     exports com.school.studentmanagementfx.controller;
     exports com.school.studentmanagementfx.helper;
+    exports com.school.studentmanagementfx.model;
 }

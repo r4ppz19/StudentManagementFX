@@ -1,7 +1,7 @@
 package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.model.Student;
-import javafx.collections.ObservableList;
+import com.school.studentmanagementfx.repository.StudentRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -9,28 +9,20 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class AddController {
-
     @FXML
     TextField idTextField;
-
     @FXML
     TextField nameTextField;
-
     @FXML
     TextField ageTextField;
-
     @FXML
     TextField birthdayTextField;
-
     @FXML
     TextField addressTextField;
-
     @FXML
     TextField courseTextField;
-
     @FXML
     TextField yearTextField;
-
     @FXML
     TextField emailTextField;
 
@@ -42,8 +34,7 @@ public class AddController {
 
     @FXML
     private void addBtn() {
-        ObservableList<Student> students = DisplayController.getStudentList();
-        students.add(getInfo());
+        StudentRepository.getStudents().add(getInfo());
         clearFields();
     }
 
