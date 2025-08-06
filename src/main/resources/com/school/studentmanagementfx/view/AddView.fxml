@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-    minWidth="-Infinity" prefHeight="546.0" prefWidth="363.0"
+    minWidth="-Infinity" prefHeight="546.0" prefWidth="363.0" stylesheets="@../style/Shared.css"
     xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <Label text="Add Student">
         <font>

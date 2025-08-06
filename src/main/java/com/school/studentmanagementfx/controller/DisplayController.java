@@ -72,5 +72,6 @@ public class DisplayController {
     private void configureColumn(TableColumn<Student, ?> column) {
         column.setReorderable(false);
         column.setSortable(false);
+        column.setResizable(false);
     }
 }
