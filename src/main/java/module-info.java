@@ -1,13 +1,13 @@
-module com.school.studentmanagementv2 {
+module com.school.studentmanagementfx {
     requires javafx.graphics;
     requires transitive javafx.controls;
     requires transitive javafx.fxml;
 
-    opens com.school.studentmanagementv2 to javafx.fxml;
-    opens com.school.studentmanagementv2.controller to javafx.fxml;
-    opens com.school.studentmanagementv2.helper to javafx.fxml;
+    opens com.school.studentmanagementfx to javafx.fxml;
+    opens com.school.studentmanagementfx.controller to javafx.fxml;
+    opens com.school.studentmanagementfx.helper to javafx.fxml;
 
-    exports com.school.studentmanagementv2;
-    exports com.school.studentmanagementv2.controller;
-    exports com.school.studentmanagementv2.helper;
+    exports com.school.studentmanagementfx;
+    exports com.school.studentmanagementfx.controller;
+    exports com.school.studentmanagementfx.helper;
 }
