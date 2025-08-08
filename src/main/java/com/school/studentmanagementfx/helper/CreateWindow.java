@@ -17,6 +17,7 @@ public class CreateWindow {
         Stage childStage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxmlPath));
         Scene scene = new Scene(fxmlLoader.load());
+        IconHelper.setAppIcon(childStage);
         childStage.setScene(scene);
         childStage.setTitle("Student Management");
         childStage.initModality(Modality.APPLICATION_MODAL);

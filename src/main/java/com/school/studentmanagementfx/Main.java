@@ -13,6 +13,7 @@ public class Main extends Application {
         String mainMenuViewFxml = "/com/school/studentmanagementfx/view/MainMenuView.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(mainMenuViewFxml));
         Scene scene = new Scene(fxmlLoader.load());
+        IconHelper.setAppIcon(stage);
         stage.setTitle("Student Management");
         stage.setScene(scene);
         stage.setResizable(false);
