@@ -10,8 +10,8 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        String MAIN_MENU_VIEW_FXML = "/com/school/studentmanagementfx/view/MainMenuView.fxml";
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(MAIN_MENU_VIEW_FXML));
+        String mainMenuViewFxml = "/com/school/studentmanagementfx/view/MainMenuView.fxml";
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(mainMenuViewFxml));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Student Management");
         stage.setScene(scene);
