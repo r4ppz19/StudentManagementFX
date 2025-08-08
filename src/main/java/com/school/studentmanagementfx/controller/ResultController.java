@@ -32,14 +32,7 @@ public class ResultController {
 
     @FXML
     public void initialize() {
-        idColumn.setCellValueFactory(cd -> cd.getValue().getId());
-        nameColumn.setCellValueFactory(cd -> cd.getValue().getName());
-        ageColumn.setCellValueFactory(cd -> cd.getValue().getAge());
-        birthdayColumn.setCellValueFactory(cd -> cd.getValue().getBirthday());
-        addressColumn.setCellValueFactory(cd -> cd.getValue().getAddress());
-        courseColumn.setCellValueFactory(cd -> cd.getValue().getCourse());
-        yearColumn.setCellValueFactory(cd -> cd.getValue().getYear());
-        emailColumn.setCellValueFactory(cd -> cd.getValue().getEmail());
+        DisplayController.populateTable(idColumn, nameColumn, ageColumn, birthdayColumn, addressColumn, courseColumn, yearColumn, emailColumn);
 
         configureColumn(idColumn);
         configureColumn(nameColumn);
