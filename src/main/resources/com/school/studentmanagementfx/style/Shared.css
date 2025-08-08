@@ -1,0 +1,96 @@
+/* Root - global font and background */
+.root {
+    -fx-font-family: Arial, sans-serif;
+    -fx-background-color: #FFFFFF;
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: #F9F9F9;
+    -fx-border-color: #323232;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-border-width: 1px;
+    -fx-text-fill: #000000;
+}
+
+.button:hover {
+    -fx-background-color: #F0F0F0;
+}
+
+.button:focused {
+    -fx-border-color: #323232;
+}
+
+/* TextField */
+.text-field {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #323232;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-border-width: 1px;
+    -fx-text-fill: #000000;
+}
+
+.text-field:focused {
+    -fx-border-color: #323232;
+}
+
+/* TextArea */
+.text-area {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #323232;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-border-width: 1px;
+    -fx-text-fill: #000000;
+}
+
+.text-area .content {
+    -fx-background-color: #FFFFFF;
+}
+
+.text-area:focused {
+    -fx-border-color: #323232;
+}
+
+/* TableView container */
+.table-view {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #323232;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-border-width: 1px;
+    -fx-font-size: 13px;
+    -fx-text-fill: #000000;
+}
+
+/* Table column header */
+.table-view .column-header {
+    -fx-background-color: #F2F2F2;
+    -fx-border-color: #323232;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.table-view .column-header .label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+/* Table cells */
+.table-view .table-cell {
+    -fx-padding: 6px;
+    -fx-border-color: transparent transparent #323232 transparent;
+    -fx-text-fill: #000000;
+}
+
+/* Row hover effect */
+.table-row-cell:hover {
+    -fx-background-color: #F9F9F9;
+}
+
+/* Selected row */
+.table-row-cell:selected {
+    -fx-background-color: #323232;
+    -fx-text-fill: #FFFFFF;
+}
