@@ -18,7 +18,7 @@
          <Insets bottom="20.0" />
       </VBox.margin>
    </Label>
-    <Button focusTraversable="false" onAction="#addStudentBtn" prefHeight="34.0" prefWidth="200.0" text="Add student" />
-    <Button focusTraversable="false" onAction="#displayStudentBtn" prefHeight="34.0" prefWidth="200.0" text="Display student" />
-    <Button focusTraversable="false" onAction="#searchStudentBtn" prefHeight="34.0" prefWidth="200.0" text="Search student" />
+    <Button focusTraversable="false" onAction="#addStudentBtn" prefHeight="34.0" prefWidth="200.0" text="ADD STUDENT" />
+    <Button focusTraversable="false" onAction="#searchStudentBtn" prefHeight="34.0" prefWidth="200.0" text="SEARCH STUDENT" />
+    <Button focusTraversable="false" onAction="#displayStudentBtn" prefHeight="34.0" prefWidth="200.0" text="DISPLAY ALL STUDENT" />
 </VBox>

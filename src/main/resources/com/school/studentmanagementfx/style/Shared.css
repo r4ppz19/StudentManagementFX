@@ -12,6 +12,7 @@
     -fx-background-radius: 4px;
     -fx-border-width: 1px;
     -fx-text-fill: #000000;
+    -fx-font-weight: bold;
 }
 
 .button:hover {
@@ -62,7 +63,6 @@
     -fx-background-radius: 4px;
     -fx-border-width: 1px;
     -fx-font-size: 13px;
-    -fx-text-fill: #000000;
 }
 
 /* Table column header */
@@ -74,23 +74,21 @@
 
 .table-view .column-header .label {
     -fx-font-weight: bold;
-    -fx-text-fill: #000000;
 }
 
 /* Table cells */
 .table-view .table-cell {
     -fx-padding: 6px;
     -fx-border-color: transparent transparent #323232 transparent;
-    -fx-text-fill: #000000;
 }
 
 /* Row hover effect */
 .table-row-cell:hover {
-    -fx-background-color: #F9F9F9;
+    -fx-background-color: #efefef;
 }
 
 /* Selected row */
 .table-row-cell:selected {
-    -fx-background-color: #323232;
+    -fx-background-color: #efefef;
     -fx-text-fill: #FFFFFF;
 }
