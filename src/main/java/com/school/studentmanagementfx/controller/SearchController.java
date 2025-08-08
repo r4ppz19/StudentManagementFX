@@ -2,6 +2,9 @@ package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.repository.StudentRepository;
+
+import java.io.IOException;
+
 import com.school.studentmanagementfx.helper.IconHelper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,7 +20,7 @@ public class SearchController {
     private TextField searchTextField;
 
     @FXML
-    public void searchBtn() {
+    public void searchBtn() throws IOException {
         String id = searchTextField != null ? searchTextField.getText() : null;
         if (id == null)
             id = "";
@@ -31,21 +34,17 @@ public class SearchController {
             }
         }
 
-        try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/com/school/studentmanagementfx/view/ResultView.fxml"));
-            Parent root = loader.load();
-            ResultController controller = loader.getController();
-            controller.setStudentList(result);
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/com/school/studentmanagementfx/view/ResultView.fxml"));
+        Parent root = loader.load();
+        ResultController controller = loader.getController();
+        controller.setStudentList(result);
 
-            Stage stage = new Stage();
-            stage.setTitle("Search Result");
-            stage.setScene(new Scene(root));
-            IconHelper.setAppIcon(stage);
-            stage.setResizable(false);
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Stage stage = new Stage();
+        stage.setTitle("Search Result");
+        stage.setScene(new Scene(root));
+        IconHelper.setAppIcon(stage);
+        stage.setResizable(false);
+        stage.show();
     }
 }
