@@ -10,28 +10,20 @@ public class DisplayController {
 
     @FXML
     private TableView<Student> tableView;
-
     @FXML
     private TableColumn<Student, String> idColumn;
-
     @FXML
     private TableColumn<Student, String> nameColumn;
-
     @FXML
     private TableColumn<Student, String> ageColumn;
-
     @FXML
     private TableColumn<Student, String> birthdayColumn;
-
     @FXML
     private TableColumn<Student, String> addressColumn;
-
     @FXML
     private TableColumn<Student, String> courseColumn;
-
     @FXML
     private TableColumn<Student, String> yearColumn;
-
     @FXML
     private TableColumn<Student, String> emailColumn;
 
@@ -48,6 +40,12 @@ public class DisplayController {
         configureColumn(yearColumn);
         configureColumn(emailColumn);
 
+        populateTable(idColumn, nameColumn, ageColumn, birthdayColumn, addressColumn, courseColumn, yearColumn, emailColumn);
+
+        tableView.setItems(StudentRepository.getStudents());
+    }
+
+    static void populateTable(TableColumn<Student, String> idColumn, TableColumn<Student, String> nameColumn, TableColumn<Student, String> ageColumn, TableColumn<Student, String> birthdayColumn, TableColumn<Student, String> addressColumn, TableColumn<Student, String> courseColumn, TableColumn<Student, String> yearColumn, TableColumn<Student, String> emailColumn) {
         idColumn.setCellValueFactory(cellData -> cellData.getValue().getId());
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().getName());
         ageColumn.setCellValueFactory(cellData -> cellData.getValue().getAge());
@@ -56,8 +54,6 @@ public class DisplayController {
         courseColumn.setCellValueFactory(cellData -> cellData.getValue().getCourse());
         yearColumn.setCellValueFactory(cellData -> cellData.getValue().getYear());
         emailColumn.setCellValueFactory(cellData -> cellData.getValue().getEmail());
-
-        tableView.setItems(StudentRepository.getStudents());
     }
 
     private void configureColumn(TableColumn<Student, String> column) {
