@@ -25,9 +25,4 @@ public class MainMenuController {
         String SEARCH_VIEW_FXML = "/com/school/studentmanagementfx/view/SearchView.fxml";
         CreateWindow.createWindow(event, SEARCH_VIEW_FXML);
     }
-
-    @FXML
-    private void exitBtn() {
-        Platform.exit();
-    }
 }
