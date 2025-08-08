@@ -10,28 +10,20 @@ public class DisplayController {
 
     @FXML
     private TableView<Student> tableView;
-
     @FXML
     private TableColumn<Student, String> idColumn;
-
     @FXML
     private TableColumn<Student, String> nameColumn;
-
     @FXML
     private TableColumn<Student, String> ageColumn;
-
     @FXML
     private TableColumn<Student, String> birthdayColumn;
-
     @FXML
     private TableColumn<Student, String> addressColumn;
-
     @FXML
     private TableColumn<Student, String> courseColumn;
-
     @FXML
     private TableColumn<Student, String> yearColumn;
-
     @FXML
     private TableColumn<Student, String> emailColumn;
 

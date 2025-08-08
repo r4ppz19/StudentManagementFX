@@ -11,7 +11,6 @@ public class ResultController {
 
     @FXML
     private TableView<Student> tableView;
-
     @FXML
     private TableColumn<Student, String> idColumn;
     @FXML
