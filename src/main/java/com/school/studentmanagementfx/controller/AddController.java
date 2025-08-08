@@ -5,6 +5,7 @@ import com.school.studentmanagementfx.repository.StudentRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -18,19 +19,13 @@ public class AddController {
     @FXML
     TextField birthdayTextField;
     @FXML
-    TextField addressTextField;
+    TextArea addressTextField;
     @FXML
     TextField courseTextField;
     @FXML
     TextField yearTextField;
     @FXML
     TextField emailTextField;
-
-    @FXML
-    private void cancelButton(ActionEvent event) {
-        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        currentStage.close();
-    }
 
     @FXML
     private void addBtn() {
