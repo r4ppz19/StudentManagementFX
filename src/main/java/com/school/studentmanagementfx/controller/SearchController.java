@@ -41,7 +41,7 @@ public class SearchController {
         controller.setStudentList(result);
 
         Stage stage = new Stage();
-        stage.setTitle("Search Result");
+        stage.setTitle("Student Management");
         stage.setScene(new Scene(root));
         IconHelper.setAppIcon(stage);
         stage.setResizable(false);
