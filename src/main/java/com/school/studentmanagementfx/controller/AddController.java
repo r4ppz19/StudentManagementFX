@@ -2,12 +2,9 @@ package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.repository.StudentRepository;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class AddController {
     @FXML
@@ -42,7 +39,6 @@ public class AddController {
         String age = ageTextField.getText().trim();
         String year = yearTextField.getText().trim();
         String id = idTextField.getText().trim();
-
         return new Student(id, name, age, birthday, address, course, year, email);
     }
 
