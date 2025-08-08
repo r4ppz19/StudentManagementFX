@@ -11,7 +11,7 @@
     <children>
         <Label text="Display Student">
             <font>
-                <Font size="14.0" />
+                <Font name="Arial Bold" size="16.0" />
             </font>
         </Label>
         <TableView fx:id="tableView" focusTraversable="false" prefHeight="325.0" prefWidth="612.0">
