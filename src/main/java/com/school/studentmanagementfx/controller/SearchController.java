@@ -34,8 +34,8 @@ public class SearchController {
             }
         }
 
-        FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/com/school/studentmanagementfx/view/ResultView.fxml"));
+        String resultViewFxml = "/com/school/studentmanagementfx/view/ResultView.fxml";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(resultViewFxml));
         Parent root = loader.load();
         ResultController controller = loader.getController();
         controller.setStudentList(result);
