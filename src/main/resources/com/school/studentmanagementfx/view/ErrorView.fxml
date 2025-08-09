@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="174.0" prefWidth="229.0" spacing="20.0" stylesheets="@../style/Shared.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.school.studentmanagementfx.controller.ErrorController">
+<VBox alignment="CENTER" prefHeight="174.0" prefWidth="197.0" spacing="15.0" stylesheets="@../style/Shared.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.school.studentmanagementfx.controller.ErrorController">
    <children>
-      <Label prefHeight="62.0" prefWidth="217.0" text="TextField must not be empty" textAlignment="CENTER" wrapText="true">
+      <Label prefHeight="62.0" prefWidth="217.0" text="All TextField must not be empty" textAlignment="CENTER" wrapText="true">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
       <Button mnemonicParsing="false" onAction="#okBtn" prefHeight="25.0" prefWidth="70.0" text="OK" />
