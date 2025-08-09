@@ -56,38 +56,4 @@ public class Student {
     public SimpleStringProperty getEmail() {
         return this.email;
     }
-
-    // Setters
-    public void setId(SimpleStringProperty id) {
-        this.id = id;
-    }
-
-    public void setName(SimpleStringProperty name) {
-        this.name = name;
-    }
-
-    public void setAge(SimpleStringProperty age) {
-        this.age = age;
-    }
-
-    public void setBirthday(SimpleStringProperty birthday) {
-        this.birthday = birthday;
-    }
-
-    public void setAddress(SimpleStringProperty address) {
-        this.address = address;
-    }
-
-    public void setCourse(SimpleStringProperty course) {
-        this.course = course;
-    }
-
-    public void setYear(SimpleStringProperty year) {
-        this.year = year;
-    }
-
-    public void setEmail(SimpleStringProperty email) {
-        this.email = email;
-    }
-
 }
