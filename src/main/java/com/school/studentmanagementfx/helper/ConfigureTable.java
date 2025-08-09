@@ -4,7 +4,11 @@ import com.school.studentmanagementfx.model.Student;
 import javafx.scene.control.TableColumn;
 
 public class ConfigureTable {
-    public static void configureTableColumns(TableColumn<Student, String> idColumn, TableColumn<Student, String> nameColumn, TableColumn<Student, String> ageColumn, TableColumn<Student, String> birthdayColumn, TableColumn<Student, String> addressColumn, TableColumn<Student, String> courseColumn, TableColumn<Student, String> yearColumn, TableColumn<Student, String> emailColumn) {
+    public static void configureTableColumns(TableColumn<Student, String> idColumn,
+            TableColumn<Student, String> nameColumn, TableColumn<Student, String> ageColumn,
+            TableColumn<Student, String> birthdayColumn, TableColumn<Student, String> addressColumn,
+            TableColumn<Student, String> courseColumn, TableColumn<Student, String> yearColumn,
+            TableColumn<Student, String> emailColumn) {
         idColumn.setCellValueFactory(cellData -> cellData.getValue().getId());
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().getName());
         ageColumn.setCellValueFactory(cellData -> cellData.getValue().getAge());
