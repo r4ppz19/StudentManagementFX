@@ -8,24 +8,24 @@ import javafx.scene.control.TextField;
 
 public class AddController {
     @FXML
-    TextField idTextField;
+    private TextField idTextField;
     @FXML
-    TextField nameTextField;
+    private TextField nameTextField;
     @FXML
-    TextField ageTextField;
+    private TextField ageTextField;
     @FXML
-    TextField birthdayTextField;
+    private TextField birthdayTextField;
     @FXML
-    TextArea addressTextField;
+    private TextArea addressTextField;
     @FXML
-    TextField courseTextField;
+    private TextField courseTextField;
     @FXML
-    TextField yearTextField;
+    private TextField yearTextField;
     @FXML
-    TextField emailTextField;
+    private TextField emailTextField;
 
     @FXML
-    private void addBtn() {
+    public void addBtn() {
         StudentRepository.getStudents().add(getInfo());
         clearFields();
     }
