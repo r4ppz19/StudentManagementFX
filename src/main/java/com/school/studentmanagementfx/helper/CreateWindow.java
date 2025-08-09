@@ -11,9 +11,19 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class CreateWindow {
-    public static void createWindow(ActionEvent event, String fxmlPath) throws IOException {
-        Stage parentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    public static void createWindowAndHide(ActionEvent event, String fxmlPath) throws IOException {
+        Stage parentStage = getParentStage(event);
         parentStage.hide();
+        createWindow(fxmlPath, parentStage);
+        parentStage.show();
+    }
+
+    public static void createModalWindow(ActionEvent event, String fxmlPath) throws IOException {
+        Stage parentStage = getParentStage(event);
+        createWindow(fxmlPath, parentStage);
+    }
+
+    private static void createWindow(String fxmlPath, Stage parentStage) throws IOException {
         Stage childStage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxmlPath));
         Scene scene = new Scene(fxmlLoader.load());
@@ -25,6 +35,9 @@ public class CreateWindow {
         childStage.setResizable(false);
         childStage.setFullScreen(false);
         childStage.showAndWait();
-        parentStage.show();
+    }
+
+    private static Stage getParentStage(ActionEvent event) {
+        return (Stage) ((Node) event.getSource()).getScene().getWindow();
     }
 }
