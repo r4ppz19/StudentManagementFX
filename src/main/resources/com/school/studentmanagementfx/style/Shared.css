@@ -1,17 +1,14 @@
-/* Root - global font and background */
 .root {
     -fx-font-family: Arial, sans-serif;
-    -fx-background-color: #FFFFFF;
+    -fx-background-color: #F4F4F4;
 }
 
-/* Buttons */
 .button {
-    -fx-background-color: #F9F9F9;
-    -fx-border-color: #323232;
-    -fx-border-radius: 4px;
-    -fx-background-radius: 4px;
+    -fx-background-color: #F4F4F4;
+    -fx-border-color: #1C1C1C;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
     -fx-border-width: 1px;
-    -fx-text-fill: #000000;
     -fx-font-weight: bold;
 }
 
@@ -20,75 +17,67 @@
 }
 
 .button:focused {
-    -fx-border-color: #323232;
+    -fx-border-color: #1C1C1C;
+    -fx-background-color: #F0F0F0;
 }
 
-/* TextField */
 .text-field {
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: #323232;
+    -fx-background-color: #F4F4F4;
+    -fx-border-color: #1C1C1C;
     -fx-border-radius: 4px;
     -fx-background-radius: 4px;
     -fx-border-width: 1px;
-    -fx-text-fill: #000000;
 }
 
 .text-field:focused {
-    -fx-border-color: #323232;
+    -fx-border-color: #1C1C1C;
 }
 
-/* TextArea */
 .text-area {
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: #323232;
-    -fx-border-radius: 4px;
-    -fx-background-radius: 4px;
+    -fx-background-color: #F4F4F4;
+    -fx-border-color: #1C1C1C;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
     -fx-border-width: 1px;
-    -fx-text-fill: #000000;
 }
 
 .text-area .content {
-    -fx-background-color: #FFFFFF;
+    -fx-background-color: #F4F4F4;
 }
 
 .text-area:focused {
-    -fx-border-color: #323232;
+    -fx-border-color: #1C1C1C;
 }
 
-/* TableView container */
 .table-view {
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: #323232;
-    -fx-border-radius: 4px;
-    -fx-background-radius: 4px;
+    -fx-background-color: #F4F4F4;
+    -fx-border-color: #1C1C1C;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
     -fx-border-width: 1px;
-    -fx-font-size: 13px;
+    -fx-font-size: 12px;
 }
 
-/* Table column header */
 .table-view .column-header {
-    -fx-background-color: #F2F2F2;
-    -fx-border-color: #323232;
-    -fx-border-width: 0 0 1px 0;
+    -fx-background-color: #F4F4F4;
+    -fx-border-color: #1C1C1C;
+    -fx-border-width: 0 1px 1px 0;
 }
 
 .table-view .column-header .label {
     -fx-font-weight: bold;
 }
 
-/* Table cells */
 .table-view .table-cell {
     -fx-padding: 6px;
-    -fx-border-color: transparent transparent #323232 transparent;
+    -fx-border-color: transparent #1C1C1C #1C1C1C transparent;
 }
 
-/* Row hover effect */
 .table-row-cell:hover {
-    -fx-background-color: #efefef;
+    -fx-background-color: #F0F0F0;
 }
 
-/* Selected row */
 .table-row-cell:selected {
-    -fx-background-color: #efefef;
-    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #F0F0F0;
+    -fx-text-fill: transparent;
 }

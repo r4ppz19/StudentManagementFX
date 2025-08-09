@@ -21,13 +21,16 @@
                 <Insets bottom="20.0" />
             </VBox.margin>
         </Label>
-        <VBox prefHeight="63.0" prefWidth="327.0">
+        <VBox prefHeight="63.0" prefWidth="327.0" spacing="2.0">
             <children>
-                <Label text="Student ID" />
+                <Label text="Enter student ID">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin></Label>
                 <HBox>
                     <children>
-                        <TextField fx:id="searchTextField" prefHeight="25.0" prefWidth="263.0" promptText="Enter student ID" />
-                        <Button mnemonicParsing="false" onAction="#searchBtn" prefHeight="25.0" prefWidth="71.0" text="Search" />
+                        <TextField fx:id="searchTextField" prefHeight="30.0" prefWidth="245.0" promptText="Enter student ID" />
+                        <Button mnemonicParsing="false" onAction="#searchBtn" prefHeight="30.0" prefWidth="112.0" text="Search" />
                     </children>
                 </HBox>
             </children>
