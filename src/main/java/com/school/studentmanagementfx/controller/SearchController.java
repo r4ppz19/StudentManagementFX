@@ -20,7 +20,7 @@ public class SearchController {
     private TextField searchTextField;
 
     @FXML
-    public void searchBtn() throws IOException {
+    private void searchBtn() throws IOException {
         String id = searchTextField != null ? searchTextField.getText() : null;
         if (id == null)
             id = "";

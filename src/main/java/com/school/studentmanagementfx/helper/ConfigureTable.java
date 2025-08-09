@@ -27,6 +27,6 @@ public class ConfigureTable {
     private static void configureColumn(TableColumn<Student, String> column) {
         column.setReorderable(false);
         column.setSortable(false);
-        column.setResizable(false);
+        column.setResizable(true);
     }
 }
