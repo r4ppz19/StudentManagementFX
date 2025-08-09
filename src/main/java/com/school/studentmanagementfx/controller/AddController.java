@@ -30,11 +30,11 @@ public class AddController {
 
     @FXML
     private void addBtn(ActionEvent event) throws IOException {
-        StudentRepository.getStudents().add(getInfo(event));
+        getInfo(event);
         clearFields();
     }
 
-    private Student getInfo(ActionEvent event) throws IOException {
+    private void getInfo(ActionEvent event) throws IOException {
         String name = nameTextField.getText();
         String address = addressTextField.getText();
         String course = courseTextField.getText();
@@ -48,17 +48,18 @@ public class AddController {
                 || isNullOrEmpty(birthday) || isNullOrEmpty(age) || isNullOrEmpty(year) || isNullOrEmpty(id)) {
             String errorViewFxml = "/com/school/studentmanagementfx/view/ErrorView.fxml";
             CreateWindow.createModalWindow(event, errorViewFxml);
+        } else {
+            Student newStudent = new Student(
+                    id.trim(),
+                    name.trim(),
+                    age.trim(),
+                    birthday.trim(),
+                    address.trim(),
+                    course.trim(),
+                    year.trim(),
+                    email.trim());
+            StudentRepository.getStudents().add(newStudent);
         }
-
-        return new Student(
-                id.trim(),
-                name.trim(),
-                age.trim(),
-                birthday.trim(),
-                address.trim(),
-                course.trim(),
-                year.trim(),
-                email.trim());
     }
 
     private boolean isNullOrEmpty(String str) {
