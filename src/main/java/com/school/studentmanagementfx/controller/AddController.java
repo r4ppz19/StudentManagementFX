@@ -44,8 +44,8 @@ public class AddController {
         String year = yearTextField.getText();
         String id = idTextField.getText();
 
-        if (isNullOrEmpty(name) && isNullOrEmpty(address) && isNullOrEmpty(course) && isNullOrEmpty(email)
-                && isNullOrEmpty(birthday) && isNullOrEmpty(age) && isNullOrEmpty(year) && isNullOrEmpty(id)) {
+        if (isNullOrEmpty(name) || isNullOrEmpty(address) || isNullOrEmpty(course) || isNullOrEmpty(email)
+                || isNullOrEmpty(birthday) || isNullOrEmpty(age) || isNullOrEmpty(year) || isNullOrEmpty(id)) {
             String errorViewFxml = "/com/school/studentmanagementfx/view/ErrorView.fxml";
             CreateWindow.createModalWindow(event, errorViewFxml);
         }
