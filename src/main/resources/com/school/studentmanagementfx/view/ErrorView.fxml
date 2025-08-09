@@ -8,7 +8,7 @@
 
 <VBox alignment="CENTER" prefHeight="174.0" prefWidth="197.0" spacing="15.0" stylesheets="@../style/Shared.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.school.studentmanagementfx.controller.ErrorController">
    <children>
-      <Label prefHeight="62.0" prefWidth="217.0" text="All TextField must not be empty" textAlignment="CENTER" wrapText="true">
+      <Label prefHeight="62.0" prefWidth="217.0" text="Empty text-fields are not allowed" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
