@@ -29,7 +29,7 @@ public class DisplayController {
     private TableColumn<Student, String> emailColumn;
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         ConfigureTable.configureTableColumns(idColumn, nameColumn, ageColumn, birthdayColumn, addressColumn,
                 courseColumn, yearColumn, emailColumn);
         tableView.setItems(StudentRepository.getStudents());

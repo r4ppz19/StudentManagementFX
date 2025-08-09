@@ -32,7 +32,7 @@ public class ResultController {
     private ObservableList<Student> providedList;
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         ConfigureTable.configureTableColumns(idColumn, nameColumn, ageColumn, birthdayColumn, addressColumn,
                 courseColumn, yearColumn, emailColumn);
 
@@ -40,7 +40,7 @@ public class ResultController {
         tableView.setItems(providedList != null ? providedList : FXCollections.observableArrayList());
     }
 
-    public void setStudentList(ObservableList<Student> list) {
+    void setStudentList(ObservableList<Student> list) {
         this.providedList = list;
         if (tableView != null) {
             tableView.setItems(list);

@@ -25,7 +25,7 @@ public class AddController {
     private TextField emailTextField;
 
     @FXML
-    public void addBtn() {
+    private void addBtn() {
         StudentRepository.getStudents().add(getInfo());
         clearFields();
     }
