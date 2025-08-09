@@ -1,5 +1,6 @@
 package com.school.studentmanagementfx.controller;
 
+import com.school.studentmanagementfx.helper.ConfigureTable;
 import com.school.studentmanagementfx.model.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,32 +32,18 @@ public class ResultController {
     private ObservableList<Student> providedList;
 
     @FXML
-    public void initialize() {
-        DisplayController.populateTable(idColumn, nameColumn, ageColumn, birthdayColumn, addressColumn, courseColumn, yearColumn, emailColumn);
-
-        configureColumn(idColumn);
-        configureColumn(nameColumn);
-        configureColumn(ageColumn);
-        configureColumn(birthdayColumn);
-        configureColumn(addressColumn);
-        configureColumn(courseColumn);
-        configureColumn(yearColumn);
-        configureColumn(emailColumn);
+    private void initialize() {
+        ConfigureTable.configureTableColumns(idColumn, nameColumn, ageColumn, birthdayColumn, addressColumn,
+                courseColumn, yearColumn, emailColumn);
 
         // Show provided list or empty
         tableView.setItems(providedList != null ? providedList : FXCollections.observableArrayList());
     }
 
-    public void setStudentList(ObservableList<Student> list) {
+    void setStudentList(ObservableList<Student> list) {
         this.providedList = list;
         if (tableView != null) {
             tableView.setItems(list);
         }
-    }
-
-    private void configureColumn(TableColumn<Student, String> column) {
-        column.setReorderable(false);
-        column.setSortable(false);
-        column.setResizable(false);
     }
 }

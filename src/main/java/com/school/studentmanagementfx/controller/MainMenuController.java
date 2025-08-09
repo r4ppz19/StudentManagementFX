@@ -10,18 +10,18 @@ public class MainMenuController {
     @FXML
     private void addStudentBtn(ActionEvent event) throws IOException {
         String addViewFxml = "/com/school/studentmanagementfx/view/AddView.fxml";
-        CreateWindow.createWindow(event, addViewFxml);
+        CreateWindow.createWindowAndHide(event, addViewFxml);
     }
 
     @FXML
     private void displayStudentBtn(ActionEvent event) throws IOException {
         String displayViewFxml = "/com/school/studentmanagementfx/view/DisplayView.fxml";
-        CreateWindow.createWindow(event, displayViewFxml);
+        CreateWindow.createWindowAndHide(event, displayViewFxml);
     }
 
     @FXML
     private void searchStudentBtn(ActionEvent event) throws IOException {
         String searchViewFxml = "/com/school/studentmanagementfx/view/SearchView.fxml";
-        CreateWindow.createWindow(event, searchViewFxml);
+        CreateWindow.createWindowAndHide(event, searchViewFxml);
     }
 }
