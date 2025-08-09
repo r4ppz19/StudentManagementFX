@@ -79,5 +79,4 @@
 
 .table-row-cell:selected {
     -fx-background-color: #F0F0F0;
-    -fx-text-fill: transparent;
 }
