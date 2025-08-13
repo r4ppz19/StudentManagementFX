@@ -16,7 +16,7 @@ public class LoginController {
 
     @FXML
     private void onLoginAction(ActionEvent event) throws IOException {
-        String homePageFxml = "/com/school/studentmanagementfx/view/HomePageView.fxml";
+        String homePageFxml = "/com/school/studentmanagementfx/view/HomeView.fxml";
         CreateWindow.createWindowAndHide(event, homePageFxml);
     }
 }

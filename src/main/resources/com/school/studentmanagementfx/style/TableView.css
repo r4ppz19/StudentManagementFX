@@ -1,6 +1,17 @@
 .table-view {
     -fx-font-family: "Segoe UI Black";
-    -fx-background-color: #F8F9FA;
+    -fx-background-color: #EEEEEE;
+    -fx-border-color: #1E1E2E;
+    -fx-border-width: 0px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.table-view:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-color: #EEEEEE;
     -fx-border-color: #1E1E2E;
     -fx-border-width: 0px;
     -fx-border-radius: 5px;
@@ -8,7 +19,7 @@
 }
 
 .table-view .column-header-background {
-    -fx-background-color: #F8F9FA;
+    -fx-background-color: #EEEEEE;
 }
 
 .table-view .column-header,
@@ -18,32 +29,41 @@
     -fx-border-width: 0.5;
 }
 
-/*.table-view .column-header .label {*/
-/*}*/
+.table-view .column-header .label {
+}
 
-/*.table-row-cell {*/
-/*}*/
+.table-row-cell {
+    -fx-background-color: #EEEEEE;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 0 0 1 0;
+}
 
-/*.table-row-cell {*/
-/*}*/
+.table-row-cell:odd {
+    -fx-background-color: #EEEEEE;
+}
 
-/*.table-row-cell:odd {*/
-/*}*/
+.table-row-cell:even {
+    -fx-background-color: #EEEEEE;
+}
 
-/*.table-row-cell:selected {*/
-/*}*/
+.table-row-cell:selected {
+    -fx-background-color: #EEEEEE;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
 
-/*.table-cell {*/
-/*}*/
+.table-cell {
+    -fx-alignment: CENTER;
+    -fx-padding: 5px 0;
+}
 
-/*.table-cell:selected {*/
-/*}*/
+.table-cell:selected {
+    -fx-background-color: transparent;
+}
 
-/*.table-view .scroll-bar:vertical,*/
-/*.table-view .scroll-bar:horizontal {*/
-/*}*/
+.table-view .scroll-bar:vertical,
+.table-view .scroll-bar:horizontal {
+}
 
-/*.table-view .scroll-bar .thumb {*/
-/*}*/
-
-
+.table-view .scroll-bar .thumb {
+}

@@ -9,6 +9,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
         String mainMenuViewFxml = "/com/school/studentmanagementfx/view/LoginView.fxml";
@@ -20,9 +24,5 @@ public class Main extends Application {
         stage.setResizable(false);
         stage.setFullScreen(false);
         stage.show();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }

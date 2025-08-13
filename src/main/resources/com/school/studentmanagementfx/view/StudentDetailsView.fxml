@@ -1,172 +1,199 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="341.0" minWidth="345.0" prefHeight="379.0" prefWidth="345.0" spacing="10.0" style="-fx-background-color: #EEEEEE;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.school.studentmanagementfx.controller.StudentDetailController">
-   <children>
-      <VBox alignment="CENTER_LEFT" minHeight="43.0" prefHeight="43.0" style="-fx-background-color: #EEEEEE; -fx-border-color: transparent transparent #1E1E2E transparent; -fx-border-width: 0.5;">
-         <children>
-            <Label text="Student Details" textFill="#1e1e2e">
-               <font>
-                  <Font name="Segoe UI Black" size="13.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="20.0" />
-               </VBox.margin>
-            </Label>
-         </children>
-      </VBox>
-      <VBox spacing="10.0">
-         <children>
-            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="345.0" spacing="15.0">
-               <children>
-                  <VBox spacing="2.0">
-                     <children>
-                        <Label text="ID" textFill="#1e1e2e">
-                           <font>
-                              <Font name="Segoe UI Black" size="11.0" />
-                           </font>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="341.0"
+      minWidth="345.0" prefHeight="379.0" prefWidth="345.0" spacing="10.0"
+      style="-fx-background-color: #EEEEEE;" xmlns="http://javafx.com/javafx/23.0.1"
+      fx:controller="com.school.studentmanagementfx.controller.StudentDetailController">
+    <children>
+        <VBox alignment="CENTER_LEFT" minHeight="43.0" prefHeight="43.0"
+              style="-fx-background-color: #EEEEEE; -fx-border-color: transparent transparent #1E1E2E transparent; -fx-border-width: 0.5;">
+            <children>
+                <Label text="Student Details" textFill="#1e1e2e">
+                    <font>
+                        <Font name="Segoe UI Black" size="13.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets left="20.0"/>
+                    </VBox.margin>
+                </Label>
+            </children>
+        </VBox>
+        <VBox spacing="10.0">
+            <children>
+                <HBox alignment="CENTER" prefHeight="0.0" prefWidth="345.0" spacing="15.0">
+                    <children>
+                        <VBox spacing="2.0">
+                            <children>
+                                <Label text="ID" textFill="#1e1e2e">
+                                    <font>
+                                        <Font name="Segoe UI Black" size="11.0"/>
+                                    </font>
+                                </Label>
+                                <TextField fx:id="idTextField" editable="false" focusTraversable="false"
+                                           minHeight="25.0" prefHeight="25.0" promptText="Enter ID"
+                                           style="-fx-background-color: #F8F9FA; -fx-border-color: #1E1E2E; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 0.5;"
+                                           text="1">
+                                    <font>
+                                        <Font name="Segoe UI Black" size="11.0"/>
+                                    </font>
+                                </TextField>
+                            </children>
+                        </VBox>
+                        <VBox spacing="2.0">
+                            <children>
+                                <Label text="Name" textFill="#1e1e2e">
+                                    <font>
+                                        <Font name="Segoe UI Black" size="11.0"/>
+                                    </font>
+                                </Label>
+                                <TextField fx:id="nameTextField" editable="false" focusTraversable="false"
+                                           minHeight="25.0" prefHeight="25.0" promptText="Enter name"
+                                           style="-fx-background-color: #F8F9FA; -fx-border-color: #1E1E2E; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 0.5;"
+                                           text="John Rey Rabosa">
+                                    <font>
+                                        <Font name="Segoe UI Black" size="11.0"/>
+                                    </font>
+                                </TextField>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="0.0" prefWidth="345.0" spacing="15.0">
+                    <children>
+                        <VBox spacing="2.0">
+                            <children>
+                                <Label text="Age" textFill="#1e1e2e">
+                                    <font>
+                                        <Font name="Segoe UI Black" size="11.0"/>
+                                    </font>
+                                </Label>
+                                <TextField fx:id="ageTextField" editable="false" focusTraversable="false"
+                                           minHeight="25.0" prefHeight="25.0" promptText="Enter age"
+                                           style="-fx-background-color: #F8F9FA; -fx-border-color: #1E1E2E; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 0.5;"
+                                           text="19">
+                                    <font>
+                                        <Font name="Segoe UI Black" size="11.0"/>
+                                    </font>
+                                </TextField>
+                            </children>
+                        </VBox>
+                        <VBox spacing="2.0">
+                            <children>
+                                <Label text="Birthday" textFill="#1e1e2e">
+                                    <font>
+                                        <Font name="Segoe UI Black" size="11.0"/>
+                                    </font>
+                                </Label>
+                                <TextField fx:id="birthdayTextField" editable="false" focusTraversable="false"
+                                           minHeight="25.0" prefHeight="25.0" promptText="Enter birthday"
+                                           style="-fx-background-color: #F8F9FA; -fx-border-color: #1E1E2E; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 0.5;"
+                                           text="12-31-2005">
+                                    <font>
+                                        <Font name="Segoe UI Black" size="11.0"/>
+                                    </font>
+                                </TextField>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                <VBox spacing="2.0">
+                    <children>
+                        <Label text="Address" textFill="#1e1e2e">
+                            <font>
+                                <Font name="Segoe UI Black" size="11.0"/>
+                            </font>
                         </Label>
-                        <TextField fx:id="idTextField" editable="false" focusTraversable="false" minHeight="25.0" prefHeight="25.0" promptText="Enter ID" style="-fx-background-color: #F8F9FA; -fx-border-color: #1E1E2E; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 0.5;" text="1">
-                           <font>
-                              <Font name="Segoe UI Black" size="11.0" />
-                           </font>
+                        <TextField fx:id="addressTextField" editable="false" focusTraversable="false" minHeight="35.0"
+                                   prefHeight="35.0" promptText="Enter address"
+                                   style="-fx-background-color: #F8F9FA; -fx-border-color: #1E1E2E; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 0.5;"
+                                   text="Panacan Davao City">
+                            <font>
+                                <Font name="Segoe UI Black" size="11.0"/>
+                            </font>
                         </TextField>
-                     </children>
-                  </VBox>
-                  <VBox spacing="2.0">
-                     <children>
-                        <Label text="Name" textFill="#1e1e2e">
-                           <font>
-                              <Font name="Segoe UI Black" size="11.0" />
-                           </font>
+                    </children>
+                </VBox>
+                <HBox alignment="CENTER" prefHeight="0.0" prefWidth="345.0" spacing="15.0">
+                    <children>
+                        <VBox spacing="2.0">
+                            <children>
+                                <Label text="Course" textFill="#1e1e2e">
+                                    <font>
+                                        <Font name="Segoe UI Black" size="11.0"/>
+                                    </font>
+                                </Label>
+                                <TextField fx:id="courseTextField" editable="false" focusTraversable="false"
+                                           minHeight="25.0" prefHeight="25.0" promptText="Enter course"
+                                           style="-fx-background-color: #F8F9FA; -fx-border-color: #1E1E2E; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 0.5;"
+                                           text="BSIT">
+                                    <font>
+                                        <Font name="Segoe UI Black" size="11.0"/>
+                                    </font>
+                                </TextField>
+                            </children>
+                        </VBox>
+                        <VBox spacing="2.0">
+                            <children>
+                                <Label text="Year" textFill="#1e1e2e">
+                                    <font>
+                                        <Font name="Segoe UI Black" size="11.0"/>
+                                    </font>
+                                </Label>
+                                <TextField fx:id="yearTextField" editable="false" focusTraversable="false"
+                                           minHeight="25.0" prefHeight="25.0" promptText="Enter year"
+                                           style="-fx-background-color: #F8F9FA; -fx-border-color: #1E1E2E; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 0.5;"
+                                           text="2nd year">
+                                    <font>
+                                        <Font name="Segoe UI Black" size="11.0"/>
+                                    </font>
+                                </TextField>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                <VBox spacing="2.0">
+                    <children>
+                        <Label text="Email" textFill="#1e1e2e">
+                            <font>
+                                <Font name="Segoe UI Black" size="11.0"/>
+                            </font>
                         </Label>
-                        <TextField fx:id="nameTextField" editable="false" focusTraversable="false" minHeight="25.0" prefHeight="25.0" promptText="Enter name" style="-fx-background-color: #F8F9FA; -fx-border-color: #1E1E2E; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 0.5;" text="John Rey Rabosa">
-                           <font>
-                              <Font name="Segoe UI Black" size="11.0" />
-                           </font>
+                        <TextField fx:id="emailTextField" editable="false" focusTraversable="false" minHeight="25.0"
+                                   prefHeight="25.0" promptText="Enter email"
+                                   style="-fx-background-color: #F8F9FA; -fx-border-color: #1E1E2E; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 0.5;"
+                                   text="johnreyrabosa.f@gmail.com">
+                            <font>
+                                <Font name="Segoe UI Black" size="11.0"/>
+                            </font>
                         </TextField>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="345.0" spacing="15.0">
-               <children>
-                  <VBox spacing="2.0">
-                     <children>
-                        <Label text="Age" textFill="#1e1e2e">
-                           <font>
-                              <Font name="Segoe UI Black" size="11.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="ageTextField" editable="false" focusTraversable="false" minHeight="25.0" prefHeight="25.0" promptText="Enter age" style="-fx-background-color: #F8F9FA; -fx-border-color: #1E1E2E; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 0.5;" text="19">
-                           <font>
-                              <Font name="Segoe UI Black" size="11.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </VBox>
-                  <VBox spacing="2.0">
-                     <children>
-                        <Label text="Birthday" textFill="#1e1e2e">
-                           <font>
-                              <Font name="Segoe UI Black" size="11.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="birthdayTextField" editable="false" focusTraversable="false" minHeight="25.0" prefHeight="25.0" promptText="Enter birthday" style="-fx-background-color: #F8F9FA; -fx-border-color: #1E1E2E; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 0.5;" text="12-31-2005">
-                           <font>
-                              <Font name="Segoe UI Black" size="11.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <VBox spacing="2.0">
-               <children>
-                  <Label text="Address" textFill="#1e1e2e">
-                     <font>
-                        <Font name="Segoe UI Black" size="11.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="addressTextField" editable="false" focusTraversable="false" minHeight="35.0" prefHeight="35.0" promptText="Enter address" style="-fx-background-color: #F8F9FA; -fx-border-color: #1E1E2E; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 0.5;" text="Panacan Davao City">
-                     <font>
-                        <Font name="Segoe UI Black" size="11.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </VBox>
-            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="345.0" spacing="15.0">
-               <children>
-                  <VBox spacing="2.0">
-                     <children>
-                        <Label text="Course" textFill="#1e1e2e">
-                           <font>
-                              <Font name="Segoe UI Black" size="11.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="courseTextField" editable="false" focusTraversable="false" minHeight="25.0" prefHeight="25.0" promptText="Enter course" style="-fx-background-color: #F8F9FA; -fx-border-color: #1E1E2E; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 0.5;" text="BSIT">
-                           <font>
-                              <Font name="Segoe UI Black" size="11.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </VBox>
-                  <VBox spacing="2.0">
-                     <children>
-                        <Label text="Year" textFill="#1e1e2e">
-                           <font>
-                              <Font name="Segoe UI Black" size="11.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="yearTextField" editable="false" focusTraversable="false" minHeight="25.0" prefHeight="25.0" promptText="Enter year" style="-fx-background-color: #F8F9FA; -fx-border-color: #1E1E2E; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 0.5;" text="2nd year">
-                           <font>
-                              <Font name="Segoe UI Black" size="11.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <VBox spacing="2.0">
-               <children>
-                  <Label text="Email" textFill="#1e1e2e">
-                     <font>
-                        <Font name="Segoe UI Black" size="11.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="emailTextField" editable="false" focusTraversable="false" minHeight="25.0" prefHeight="25.0" promptText="Enter email" style="-fx-background-color: #F8F9FA; -fx-border-color: #1E1E2E; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 0.5;" text="johnreyrabosa.f@gmail.com">
-                     <font>
-                        <Font name="Segoe UI Black" size="11.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </VBox>
-         </children>
-         <padding>
-            <Insets left="20.0" right="20.0" />
-         </padding>
-      </VBox>
-      <HBox alignment="CENTER_RIGHT" spacing="10.0">
-         <children>
-            <Button minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onCloseAction" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: F8F9FA; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-color: #1E1E2E; -fx-border-width: 0.5;" text="Close" textFill="#1e1e2e">
-               <font>
-                  <Font name="Segoe UI Black" size="11.0" />
-               </font>
-            </Button>
-         </children>
-         <padding>
-            <Insets right="20.0" />
-         </padding>
-         <VBox.margin>
-            <Insets top="5.0" />
-         </VBox.margin>
-      </HBox>
-   </children>
+                    </children>
+                </VBox>
+            </children>
+            <padding>
+                <Insets left="20.0" right="20.0"/>
+            </padding>
+        </VBox>
+        <HBox alignment="CENTER_RIGHT" spacing="10.0">
+            <children>
+                <Button minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onCloseAction"
+                        prefHeight="25.0" prefWidth="60.0"
+                        style="-fx-background-color: F8F9FA; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-color: #1E1E2E; -fx-border-width: 0.5;"
+                        text="Close" textFill="#1e1e2e">
+                    <font>
+                        <Font name="Segoe UI Black" size="11.0"/>
+                    </font>
+                </Button>
+            </children>
+            <padding>
+                <Insets right="20.0"/>
+            </padding>
+            <VBox.margin>
+                <Insets top="5.0"/>
+            </VBox.margin>
+        </HBox>
+    </children>
 </VBox>

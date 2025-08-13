@@ -1,5 +1,6 @@
 package com.school.studentmanagementfx.controller;
 
+import com.school.studentmanagementfx.model.Student;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -29,6 +30,20 @@ public class AddStudentController {
 
     @FXML
     private void onAddStudentAction() {
-    
+        getStudentFromFields();
     }
+
+    private Student getStudentFromFields() {
+        return new Student(
+                idTextField.getText().trim(),
+                nameTextField.getText().trim(),
+                ageTextField.getText().trim(),
+                birthdayTextField.getText().trim(),
+                addressTextField.getText().trim(),
+                courseTextField.getText().trim(),
+                yearTextField.getText().trim(),
+                emailTextField.getText().trim()
+        );
+    }
+
 }
