@@ -5,7 +5,6 @@ import com.school.studentmanagementfx.helper.CreateWindow;
 import com.school.studentmanagementfx.helper.IconHelper;
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.repository.StudentRepository;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +26,9 @@ public class HomeController {
     private TextField searchTextField;
 
     @FXML
+    private Label logOutLabel;
+
+    @FXML
     private TableView<Student> studentsTableView;
 
     @FXML
@@ -46,6 +48,7 @@ public class HomeController {
 
     @FXML
     private void initialize() {
+        logOutAction();
         studentsTableView.setFocusTraversable(false);
         studentsTableView.getColumns().forEach(col -> col.setResizable(false));
         studentsTableView.getColumns().forEach(col -> col.setReorderable(false));
@@ -69,6 +72,13 @@ public class HomeController {
     private void onAddStudentAction(ActionEvent event) throws IOException {
         String addStudentFxml = "/com/school/studentmanagementfx/view/AddStudentView.fxml";
         CreateWindow.createModalWindow(event, addStudentFxml);
+    }
+
+    private void logOutAction() {
+        logOutLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent event) -> {
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+        });
     }
 
     private void addMoreDetailButton() {

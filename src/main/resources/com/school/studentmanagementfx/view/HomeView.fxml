@@ -28,7 +28,7 @@
                 </HBox>
                 <HBox alignment="CENTER">
                     <children>
-                        <Label text="Log out" textFill="#1e1e2e">
+                        <Label fx:id="logOutLabel" text="Log out" textFill="#1e1e2e">
                             <font>
                                 <Font name="Segoe UI Black" size="11.0" />
                             </font>
