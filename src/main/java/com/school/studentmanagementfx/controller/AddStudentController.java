@@ -1,8 +1,13 @@
 package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.model.Student;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.beans.EventHandler;
 
 public class AddStudentController {
 
@@ -24,8 +29,9 @@ public class AddStudentController {
     private TextField emailTextField;
 
     @FXML
-    private void onCancelAction() {
-
+    private void onCancelAction(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
     }
 
     @FXML

@@ -1,13 +1,22 @@
 package com.school.studentmanagementfx.controller;
 
+import com.school.studentmanagementfx.Main;
 import com.school.studentmanagementfx.helper.CreateWindow;
+import com.school.studentmanagementfx.helper.IconHelper;
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.repository.StudentRepository;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -40,11 +49,6 @@ public class HomeController {
         studentsTableView.setFocusTraversable(false);
         studentsTableView.getColumns().forEach(col -> col.setResizable(false));
         studentsTableView.getColumns().forEach(col -> col.setReorderable(false));
-        Platform.runLater(() -> {
-            studentsTableView.lookupAll(".column-header").forEach(header ->
-                    header.addEventFilter(MouseEvent.MOUSE_DRAGGED, MouseEvent::consume)
-            );
-        });
 
         createDummyStudent();
 
@@ -74,11 +78,33 @@ public class HomeController {
             {
                 btn.setOnAction(event -> {
                     Student student = getTableView().getItems().get(getIndex());
-                    System.out.println("More details for: " + student.getName());
+
+                    try {
+                        FXMLLoader loader = new FXMLLoader(
+                                getClass().getResource("/com/school/studentmanagementfx/view/StudentDetailsView.fxml")
+                        );
+                        Parent root = loader.load();
+
+                        StudentDetailsController controller = loader.getController();
+                        controller.setStudent(student);
+
+                        Stage stage = new Stage();
+                        IconHelper.setAppIcon(stage);
+                        stage.setScene(new Scene(root));
+                        stage.setTitle("Student Management");
+                        stage.initModality(Modality.APPLICATION_MODAL);
+                        stage.setFullScreen(false);
+                        stage.setResizable(false);
+                        stage.showAndWait();
+
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 });
                 btn.getStylesheets().add(
                         Objects.requireNonNull(getClass().getResource("/com/school/studentmanagementfx/style/Button.css")).toExternalForm()
                 );
+                btn.setPadding(new Insets(4, 20, 4, 20));
             }
 
             @Override
