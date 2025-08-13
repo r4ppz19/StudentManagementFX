@@ -3,6 +3,7 @@ module com.school.studentmanagementfx {
     requires transitive javafx.controls;
     requires transitive javafx.fxml;
     requires javafx.base;
+    requires java.desktop;
 
     opens com.school.studentmanagementfx to javafx.fxml;
     opens com.school.studentmanagementfx.controller to javafx.fxml;

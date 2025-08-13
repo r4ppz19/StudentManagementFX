@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        String mainMenuViewFxml = "/com/school/studentmanagementfx/view/MainMenuView.fxml";
+        String mainMenuViewFxml = "/com/school/studentmanagementfx/view/LoginView.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(mainMenuViewFxml));
         Scene scene = new Scene(fxmlLoader.load());
         IconHelper.setAppIcon(stage);
