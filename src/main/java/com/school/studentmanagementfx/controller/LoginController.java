@@ -1,7 +1,11 @@
 package com.school.studentmanagementfx.controller;
 
+import com.school.studentmanagementfx.helper.CreateWindow;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+
+import java.io.IOException;
 
 public class LoginController {
     @FXML
@@ -11,7 +15,8 @@ public class LoginController {
     private TextField passwordTextField;
 
     @FXML
-    private void onLoginAction() {
-
+    private void onLoginAction(ActionEvent event) throws IOException {
+        String homePageFxml = "/com/school/studentmanagementfx/view/HomePageView.fxml";
+        CreateWindow.createWindowAndHide(event, homePageFxml);
     }
 }
