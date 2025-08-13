@@ -1,0 +1,49 @@
+.table-view {
+    -fx-font-family: "Segoe UI Black";
+    -fx-background-color: #F8F9FA;
+    -fx-border-color: #1E1E2E;
+    -fx-border-width: 0px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #F8F9FA;
+}
+
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #1E1E2E transparent;
+    -fx-border-width: 0.5;
+}
+
+.table-view .column-header .label {
+}
+
+.table-row-cell {
+}
+
+.table-row-cell {
+}
+
+.table-row-cell:odd {
+}
+
+.table-row-cell:selected {
+}
+
+.table-cell {
+}
+
+.table-cell:selected {
+}
+
+.table-view .scroll-bar:vertical,
+.table-view .scroll-bar:horizontal {
+}
+
+.table-view .scroll-bar .thumb {
+}
+
+
