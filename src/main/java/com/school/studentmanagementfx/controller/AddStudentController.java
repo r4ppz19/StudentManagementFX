@@ -7,8 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.beans.EventHandler;
-
 public class AddStudentController {
 
     @FXML

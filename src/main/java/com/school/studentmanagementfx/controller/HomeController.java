@@ -1,6 +1,5 @@
 package com.school.studentmanagementfx.controller;
 
-import com.school.studentmanagementfx.Main;
 import com.school.studentmanagementfx.helper.CreateWindow;
 import com.school.studentmanagementfx.helper.IconHelper;
 import com.school.studentmanagementfx.model.Student;
@@ -127,7 +126,7 @@ public class HomeController {
 
     private void createDummyStudent() {
         Student student1 = new Student("1", "John Rey Rabosa", "19", "12-31-2005", "Panacan Davao City", "BSIT", "2nd year", "johnreyrabosa.f@gmail.com");
-        Student student2 = new Student("1", "John Rey Rabosa", "19", "12-31-2005", "Panacan Davao City", "BSIT", "2nd year", "johnreyrabosa.f@gmail.com");
+        Student student2 = new Student("1", "Erwin Curato", "19", "12-31-2005", "Panacan Davao City", "BSIT", "2nd year", "johnreyrabosa.f@gmail.com");
         Student student3 = new Student("1", "John Rey Rabosa", "19", "12-31-2005", "Panacan Davao City", "BSIT", "2nd year", "johnreyrabosa.f@gmail.com");
         Student student4 = new Student("1", "John Rey Rabosa", "19", "12-31-2005", "Panacan Davao City", "BSIT", "2nd year", "johnreyrabosa.f@gmail.com");
         Student student5 = new Student("1", "John Rey Rabosa", "19", "12-31-2005", "Panacan Davao City", "BSIT", "2nd year", "johnreyrabosa.f@gmail.com");
