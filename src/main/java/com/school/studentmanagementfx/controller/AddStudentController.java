@@ -2,7 +2,7 @@ package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.helper.CreateWindow;
 import com.school.studentmanagementfx.model.Student;
-import com.school.studentmanagementfx.repository.StudentRepository;
+import com.school.studentmanagementfx.model.StudentRepo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -50,7 +50,7 @@ public class AddStudentController {
             String errorViewFxml = "/com/school/studentmanagementfx/view/ErrorView.fxml";
             CreateWindow.createModalWindow(event, errorViewFxml, "Error");
         } else {
-            StudentRepository.getStudents().add(getStudentFromFields());
+            StudentRepo.getStudents().add(getStudentFromFields());
             String successViewFxml = "/com/school/studentmanagementfx/view/SuccessView.fxml";
             CreateWindow.createModalWindow(event, successViewFxml, "Success");
             clearFields();
