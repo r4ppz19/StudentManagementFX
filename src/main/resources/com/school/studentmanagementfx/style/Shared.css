@@ -82,4 +82,9 @@
     -fx-border-color: #141427;
 }
 
+.shadow-container {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 8, 0, 0, 2);
+}
+
+
 
