@@ -3,17 +3,17 @@ package com.school.studentmanagementfx.model;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Student {
-    private SimpleStringProperty id;
-    private SimpleStringProperty name;
-    private SimpleStringProperty age;
-    private SimpleStringProperty birthday;
-    private SimpleStringProperty address;
-    private SimpleStringProperty course;
-    private SimpleStringProperty year;
-    private SimpleStringProperty email;
+    private final SimpleStringProperty id;
+    private final SimpleStringProperty name;
+    private final SimpleStringProperty age;
+    private final SimpleStringProperty birthday;
+    private final SimpleStringProperty address;
+    private final SimpleStringProperty course;
+    private final SimpleStringProperty year;
+    private final SimpleStringProperty email;
 
     public Student(String id, String name, String age, String birthday, String address, String course, String year,
-                   String email) {
+            String email) {
         this.id = new SimpleStringProperty(id);
         this.name = new SimpleStringProperty(name);
         this.age = new SimpleStringProperty(age);
@@ -29,65 +29,32 @@ public class Student {
         return this.id;
     }
 
-    // Setters
-    public void setId(SimpleStringProperty id) {
-        this.id = id;
-    }
-
     public SimpleStringProperty getName() {
         return this.name;
-    }
-
-    public void setName(SimpleStringProperty name) {
-        this.name = name;
     }
 
     public SimpleStringProperty getAge() {
         return this.age;
     }
 
-    public void setAge(SimpleStringProperty age) {
-        this.age = age;
-    }
-
     public SimpleStringProperty getBirthday() {
         return this.birthday;
-    }
-
-    public void setBirthday(SimpleStringProperty birthday) {
-        this.birthday = birthday;
     }
 
     public SimpleStringProperty getAddress() {
         return this.address;
     }
 
-    public void setAddress(SimpleStringProperty address) {
-        this.address = address;
-    }
 
     public SimpleStringProperty getCourse() {
         return this.course;
-    }
-
-    public void setCourse(SimpleStringProperty course) {
-        this.course = course;
     }
 
     public SimpleStringProperty getYear() {
         return this.year;
     }
 
-    public void setYear(SimpleStringProperty year) {
-        this.year = year;
-    }
-
     public SimpleStringProperty getEmail() {
         return this.email;
     }
-
-    public void setEmail(SimpleStringProperty email) {
-        this.email = email;
-    }
-
 }
