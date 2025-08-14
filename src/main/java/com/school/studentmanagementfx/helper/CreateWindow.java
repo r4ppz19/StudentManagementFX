@@ -1,8 +1,6 @@
 package com.school.studentmanagementfx.helper;
 
 import com.school.studentmanagementfx.Main;
-import com.school.studentmanagementfx.controller.StudentDetailsController;
-import com.school.studentmanagementfx.model.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -14,8 +12,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class CreateWindow {
-
-
 
     public static void createNewWindowAndClose(ActionEvent event, String fxmlPath, String title) throws IOException {
         Stage parentStage = getParentStage(event);

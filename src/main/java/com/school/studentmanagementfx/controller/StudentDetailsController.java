@@ -36,11 +36,6 @@ public class StudentDetailsController {
         stage.close();
     }
 
-    private static StudentDetailsController studentDetailsController;
-
-    public static StudentDetailsController getStudentDetailsController() {
-        return studentDetailsController;
-    }
 
     public static void showStudentDetails(ActionEvent event, Student student) {
         try {
@@ -50,7 +45,7 @@ public class StudentDetailsController {
             FXMLLoader loader = new FXMLLoader(CreateWindow.class.getResource(fxmlPath));
             Parent root = loader.load();
 
-            studentDetailsController = loader.getController();
+            StudentDetailsController studentDetailsController = loader.getController();
             studentDetailsController.setStudent(student);
 
             CreateWindow.createWindow(root, parentStage, "Student Details");

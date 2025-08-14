@@ -74,10 +74,10 @@
                                         <Font name="Segoe UI Black" size="11.0" />
                                     </font>
                                     <VBox.margin>
-                                        <Insets top="15.0" />
+                                        <Insets bottom="15.0" top="15.0" />
                                     </VBox.margin>
                                 </Button>
-                        <VBox fx:id="indicatorVboxContainer" alignment="CENTER" prefHeight="146.0" prefWidth="220.0" />
+                        <VBox fx:id="indicatorVboxContainer" alignment="CENTER" prefHeight="93.0" prefWidth="220.0" />
                             </children>
                         </VBox>
                         <VBox prefHeight="412.0" prefWidth="528.0">

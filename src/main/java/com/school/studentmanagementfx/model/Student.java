@@ -45,7 +45,6 @@ public class Student {
         return this.address;
     }
 
-
     public SimpleStringProperty getCourse() {
         return this.course;
     }

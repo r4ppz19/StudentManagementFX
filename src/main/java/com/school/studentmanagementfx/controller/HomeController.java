@@ -3,15 +3,12 @@ package com.school.studentmanagementfx.controller;
 import com.school.studentmanagementfx.helper.CreateWindow;
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -22,25 +19,18 @@ public class HomeController {
 
     @FXML
     private TextField searchTextField;
-
     @FXML
     private TableView<Student> studentsTableView;
-
     @FXML
     private TableColumn<Student, String> idTableColumn;
-
     @FXML
     private TableColumn<Student, String> nameTableColumn;
-
     @FXML
     private TableColumn<Student, String> courseTableColumn;
-
     @FXML
     private TableColumn<Student, String> yearTableColumn;
-
     @FXML
     private TableColumn<Student, Void> detailTableColumn;
-
     @FXML
     private VBox indicatorVboxContainer;
 
@@ -85,20 +75,23 @@ public class HomeController {
         indicatorVboxContainer.getChildren().clear();
 
         if (foundStudent == null) {
-            FXMLLoader nfLoader = new FXMLLoader(getClass().getResource("/com/school/studentmanagementfx/view/child/NotFound.fxml"));
+            String notFoundFxml = "/com/school/studentmanagementfx/view/child/NotFound.fxml";
+            FXMLLoader nfLoader = new FXMLLoader(getClass().getResource(notFoundFxml));
             indicatorVboxContainer.getChildren().add(nfLoader.load());
             return;
         }
+        Student targetStudent = foundStudent;
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/school/studentmanagementfx/view/child/Found.fxml"));
+        String foundFxml = "/com/school/studentmanagementfx/view/child/Found.fxml";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(foundFxml));
         Node childNode = loader.load();
-        FoundStudentController controller = loader.getController();
 
-        Student target = foundStudent;
-        controller.getViewStudentDetailButton().setOnAction(e ->
-            StudentDetailsController.showStudentDetails(e, target)
-        );
-
+        FoundStudentController foundStudentController = loader.getController();
+        foundStudentController.setStudentIdLabel(targetStudent.getId().get());
+        foundStudentController.setStudentNameLabel(targetStudent.getName().get());
+        foundStudentController.getViewStudentDetailButton().setOnAction((e) -> {
+            StudentDetailsController.showStudentDetails(e, targetStudent);
+        });
         indicatorVboxContainer.getChildren().add(childNode);
     }
 
