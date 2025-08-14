@@ -15,23 +15,7 @@ import java.io.IOException;
 
 public class CreateWindow {
 
-    public static void showStudentDetails(ActionEvent event, Student student) {
-        try {
-            Stage parentStage = getParentStage(event);
-            String fxmlPath = "/com/school/studentmanagementfx/view/StudentDetailsView.fxml";
 
-            FXMLLoader loader = new FXMLLoader(CreateWindow.class.getResource(fxmlPath));
-            Parent root = loader.load();
-
-            StudentDetailsController controller = loader.getController();
-            controller.setStudent(student);
-
-            createWindow(root, parentStage, "Student Details");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public static void createNewWindowAndClose(ActionEvent event, String fxmlPath, String title) throws IOException {
         Stage parentStage = getParentStage(event);
@@ -49,7 +33,7 @@ public class CreateWindow {
         createWindow(root, parentStage, title);
     }
 
-    private static void createWindow(Parent root, Stage parentStage, String title) {
+    public static void createWindow(Parent root, Stage parentStage, String title) {
         Stage childStage = new Stage();
         SetIcon.setAppIcon(childStage);
         childStage.setScene(new Scene(root));

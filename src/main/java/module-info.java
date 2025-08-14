@@ -1,7 +1,5 @@
 module com.school.studentmanagementfx {
     requires javafx.graphics;
-    requires javafx.base;
-    requires java.desktop;
     requires transitive javafx.controls;
     requires transitive javafx.fxml;
 

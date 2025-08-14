@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -67,15 +68,38 @@ public class HomeController {
     }
 
     @FXML
-    private void onSearchStudentAction() {
+    private void onSearchStudentAction() throws IOException {
         String queryId = searchTextField.getText().trim().toLowerCase();
-        ObservableList<Student> filtered = FXCollections.observableArrayList();
+        if (queryId.isEmpty()) {
+            return;
+        }
+
+        Student foundStudent = null;
         for (Student s : StudentRepo.getStudents()) {
             if (s.getId().get().toLowerCase().contains(queryId)) {
-                filtered.add(s);
-                System.out.println("Student found: " + s.getName());
+                foundStudent = s;
+                break;
             }
         }
+
+        indicatorVboxContainer.getChildren().clear();
+
+        if (foundStudent == null) {
+            FXMLLoader nfLoader = new FXMLLoader(getClass().getResource("/com/school/studentmanagementfx/view/child/NotFound.fxml"));
+            indicatorVboxContainer.getChildren().add(nfLoader.load());
+            return;
+        }
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/school/studentmanagementfx/view/child/Found.fxml"));
+        Node childNode = loader.load();
+        FoundStudentController controller = loader.getController();
+
+        Student target = foundStudent;
+        controller.getViewStudentDetailButton().setOnAction(e ->
+            StudentDetailsController.showStudentDetails(e, target)
+        );
+
+        indicatorVboxContainer.getChildren().add(childNode);
     }
 
     @FXML
@@ -98,7 +122,7 @@ public class HomeController {
             {
                 viewButton.setOnAction(event -> {
                     Student student = getTableView().getItems().get(getIndex());
-                    CreateWindow.showStudentDetails(event, student);
+                    StudentDetailsController.showStudentDetails(event, student);
                 });
                 String buttonCss = "/com/school/studentmanagementfx/style/Button.css";
                 viewButton.getStylesheets().add(Objects.requireNonNull(getClass().getResource(buttonCss)).toExternalForm());
@@ -115,10 +139,10 @@ public class HomeController {
 
     private void createDummyStudent() {
         Student student1 = new Student("1", "John Rey Rabosa", "19", "12-31-2005", "Panacan Davao City", "BSIT", "2nd year", "johnreyrabosa.f@gmail.com");
-        Student student2 = new Student("1", "Erwin Curato", "19", "12-31-2005", "Panacan Davao City", "BSIT", "2nd year", "johnreyrabosa.f@gmail.com");
-        Student student3 = new Student("1", "fucking shit", "19", "12-31-2005", "Panacan Davao City", "BSIT", "2nd year", "johnreyrabosa.f@gmail.com");
-        Student student4 = new Student("1", "dummy", "19", "12-31-2005", "Panacan Davao City", "BSIT", "2nd year", "johnreyrabosa.f@gmail.com");
-        Student student5 = new Student("1", "Idkawd", "19", "12-31-2005", "Panacan Davao City", "BSIT", "2nd year", "johnreyrabosa.f@gmail.com");
+        Student student2 = new Student("2", "Erwin Curato", "19", "12-31-2005", "Panacan Davao City", "BSIT", "2nd year", "johnreyrabosa.f@gmail.com");
+        Student student3 = new Student("3", "fucking shit", "19", "12-31-2005", "Panacan Davao City", "BSIT", "2nd year", "johnreyrabosa.f@gmail.com");
+        Student student4 = new Student("4", "dummy", "19", "12-31-2005", "Panacan Davao City", "BSIT", "2nd year", "johnreyrabosa.f@gmail.com");
+        Student student5 = new Student("5", "Idkawd", "19", "12-31-2005", "Panacan Davao City", "BSIT", "2nd year", "johnreyrabosa.f@gmail.com");
         StudentRepo.getStudents().add(student1);
         StudentRepo.getStudents().add(student2);
         StudentRepo.getStudents().add(student3);
