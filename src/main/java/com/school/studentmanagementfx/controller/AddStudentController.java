@@ -47,11 +47,11 @@ public class AddStudentController {
                 yearTextField.getText().isEmpty() ||
                 emailTextField.getText().isEmpty()) {
 
-            String errorViewFxml = "/com/school/studentmanagementfx/view/ErrorView.fxml";
+            String errorViewFxml = "/com/school/studentmanagementfx/view/alert/ErrorEmptyField.fxml";
             CreateWindow.createModalWindow(event, errorViewFxml, "Error");
         } else {
             StudentRepo.getStudents().add(getStudentFromFields());
-            String successViewFxml = "/com/school/studentmanagementfx/view/SuccessView.fxml";
+            String successViewFxml = "/com/school/studentmanagementfx/view/alert/SuccessStudentAdd.fxml";
             CreateWindow.createModalWindow(event, successViewFxml, "Success");
             clearFields();
         }

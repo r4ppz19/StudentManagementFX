@@ -1,6 +1,6 @@
 package com.school.studentmanagementfx;
 
-import com.school.studentmanagementfx.helper.IconHelper;
+import com.school.studentmanagementfx.helper.SetIcon;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,7 +18,7 @@ public class Main extends Application {
         String mainMenuViewFxml = "/com/school/studentmanagementfx/view/LoginView.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(mainMenuViewFxml));
         Scene scene = new Scene(fxmlLoader.load());
-        IconHelper.setAppIcon(stage);
+        SetIcon.setAppIcon(stage);
         stage.setTitle("Student Management");
         stage.setScene(scene);
         stage.setResizable(false);

@@ -22,9 +22,6 @@ public class HomeController {
     private TextField searchTextField;
 
     @FXML
-    private Label logOutLabel;
-
-    @FXML
     private TableView<Student> studentsTableView;
 
     @FXML
@@ -40,12 +37,13 @@ public class HomeController {
     private TableColumn<Student, String> yearTableColumn;
 
     @FXML
-    private TableColumn<Student, Void> moreDetailTableColumn;
+    private TableColumn<Student, Void> detailTableColumn;
 
     @FXML
     private void initialize() {
-        createDummyStudent();
-        logOutAction();
+        if (StudentRepo.getStudents().isEmpty()) {
+            createDummyStudent();
+        }
 
         studentsTableView.setEditable(false);
         studentsTableView.setFocusTraversable(false);
@@ -79,21 +77,21 @@ public class HomeController {
         CreateWindow.createModalWindow(event, addStudentFxml, "Add Student");
     }
 
-    private void logOutAction() {
-        logOutLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent event) -> {
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.close();
-        });
+    @FXML
+    private void onLogOutAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+
     }
 
     private void addDetailButton() {
-        moreDetailTableColumn.setCellFactory(col -> new TableCell<>() {
+        detailTableColumn.setCellFactory(col -> new TableCell<>() {
             private final Button viewButton = new Button("View");
 
             {
                 viewButton.setOnAction(event -> {
                     Student student = getTableView().getItems().get(getIndex());
-                    CreateWindow.showStudentDetails(student);
+                    CreateWindow.showStudentDetails(event, student);
                 });
                 String buttonCss = "/com/school/studentmanagementfx/style/Button.css";
                 viewButton.getStylesheets().add(Objects.requireNonNull(getClass().getResource(buttonCss)).toExternalForm());

@@ -15,50 +15,57 @@ import java.io.IOException;
 
 public class CreateWindow {
 
-    public static void showStudentDetails(Student student) {
+    public static void showStudentDetails(ActionEvent event, Student student) {
         try {
-            String studentDetailFxml = "/com/school/studentmanagementfx/view/StudentDetailsView.fxml";
-            FXMLLoader loader = new FXMLLoader(CreateWindow.class.getResource(studentDetailFxml));
+            Stage parentStage = getParentStage(event);
+            String fxmlPath = "/com/school/studentmanagementfx/view/StudentDetailsView.fxml";
+
+            FXMLLoader loader = new FXMLLoader(CreateWindow.class.getResource(fxmlPath));
             Parent root = loader.load();
+
             StudentDetailsController controller = loader.getController();
             controller.setStudent(student);
-            Stage stage = new Stage();
-            IconHelper.setAppIcon(stage);
-            stage.setScene(new Scene(root));
-            stage.setTitle("Student Details");
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setFullScreen(false);
-            stage.setResizable(false);
-            stage.showAndWait();
+
+            createWindow(root, parentStage, "Student Details");
 
         } catch (IOException e) {
-            e.fillInStackTrace();
+            e.printStackTrace();
         }
     }
 
-    public static void createNewWindowAndHide(ActionEvent event, String fxmlPath, String title) throws IOException {
+    public static void createNewWindowAndClose(ActionEvent event, String fxmlPath, String title) throws IOException {
         Stage parentStage = getParentStage(event);
-        parentStage.hide();
-        createWindow(fxmlPath, parentStage, title);
+        parentStage.close();
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlPath));
+        Parent root = loader.load();
+        createWindow(root, parentStage, title);
         parentStage.show();
     }
 
     public static void createModalWindow(ActionEvent event, String fxmlPath, String title) throws IOException {
         Stage parentStage = getParentStage(event);
-        createWindow(fxmlPath, parentStage, title);
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlPath));
+        Parent root = loader.load();
+        createWindow(root, parentStage, title);
     }
 
-    private static void createWindow(String fxmlPath, Stage parentStage, String title) throws IOException {
+    private static void createWindow(Parent root, Stage parentStage, String title) {
         Stage childStage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxmlPath));
-        Scene scene = new Scene(fxmlLoader.load());
-        IconHelper.setAppIcon(childStage);
-        childStage.setScene(scene);
+        SetIcon.setAppIcon(childStage);
+        childStage.setScene(new Scene(root));
         childStage.setTitle(title);
-        childStage.initModality(Modality.APPLICATION_MODAL);
+        childStage.initModality(Modality.WINDOW_MODAL);
         childStage.initOwner(parentStage);
         childStage.setResizable(false);
         childStage.setFullScreen(false);
+
+        childStage.setOnShown(e -> {
+            double centerX = parentStage.getX() + parentStage.getWidth() / 2 - childStage.getWidth() / 2;
+            double centerY = parentStage.getY() + parentStage.getHeight() / 2 - childStage.getHeight() / 2;
+            childStage.setX(centerX);
+            childStage.setY(centerY);
+        });
+
         childStage.showAndWait();
     }
 
