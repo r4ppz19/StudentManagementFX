@@ -13,8 +13,6 @@ import java.io.IOException;
 
 public class CreateWindow {
 
-
-
     public static void createNewWindowAndClose(ActionEvent event, String fxmlPath, String title) throws IOException {
         Stage parentStage = getParentStage(event);
         parentStage.close();

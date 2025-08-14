@@ -66,8 +66,7 @@ public class AddStudentController {
                 addressTextField.getText().trim(),
                 courseTextField.getText().trim(),
                 yearTextField.getText().trim(),
-                emailTextField.getText().trim()
-        );
+                emailTextField.getText().trim());
     }
 
     private void clearFields() {

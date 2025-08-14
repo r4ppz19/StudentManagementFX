@@ -19,25 +19,18 @@ public class HomeController {
 
     @FXML
     private TextField searchTextField;
-
     @FXML
     private TableView<Student> studentsTableView;
-
     @FXML
     private TableColumn<Student, String> idTableColumn;
-
     @FXML
     private TableColumn<Student, String> nameTableColumn;
-
     @FXML
     private TableColumn<Student, String> courseTableColumn;
-
     @FXML
     private TableColumn<Student, String> yearTableColumn;
-
     @FXML
     private TableColumn<Student, Void> detailTableColumn;
-
     @FXML
     private VBox indicatorVboxContainer;
 
