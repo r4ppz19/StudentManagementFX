@@ -1,8 +1,6 @@
 package com.school.studentmanagementfx.helper;
 
 import com.school.studentmanagementfx.Main;
-import com.school.studentmanagementfx.controller.StudentDetailsController;
-import com.school.studentmanagementfx.model.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
