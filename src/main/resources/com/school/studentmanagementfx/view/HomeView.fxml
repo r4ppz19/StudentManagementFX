@@ -74,7 +74,7 @@
                                 </TextField>
                                 <Button maxHeight="30.0" maxWidth="186.0" minHeight="30.0" minWidth="186.0" mnemonicParsing="false" onAction="#onSearchStudentAction" prefHeight="30.0" prefWidth="84.0" style="-fx-background-color: #1E1E2E; -fx-background-radius: 5px; -fx-border-radius: 5px;" text="Search" textFill="WHITE">
                                     <font>
-                                        <Font name="Segoe UI Black" size="10.0" />
+                                        <Font name="Segoe UI Black" size="11.0" />
                                     </font>
                                     <VBox.margin>
                                         <Insets top="15.0" />
@@ -86,14 +86,14 @@
                             <children>
                                 <HBox alignment="CENTER_LEFT">
                                     <children>
-                                        <Label prefHeight="23.0" prefWidth="453.0" text="All Student" textFill="#1e1e2e">
+                                        <Label prefHeight="23.0" prefWidth="453.0" text="Student List" textFill="#1e1e2e">
                                             <font>
                                                 <Font name="Segoe UI Black" size="14.0" />
                                             </font>
                                         </Label>
                                         <Button minHeight="25.0" mnemonicParsing="false" onAction="#onAddStudentAction" prefHeight="25.0" prefWidth="84.0" style="-fx-background-color: #1E1E2E; -fx-background-radius: 5px; -fx-border-radius: 5px;" text="Add" textFill="WHITE">
                                             <font>
-                                                <Font name="Segoe UI Black" size="10.0" />
+                                                <Font name="Segoe UI Black" size="11.0" />
                                             </font>
                                         </Button>
                                     </children>
