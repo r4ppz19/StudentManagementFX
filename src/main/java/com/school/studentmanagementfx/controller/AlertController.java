@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.stage.Stage;
 
-public class ErrorController {
+public class AlertController {
     @FXML
     private void onTryAgainAction(ActionEvent event){
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
