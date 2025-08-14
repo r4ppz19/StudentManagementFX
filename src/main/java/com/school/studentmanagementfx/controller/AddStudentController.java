@@ -1,11 +1,15 @@
 package com.school.studentmanagementfx.controller;
 
+import com.school.studentmanagementfx.helper.CreateWindow;
 import com.school.studentmanagementfx.model.Student;
+import com.school.studentmanagementfx.repository.StudentRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class AddStudentController {
 
@@ -33,8 +37,24 @@ public class AddStudentController {
     }
 
     @FXML
-    private void onAddStudentAction() {
-        getStudentFromFields();
+    private void onAddStudentAction(ActionEvent event) throws IOException {
+        if (idTextField.getText().isEmpty() ||
+                nameTextField.getText().isEmpty() ||
+                ageTextField.getText().isEmpty() ||
+                birthdayTextField.getText().isEmpty() ||
+                addressTextField.getText().isEmpty() ||
+                courseTextField.getText().isEmpty() ||
+                yearTextField.getText().isEmpty() ||
+                emailTextField.getText().isEmpty()) {
+
+            String errorViewFxml = "/com/school/studentmanagementfx/view/ErrorView.fxml";
+            CreateWindow.createModalWindow(event, errorViewFxml, "Error");
+        } else {
+            StudentRepository.getStudents().add(getStudentFromFields());
+            String successViewFxml = "/com/school/studentmanagementfx/view/SuccessView.fxml";
+            CreateWindow.createModalWindow(event, successViewFxml, "Success");
+            clearFields();
+        }
     }
 
     private Student getStudentFromFields() {
@@ -50,4 +70,14 @@ public class AddStudentController {
         );
     }
 
+    private void clearFields() {
+        idTextField.clear();
+        nameTextField.clear();
+        ageTextField.clear();
+        birthdayTextField.clear();
+        addressTextField.clear();
+        courseTextField.clear();
+        yearTextField.clear();
+        emailTextField.clear();
+    }
 }
