@@ -24,7 +24,7 @@
                 </Label>
             </children>
         </VBox>
-        <VBox alignment="TOP_CENTER" maxHeight="276.0" maxWidth="350.0" minHeight="276.0" minWidth="350.0" prefHeight="276.0" prefWidth="350.0" spacing="10.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-color: #1E1E2E; -fx-border-width: 0.5;">
+        <VBox alignment="TOP_CENTER" maxHeight="276.0" maxWidth="330.0" minHeight="276.0" minWidth="330.0" prefHeight="276.0" prefWidth="330.0" spacing="10.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-color: #1E1E2E; -fx-border-width: 0.5;">
             <VBox.margin>
                 <Insets top="50.0" />
             </VBox.margin>
