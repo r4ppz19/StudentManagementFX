@@ -75,20 +75,23 @@ public class HomeController {
         indicatorVboxContainer.getChildren().clear();
 
         if (foundStudent == null) {
-            FXMLLoader nfLoader = new FXMLLoader(getClass().getResource("/com/school/studentmanagementfx/view/child/NotFound.fxml"));
+            String notFoundFxml = "/com/school/studentmanagementfx/view/child/NotFound.fxml";
+            FXMLLoader nfLoader = new FXMLLoader(getClass().getResource(notFoundFxml));
             indicatorVboxContainer.getChildren().add(nfLoader.load());
             return;
         }
+        Student targetStudent = foundStudent;
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/school/studentmanagementfx/view/child/Found.fxml"));
+        String foundFxml = "/com/school/studentmanagementfx/view/child/Found.fxml";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(foundFxml));
         Node childNode = loader.load();
-        FoundStudentController controller = loader.getController();
 
-        Student target = foundStudent;
-        controller.getViewStudentDetailButton().setOnAction(e ->
-            StudentDetailsController.showStudentDetails(e, target)
-        );
-
+        FoundStudentController foundStudentController = loader.getController();
+        foundStudentController.setStudentIdLabel(targetStudent.getId().get());
+        foundStudentController.setStudentNameLabel(targetStudent.getName().get());
+        foundStudentController.getViewStudentDetailButton().setOnAction((e) -> {
+            StudentDetailsController.showStudentDetails(e, targetStudent);
+        });
         indicatorVboxContainer.getChildren().add(childNode);
     }
 
