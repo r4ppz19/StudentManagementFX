@@ -3,14 +3,14 @@ package com.school.studentmanagementfx.model;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Student {
-    private SimpleStringProperty id;
-    private SimpleStringProperty name;
-    private SimpleStringProperty age;
-    private SimpleStringProperty birthday;
-    private SimpleStringProperty address;
-    private SimpleStringProperty course;
-    private SimpleStringProperty year;
-    private SimpleStringProperty email;
+    private final SimpleStringProperty id;
+    private final SimpleStringProperty name;
+    private final SimpleStringProperty age;
+    private final SimpleStringProperty birthday;
+    private final SimpleStringProperty address;
+    private final SimpleStringProperty course;
+    private final SimpleStringProperty year;
+    private final SimpleStringProperty email;
 
     public Student(String id, String name, String age, String birthday, String address, String course, String year,
             String email) {
@@ -45,6 +45,7 @@ public class Student {
         return this.address;
     }
 
+
     public SimpleStringProperty getCourse() {
         return this.course;
     }
@@ -56,38 +57,4 @@ public class Student {
     public SimpleStringProperty getEmail() {
         return this.email;
     }
-
-    // Setters
-    public void setId(SimpleStringProperty id) {
-        this.id = id;
-    }
-
-    public void setName(SimpleStringProperty name) {
-        this.name = name;
-    }
-
-    public void setAge(SimpleStringProperty age) {
-        this.age = age;
-    }
-
-    public void setBirthday(SimpleStringProperty birthday) {
-        this.birthday = birthday;
-    }
-
-    public void setAddress(SimpleStringProperty address) {
-        this.address = address;
-    }
-
-    public void setCourse(SimpleStringProperty course) {
-        this.course = course;
-    }
-
-    public void setYear(SimpleStringProperty year) {
-        this.year = year;
-    }
-
-    public void setEmail(SimpleStringProperty email) {
-        this.email = email;
-    }
-
 }

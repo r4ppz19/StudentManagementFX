@@ -1,9 +1,12 @@
 package com.school.studentmanagementfx.helper;
 
 import com.school.studentmanagementfx.Main;
+import com.school.studentmanagementfx.controller.StudentDetailsController;
+import com.school.studentmanagementfx.model.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -11,29 +14,42 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class CreateWindow {
-    public static void createWindowAndHide(ActionEvent event, String fxmlPath) throws IOException {
+
+
+
+    public static void createNewWindowAndClose(ActionEvent event, String fxmlPath, String title) throws IOException {
         Stage parentStage = getParentStage(event);
-        parentStage.hide();
-        createWindow(fxmlPath, parentStage);
+        parentStage.close();
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlPath));
+        Parent root = loader.load();
+        createWindow(root, parentStage, title);
         parentStage.show();
     }
 
-    public static void createModalWindow(ActionEvent event, String fxmlPath) throws IOException {
+    public static void createModalWindow(ActionEvent event, String fxmlPath, String title) throws IOException {
         Stage parentStage = getParentStage(event);
-        createWindow(fxmlPath, parentStage);
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlPath));
+        Parent root = loader.load();
+        createWindow(root, parentStage, title);
     }
 
-    private static void createWindow(String fxmlPath, Stage parentStage) throws IOException {
+    public static void createWindow(Parent root, Stage parentStage, String title) {
         Stage childStage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxmlPath));
-        Scene scene = new Scene(fxmlLoader.load());
-        IconHelper.setAppIcon(childStage);
-        childStage.setScene(scene);
-        childStage.setTitle("Student Management");
-        childStage.initModality(Modality.APPLICATION_MODAL);
+        SetIcon.setAppIcon(childStage);
+        childStage.setScene(new Scene(root));
+        childStage.setTitle(title);
+        childStage.initModality(Modality.WINDOW_MODAL);
         childStage.initOwner(parentStage);
         childStage.setResizable(false);
         childStage.setFullScreen(false);
+
+        childStage.setOnShown(e -> {
+            double centerX = parentStage.getX() + parentStage.getWidth() / 2 - childStage.getWidth() / 2;
+            double centerY = parentStage.getY() + parentStage.getHeight() / 2 - childStage.getHeight() / 2;
+            childStage.setX(centerX);
+            childStage.setY(centerY);
+        });
+
         childStage.showAndWait();
     }
 

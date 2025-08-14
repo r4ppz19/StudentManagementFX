@@ -1,10 +1,9 @@
-package com.school.studentmanagementfx.repository;
+package com.school.studentmanagementfx.model;
 
-import com.school.studentmanagementfx.model.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class StudentRepository {
+public class StudentRepo {
     private static final ObservableList<Student> students = FXCollections.observableArrayList();
 
     public static ObservableList<Student> getStudents() {
