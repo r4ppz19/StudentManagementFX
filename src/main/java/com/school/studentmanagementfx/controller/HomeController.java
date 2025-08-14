@@ -11,6 +11,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -38,6 +39,9 @@ public class HomeController {
 
     @FXML
     private TableColumn<Student, Void> detailTableColumn;
+
+    @FXML
+    private VBox indicatorVboxContainer;
 
     @FXML
     private void initialize() {

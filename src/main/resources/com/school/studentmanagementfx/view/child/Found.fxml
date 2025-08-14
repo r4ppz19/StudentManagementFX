@@ -16,7 +16,7 @@
             <Insets />
          </VBox.margin>
       </Label>
-      <Button mnemonicParsing="false" onAction="#onViewAction" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #1E1E2E; -fx-background-radius: 5px; -fx-border-radius: 5px;" text="View" textFill="WHITE">
+      <Button fx:id="viewStudentDetailButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #1E1E2E; -fx-background-radius: 5px; -fx-border-radius: 5px;" text="View" textFill="WHITE">
          <font>
             <Font name="Segoe UI Black" size="10.0" />
          </font>
