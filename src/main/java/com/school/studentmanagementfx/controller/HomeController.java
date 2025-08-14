@@ -47,8 +47,11 @@ public class HomeController {
 
         studentsTableView.setEditable(false);
         studentsTableView.setFocusTraversable(false);
-        studentsTableView.getColumns().forEach(col -> col.setResizable(false));
-        studentsTableView.getColumns().forEach(col -> col.setReorderable(false));
+        studentsTableView.getColumns().forEach(col -> {
+            col.setResizable(false);
+            col.setReorderable(false);
+            col.setSortable(false);
+        });
 
         idTableColumn.setCellValueFactory(cellData -> cellData.getValue().getId());
         nameTableColumn.setCellValueFactory(cellData -> cellData.getValue().getName());
@@ -78,7 +81,7 @@ public class HomeController {
     }
 
     @FXML
-    private void onLogOutAction(ActionEvent event) throws IOException {
+    private void onLogOutAction(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
 
@@ -110,8 +113,8 @@ public class HomeController {
         Student student1 = new Student("1", "John Rey Rabosa", "19", "12-31-2005", "Panacan Davao City", "BSIT", "2nd year", "johnreyrabosa.f@gmail.com");
         Student student2 = new Student("1", "Erwin Curato", "19", "12-31-2005", "Panacan Davao City", "BSIT", "2nd year", "johnreyrabosa.f@gmail.com");
         Student student3 = new Student("1", "fucking shit", "19", "12-31-2005", "Panacan Davao City", "BSIT", "2nd year", "johnreyrabosa.f@gmail.com");
-        Student student4 = new Student("1", "John Rey Rabosa", "19", "12-31-2005", "Panacan Davao City", "BSIT", "2nd year", "johnreyrabosa.f@gmail.com");
-        Student student5 = new Student("1", "John Rey Rabosa", "19", "12-31-2005", "Panacan Davao City", "BSIT", "2nd year", "johnreyrabosa.f@gmail.com");
+        Student student4 = new Student("1", "dummy", "19", "12-31-2005", "Panacan Davao City", "BSIT", "2nd year", "johnreyrabosa.f@gmail.com");
+        Student student5 = new Student("1", "Idkawd", "19", "12-31-2005", "Panacan Davao City", "BSIT", "2nd year", "johnreyrabosa.f@gmail.com");
         StudentRepo.getStudents().add(student1);
         StudentRepo.getStudents().add(student2);
         StudentRepo.getStudents().add(student3);
