@@ -1,37 +1,35 @@
 # Student Management
 
-A simple JavaFX desktop application for managing student records. Created as a school project and to learn GUI development.
+A simple JavaFX desktop application for managing student records. Created as a school project and to learn desktop GUI development.
 
-### Tech Stack
+## Tech Stack
 
 - Java
 - JavaFX
 - Maven
 - FXML + CSS
 
-### Requirements to run the project
+## Requirements
 
 - Java Development Kit (JDK) 21 or higher
-- Maven (or use included Maven wrapper)
+- Maven (optional - Maven Wrapper is included)
 
-### How to run the project
-
+## How to run
 ```bash
-# Clone the repo
+# Clone the repository
 git clone https://github.com/r4ppz19/StudentManagementFX.git
-
-# Change directory to the repo
 cd StudentManagementFX
 
-# Run locally for testing
+# Run the project
 
-# If you have maven installed
+# If Maven is installed:
 mvn clean javafx:run
 
-# If you dont have maven installed (Windows)
+# If Maven is NOT installed:
+# (Windows)
 ./mvnw.cmd clean javafx:run
 
-# If you dont have maven installed (Linux/macOS)
+# (Linux/macOS)
 ./mvnw clean javafx:run
 
 ```
