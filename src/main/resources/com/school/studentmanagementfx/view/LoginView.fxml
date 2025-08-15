@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="800.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #EEEEEE;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.school.studentmanagementfx.controller.LoginController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="800.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #EEEEEE;" stylesheets="@../style/Shared.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.school.studentmanagementfx.controller.LoginController">
     <children>
         <VBox alignment="CENTER" minHeight="110.0" prefHeight="110.0" spacing="1.0" style="-fx-background-color: #1E1E2E;">
             <children>
@@ -47,7 +47,7 @@
                                 <Font name="Segoe UI Black" size="11.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="usernameTextField" prefHeight="30.0" promptText="Enter username" style="-fx-background-color: #F8F9FA; -fx-border-color: #1E1E2E; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 0.5;">
+                        <TextField fx:id="usernameTextField" prefHeight="30.0" promptText="Enter username" styleClass="white-textfield">
                             <font>
                                 <Font name="Segoe UI Black" size="11.0" />
                             </font>
@@ -61,14 +61,14 @@
                                 <Font name="Segoe UI Black" size="11.0" />
                             </font>
                         </Label>
-                        <PasswordField fx:id="passwordTextField" prefHeight="30.0" promptText="Enter password" style="-fx-background-color: #F8F9FA; -fx-border-color: #1E1E2E; -fx-border-width: 0.5; -fx-border-radius: 5px; -fx-background-radius: 5px;">
+                        <PasswordField fx:id="passwordTextField" onAction="#onLoginAction" prefHeight="30.0" promptText="Enter password" styleClass="white-textfield">
                             <font>
                                 <Font name="Segoe UI Black" size="11.0" />
                             </font>
                         </PasswordField>
                     </children>
                 </VBox>
-                <Button minHeight="30.0" mnemonicParsing="false" onAction="#onLoginAction" prefHeight="30.0" prefWidth="301.0" style="-fx-background-color: #1E1E2E; -fx-background-radius: 5px; -fx-border-radius: 5px;" text="Login" textFill="WHITE">
+                <Button minHeight="30.0" mnemonicParsing="false" onAction="#onLoginAction" prefHeight="30.0" prefWidth="301.0" styleClass="blue-button" text="Login" textFill="WHITE">
                     <VBox.margin>
                         <Insets top="20.0" />
                     </VBox.margin>
