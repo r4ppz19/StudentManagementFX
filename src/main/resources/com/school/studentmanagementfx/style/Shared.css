@@ -1,5 +1,6 @@
 .root {
     -fx-font-family: "Segoe UI Black";
+    -fx-background-color:  #EEEEEE;
 }
 
 .blue-button {
