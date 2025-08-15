@@ -21,12 +21,14 @@ git clone https://github.com/r4ppz19/StudentManagementFX.git
 cd StudentManagementFX
 
 # Run the project
-# Option 1 - If Maven is installed:
+
+# If Maven is installed:
 mvn clean javafx:run
 
-# Option 2 - If Maven is NOT installed:
+# If Maven is NOT installed:
 # (Windows)
 ./mvnw.cmd clean javafx:run
+
 # (Linux/macOS)
 ./mvnw clean javafx:run
 
