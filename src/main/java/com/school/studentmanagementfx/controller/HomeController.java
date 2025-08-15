@@ -119,7 +119,6 @@ public class HomeController {
                 });
                 String buttonCss = "/com/school/studentmanagementfx/style/Button.css";
                 viewButton.getStylesheets().add(Objects.requireNonNull(getClass().getResource(buttonCss)).toExternalForm());
-                viewButton.setPadding(new Insets(4, 20, 4, 20));
             }
 
             @Override
