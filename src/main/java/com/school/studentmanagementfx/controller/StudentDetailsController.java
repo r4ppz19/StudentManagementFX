@@ -30,13 +30,6 @@ public class StudentDetailsController {
     @FXML
     private TextField emailTextField;
 
-    @FXML
-    private void onCloseAction(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
-    }
-
-
     public static void showStudentDetails(ActionEvent event, Student student) {
         try {
             Stage parentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -53,6 +46,12 @@ public class StudentDetailsController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void onCloseAction(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
     }
 
     public void setStudent(Student student) {

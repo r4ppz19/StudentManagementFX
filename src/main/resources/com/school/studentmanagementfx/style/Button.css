@@ -2,16 +2,20 @@
     -fx-background-color: #1E1E2E;
     -fx-text-fill: #FFFFFF;
     -fx-font-size: 10px;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #2A2A3D;
+    -fx-border-width: 1;
+    -fx-min-width: 50px
 }
-.button:hover {
 
+.button:hover {
+    -fx-background-color: #2A2A3D;
+    -fx-text-fill: #FFFFFF;
+    -fx-cursor: hand;
 }
+
 .button:pressed {
-    /* pressed and held */
-}
-.button:focused {
-    /* has keyboard focus */
-}
-.button:default {
-    /* default button (Enter key triggers it) */
+    -fx-background-color: #141427;
+    -fx-translate-y: 1px;
 }
