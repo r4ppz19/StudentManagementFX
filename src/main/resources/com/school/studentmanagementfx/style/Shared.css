@@ -34,7 +34,7 @@
 }
 
 .white-button:hover {
-    -fx-background-color: #F8F9FA;
+    -fx-background-color: #e8e8e8;
     -fx-text-fill: #141427;
     -fx-cursor: hand;
 }
@@ -73,18 +73,15 @@
 }
 
 .white-textfield:hover {
-    -fx-background-color: #efefef;
+    -fx-background-color: #e8e8e8;
 }
 
 .white-textfield:focused {
-    -fx-background-color: #EEEEEE;
-    -fx-border-width: 0.7;
+    -fx-background-color: #e8e8e8;
+    -fx-border-width: 0.8;
     -fx-border-color: #141427;
 }
 
 .shadow-container {
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 8, 0, 0, 2);
 }
-
-
-
