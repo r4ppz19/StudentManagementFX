@@ -26,7 +26,7 @@
             </Label>
             <Label fx:id="studentIdLabel" prefHeight="23.0" prefWidth="120.0" textFill="#1e1e2e">
                <font>
-                  <Font name="Segoe UI Black" size="9.0" />
+                  <Font name="Segoe UI Black" size="10.0" />
                </font>
             </Label>
          </children>
@@ -40,7 +40,7 @@
             </Label>
             <Label fx:id="studentNameLabel" prefHeight="23.0" prefWidth="100.0" textFill="#1e1e2e">
                <font>
-                  <Font name="Segoe UI Black" size="9.0" />
+                  <Font name="Segoe UI Black" size="10.0" />
                </font>
             </Label>
          </children>
