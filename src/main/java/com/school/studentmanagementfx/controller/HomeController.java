@@ -1,6 +1,6 @@
 package com.school.studentmanagementfx.controller;
 
-import com.school.studentmanagementfx.helper.CreateWindow;
+import com.school.studentmanagementfx.helper.WindowManager;
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
 import javafx.event.ActionEvent;
@@ -9,7 +9,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -97,13 +96,12 @@ public class HomeController {
     @FXML
     private void onAddStudentAction(ActionEvent event) throws IOException {
         String addStudentFxml = "/com/school/studentmanagementfx/view/AddStudentView.fxml";
-        CreateWindow.createModalWindow(event, addStudentFxml, "Add Student");
+        WindowManager.createModalWindow(event, addStudentFxml, "Add Student");
     }
 
     @FXML
     private void onLogOutAction(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
+        WindowManager.getCurrentStage(event).close();
     }
 
     private void addDetailButton() {

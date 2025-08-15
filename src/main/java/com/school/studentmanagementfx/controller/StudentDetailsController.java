@@ -1,6 +1,6 @@
 package com.school.studentmanagementfx.controller;
 
-import com.school.studentmanagementfx.helper.CreateWindow;
+import com.school.studentmanagementfx.helper.WindowManager;
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
 import javafx.event.ActionEvent;
@@ -38,13 +38,13 @@ public class StudentDetailsController {
             Stage parentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             String fxmlPath = "/com/school/studentmanagementfx/view/StudentDetailsView.fxml";
 
-            FXMLLoader loader = new FXMLLoader(CreateWindow.class.getResource(fxmlPath));
+            FXMLLoader loader = new FXMLLoader(WindowManager.class.getResource(fxmlPath));
             Parent root = loader.load();
 
             StudentDetailsController controller = loader.getController();
             controller.setStudent(student);
 
-            CreateWindow.createWindow(root, parentStage, "Student Details");
+            WindowManager.createWindow(root, parentStage, "Student Details");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -58,9 +58,12 @@ public class StudentDetailsController {
 
     @FXML
     private void onDeleteStudentAction(ActionEvent event) {
-        StudentRepo.getStudents().remove(student);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
+        Stage parentStage = WindowManager.getCurrentStage(event);
+        if (WarningController.showWarning(parentStage)) {
+            StudentRepo.getStudents().remove(student);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+        }
     }
 
     private void setStudent(Student student) {
