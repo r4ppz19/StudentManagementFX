@@ -2,6 +2,7 @@ package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.helper.CreateWindow;
 import com.school.studentmanagementfx.model.Student;
+import com.school.studentmanagementfx.model.StudentRepo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class StudentDetailsController {
+    private Student student;
+
     @FXML
     private TextField idTextField;
     @FXML
@@ -38,13 +41,12 @@ public class StudentDetailsController {
             FXMLLoader loader = new FXMLLoader(CreateWindow.class.getResource(fxmlPath));
             Parent root = loader.load();
 
-            StudentDetailsController studentDetailsController = loader.getController();
-            studentDetailsController.setStudent(student);
+            StudentDetailsController controller = loader.getController();
+            controller.setStudent(student);
 
             CreateWindow.createWindow(root, parentStage, "Student Details");
-
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -54,7 +56,15 @@ public class StudentDetailsController {
         stage.close();
     }
 
-    public void setStudent(Student student) {
+    @FXML
+    private void onDeleteStudentAction(ActionEvent event) {
+        StudentRepo.getStudents().remove(student);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    private void setStudent(Student student) {
+        this.student = student;
         idTextField.setText(student.getId().get());
         nameTextField.setText(student.getName().get());
         ageTextField.setText(student.getAge().get());

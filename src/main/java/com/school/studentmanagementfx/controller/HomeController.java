@@ -6,7 +6,6 @@ import com.school.studentmanagementfx.model.StudentRepo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
@@ -105,7 +104,6 @@ public class HomeController {
     private void onLogOutAction(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
-
     }
 
     private void addDetailButton() {
