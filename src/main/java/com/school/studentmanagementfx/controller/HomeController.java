@@ -59,6 +59,8 @@ public class HomeController {
 
     @FXML
     private void onSearchStudentAction() throws IOException {
+        indicatorVboxContainer.getChildren().clear();
+
         String queryId = searchTextField.getText().trim().toLowerCase();
         if (queryId.isEmpty()) {
             return;
@@ -72,16 +74,14 @@ public class HomeController {
             }
         }
 
-        indicatorVboxContainer.getChildren().clear();
-
         if (foundStudent == null) {
             String notFoundFxml = "/com/school/studentmanagementfx/view/child/NotFound.fxml";
             FXMLLoader nfLoader = new FXMLLoader(getClass().getResource(notFoundFxml));
             indicatorVboxContainer.getChildren().add(nfLoader.load());
             return;
         }
-        Student targetStudent = foundStudent;
 
+        Student targetStudent = foundStudent;
         String foundFxml = "/com/school/studentmanagementfx/view/child/Found.fxml";
         FXMLLoader loader = new FXMLLoader(getClass().getResource(foundFxml));
         Node childNode = loader.load();
