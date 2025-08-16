@@ -15,7 +15,7 @@ public class WarningController {
     private boolean confirmed = false;
     private Stage stage;
 
-    public static boolean showWarning(Stage parentStage) {
+    public static boolean showWarningWindow(Stage parentStage) {
         try {
             String warningDeleteFxml = "/com/school/studentmanagementfx/view/alert/WarningDelete.fxml";
             FXMLLoader loader = new FXMLLoader(WarningController.class.getResource(warningDeleteFxml));

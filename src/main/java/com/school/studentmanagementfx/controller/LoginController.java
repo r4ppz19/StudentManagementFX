@@ -27,9 +27,7 @@ public class LoginController {
             WindowManager.createNewWindowAndClose(event, homePageFxml, "StudentManagementFX");
             clearFields();
         } else {
-            System.out.println("Wrong username or password");
-            String errorUserPass = "/com/school/studentmanagementfx/view/alert/ErrorUserPass.fxml";
-            WindowManager.createModalWindow(event, errorUserPass, "Error");
+            AlertController.showErrorWindowTwo(event);
             clearFields();
         }
     }

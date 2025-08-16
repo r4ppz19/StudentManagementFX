@@ -59,7 +59,7 @@ public class StudentDetailsController {
     @FXML
     private void onDeleteStudentAction(ActionEvent event) {
         Stage parentStage = WindowManager.getCurrentStage(event);
-        if (WarningController.showWarning(parentStage)) {
+        if (WarningController.showWarningWindow(parentStage)) {
             StudentRepo.getStudents().remove(student);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.close();

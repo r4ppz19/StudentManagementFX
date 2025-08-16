@@ -13,20 +13,28 @@ import java.io.IOException;
 
 public class WindowManager {
 
-    public static void createNewWindowAndClose(ActionEvent event, String fxmlPath, String title) throws IOException {
-        Stage parentStage = getCurrentStage(event);
-        parentStage.close();
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlPath));
-        Parent root = loader.load();
-        createWindow(root, parentStage, title);
-        parentStage.show();
+    public static void createNewWindowAndClose(ActionEvent event, String fxmlPath, String title) {
+        try {
+            Stage parentStage = getCurrentStage(event);
+            parentStage.close();
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlPath));
+            Parent root = loader.load();
+            createWindow(root, parentStage, title);
+            parentStage.show();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    public static void createModalWindow(ActionEvent event, String fxmlPath, String title) throws IOException {
-        Stage parentStage = getCurrentStage(event);
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlPath));
-        Parent root = loader.load();
-        createWindow(root, parentStage, title);
+    public static void createModalWindow(ActionEvent event, String fxmlPath, String title) {
+        try {
+            Stage parentStage = getCurrentStage(event);
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlPath));
+            Parent root = loader.load();
+            createWindow(root, parentStage, title);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static void createWindow(Parent root, Stage parentStage, String title) {

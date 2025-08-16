@@ -44,14 +44,17 @@ public class AddStudentController {
                 yearTextField.getText().isEmpty() ||
                 emailTextField.getText().isEmpty()) {
 
-            String errorViewFxml = "/com/school/studentmanagementfx/view/alert/ErrorEmptyField.fxml";
-            WindowManager.createModalWindow(event, errorViewFxml, "Error");
+            AlertController.showErrorWindowOne(event);
         } else {
             StudentRepo.getStudents().add(getStudentFromFields());
-            String successViewFxml = "/com/school/studentmanagementfx/view/alert/SuccessStudentAdd.fxml";
-            WindowManager.createModalWindow(event, successViewFxml, "Success");
+            AlertController.showSuccessWindowOne(event);
             clearFields();
         }
+    }
+
+    public static void showAddStudentWindow(ActionEvent event) {
+        String addStudentFxml = "/com/school/studentmanagementfx/view/AddStudentView.fxml";
+        WindowManager.createModalWindow(event, addStudentFxml, "Add Student");
     }
 
     private Student getStudentFromFields() {
@@ -63,7 +66,8 @@ public class AddStudentController {
                 addressTextField.getText().trim(),
                 courseTextField.getText().trim(),
                 yearTextField.getText().trim(),
-                emailTextField.getText().trim());
+                emailTextField.getText().trim()
+        );
     }
 
     private void clearFields() {

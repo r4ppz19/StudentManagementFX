@@ -94,9 +94,8 @@ public class HomeController {
     }
 
     @FXML
-    private void onAddStudentAction(ActionEvent event) throws IOException {
-        String addStudentFxml = "/com/school/studentmanagementfx/view/AddStudentView.fxml";
-        WindowManager.createModalWindow(event, addStudentFxml, "Add Student");
+    private void onAddStudentAction(ActionEvent event) {
+        AddStudentController.showAddStudentWindow(event);
     }
 
     @FXML
