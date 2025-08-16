@@ -14,8 +14,9 @@ public class ViewManager {
 
     public static void showStudentDetailView(ActionEvent event, Student student) {
         try {
+            String fxmlPath = "/com/school/studentmanagementfx/view/modal/StudentDetails.fxml";
             Stage current = WindowManager.getCurrentStage(event);
-            FXMLLoader loader = new FXMLLoader(ViewManager.class.getResource("/com/school/studentmanagementfx/view/modal/StudentDetails.fxml"));
+            FXMLLoader loader = new FXMLLoader(ViewManager.class.getResource(fxmlPath));
             Parent root = loader.load();
             StudentDetailsController studentDetailsController = loader.getController();
             studentDetailsController.setStudent(student);
@@ -27,7 +28,8 @@ public class ViewManager {
 
     public static boolean showWarningView(Stage owner) {
         try {
-            FXMLLoader loader = new FXMLLoader(ViewManager.class.getResource("/com/school/studentmanagementfx/view/dialog/WarningDelete.fxml"));
+            String fxmlPath = "/com/school/studentmanagementfx/view/dialog/WarningDelete.fxml";
+            FXMLLoader loader = new FXMLLoader(ViewManager.class.getResource(fxmlPath));
             Parent root = loader.load();
             WarningController warningController = loader.getController();
             WindowManager.createWindow(root, owner, "Warning", true);
@@ -40,7 +42,8 @@ public class ViewManager {
 
     public static void showAddStudentView(Stage owner) {
         try {
-            Parent root = WindowManager.loadFXML("/com/school/studentmanagementfx/view/modal/AddStudent.fxml");
+            String fxmlPath = "/com/school/studentmanagementfx/view/modal/AddStudent.fxml";
+            Parent root = WindowManager.loadFXML(fxmlPath);
             WindowManager.createWindow(root, owner, "Add Student", true);
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -49,8 +52,9 @@ public class ViewManager {
 
     public static void showErrorViewOne(ActionEvent event) {
         try {
+            String fxmlPath = "/com/school/studentmanagementfx/view/dialog/ErrorEmptyField.fxml";
+            Parent root = WindowManager.loadFXML(fxmlPath);
             Stage current = WindowManager.getCurrentStage(event);
-            Parent root = WindowManager.loadFXML("/com/school/studentmanagementfx/view/dialog/ErrorEmptyField.fxml");
             WindowManager.createWindow(root, current, "Error", true);
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -59,8 +63,9 @@ public class ViewManager {
 
     public static void showErrorViewTwo(ActionEvent event) {
         try {
+            String fxmlPath = "/com/school/studentmanagementfx/view/dialog/ErrorUserPass.fxml";
+            Parent root = WindowManager.loadFXML(fxmlPath);
             Stage current = WindowManager.getCurrentStage(event);
-            Parent root = WindowManager.loadFXML("/com/school/studentmanagementfx/view/dialog/ErrorUserPass.fxml");
             WindowManager.createWindow(root, current, "Error", true);
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -70,7 +75,8 @@ public class ViewManager {
     public static void showSuccessWindowOne(ActionEvent event) {
         try {
             Stage current = WindowManager.getCurrentStage(event);
-            Parent root = WindowManager.loadFXML("/com/school/studentmanagementfx/view/dialog/SuccessStudentAdd.fxml");
+            String fxmlPath = "/com/school/studentmanagementfx/view/dialog/SuccessStudentAdd.fxml";
+            Parent root = WindowManager.loadFXML(fxmlPath);
             WindowManager.createWindow(root, current, "Error", true);
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -79,10 +85,10 @@ public class ViewManager {
 
     public static void showHomeView(ActionEvent event) {
         try {
+            String fxmlPath = "/com/school/studentmanagementfx/view/HomeView.fxml";
+            Parent root = WindowManager.loadFXML(fxmlPath);
             Stage current = WindowManager.getCurrentStage(event);
-            Parent root = WindowManager.loadFXML("/com/school/studentmanagementfx/view/HomeView.fxml");
             WindowManager.createWindow(root, current, "Error", false);
-
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
