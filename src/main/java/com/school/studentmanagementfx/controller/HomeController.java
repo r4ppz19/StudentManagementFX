@@ -68,7 +68,7 @@ public class HomeController {
 
         Student foundStudent = null;
         for (Student s : StudentRepo.getStudents()) {
-            if (s.getId().get().toLowerCase().contains(queryId)) {
+            if (s.getId().get().toLowerCase().equals(queryId)) {
                 foundStudent = s;
                 break;
             }
@@ -76,19 +76,20 @@ public class HomeController {
 
         if (foundStudent == null) {
             String notFoundFxml = "/com/school/studentmanagementfx/view/child/NotFound.fxml";
-            FXMLLoader nfLoader = new FXMLLoader(getClass().getResource(notFoundFxml));
-            indicatorVboxContainer.getChildren().add(nfLoader.load());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(notFoundFxml));
+            indicatorVboxContainer.getChildren().add(loader.load());
             return;
         }
 
-        Student targetStudent = foundStudent;
         String foundFxml = "/com/school/studentmanagementfx/view/child/Found.fxml";
         FXMLLoader loader = new FXMLLoader(getClass().getResource(foundFxml));
         Node childNode = loader.load();
 
         FoundStudentController foundStudentController = loader.getController();
-        foundStudentController.setStudentIdLabel(targetStudent.getId().get());
-        foundStudentController.setStudentNameLabel(targetStudent.getName().get());
+        foundStudentController.setStudentIdLabel(foundStudent.getId().get());
+        foundStudentController.setStudentNameLabel(foundStudent.getName().get());
+
+        Student targetStudent = foundStudent;
         foundStudentController.getViewStudentDetailButton().setOnAction((event) -> {
             ViewManager.showStudentDetailView(event, targetStudent);
         });
