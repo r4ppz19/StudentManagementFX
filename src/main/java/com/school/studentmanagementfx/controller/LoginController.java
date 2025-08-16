@@ -1,6 +1,6 @@
 package com.school.studentmanagementfx.controller;
 
-import com.school.studentmanagementfx.helper.CreateWindow;
+import com.school.studentmanagementfx.helper.WindowManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -24,12 +24,12 @@ public class LoginController {
 
         if (FIXED_USERNAME.equals(username) && FIXED_PASSWORD.equals(password)) {
             String homePageFxml = "/com/school/studentmanagementfx/view/HomeView.fxml";
-            CreateWindow.createNewWindowAndClose(event, homePageFxml, "StudentManagementFX");
+            WindowManager.createNewWindowAndClose(event, homePageFxml, "StudentManagementFX");
             clearFields();
         } else {
             System.out.println("Wrong username or password");
             String errorUserPass = "/com/school/studentmanagementfx/view/alert/ErrorUserPass.fxml";
-            CreateWindow.createModalWindow(event, errorUserPass, "Error");
+            WindowManager.createModalWindow(event, errorUserPass, "Error");
             clearFields();
         }
     }

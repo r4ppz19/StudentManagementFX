@@ -11,10 +11,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class CreateWindow {
+public class WindowManager {
 
     public static void createNewWindowAndClose(ActionEvent event, String fxmlPath, String title) throws IOException {
-        Stage parentStage = getParentStage(event);
+        Stage parentStage = getCurrentStage(event);
         parentStage.close();
         FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlPath));
         Parent root = loader.load();
@@ -23,7 +23,7 @@ public class CreateWindow {
     }
 
     public static void createModalWindow(ActionEvent event, String fxmlPath, String title) throws IOException {
-        Stage parentStage = getParentStage(event);
+        Stage parentStage = getCurrentStage(event);
         FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlPath));
         Parent root = loader.load();
         createWindow(root, parentStage, title);
@@ -38,18 +38,20 @@ public class CreateWindow {
         childStage.initOwner(parentStage);
         childStage.setResizable(false);
         childStage.setFullScreen(false);
+        centerWindow(parentStage, childStage);
+        childStage.showAndWait();
+    }
 
+    public static void centerWindow(Stage parentStage, Stage childStage) {
         childStage.setOnShown(e -> {
             double centerX = parentStage.getX() + parentStage.getWidth() / 2 - childStage.getWidth() / 2;
             double centerY = parentStage.getY() + parentStage.getHeight() / 2 - childStage.getHeight() / 2;
             childStage.setX(centerX);
             childStage.setY(centerY);
         });
-
-        childStage.showAndWait();
     }
 
-    private static Stage getParentStage(ActionEvent event) {
+    public static Stage getCurrentStage(ActionEvent event) {
         return (Stage) ((Node) event.getSource()).getScene().getWindow();
     }
 }

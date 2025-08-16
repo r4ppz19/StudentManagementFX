@@ -155,11 +155,16 @@
         </VBox>
         <HBox alignment="CENTER_RIGHT" spacing="10.0">
             <children>
-                <Button minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onCloseAction" prefHeight="25.0" prefWidth="60.0" styleClass="white-button" text="Close" textFill="#1e1e2e">
+                <Button minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onDeleteStudentAction" prefHeight="25.0" prefWidth="60.0" styleClass="blue-button" text="Delete" textFill="#1e1e2e">
                     <font>
                         <Font name="Segoe UI Black" size="11.0" />
                     </font>
                 </Button>
+            <Button minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onCloseAction" prefHeight="25.0" prefWidth="60.0" styleClass="white-button" text="Close" textFill="#1e1e2e">
+               <font>
+                  <Font name="Segoe UI Black" size="11.0" />
+               </font>
+            </Button>
             </children>
             <padding>
                 <Insets right="20.0" />
