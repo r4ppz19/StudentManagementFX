@@ -1,4 +1,4 @@
-package com.school.studentmanagementfx.helper;
+package com.school.studentmanagementfx.util;
 
 import javafx.scene.image.Image;
 import javafx.stage.Stage;

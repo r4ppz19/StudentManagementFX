@@ -1,14 +1,16 @@
 package com.school.studentmanagementfx.controller;
 
-import com.school.studentmanagementfx.helper.WindowManager;
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
+import com.school.studentmanagementfx.util.ViewManager;
+import com.school.studentmanagementfx.util.WindowManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -66,7 +68,7 @@ public class HomeController {
 
         Student foundStudent = null;
         for (Student s : StudentRepo.getStudents()) {
-            if (s.getId().get().toLowerCase().contains(queryId)) {
+            if (s.getId().get().toLowerCase().equals(queryId)) {
                 foundStudent = s;
                 break;
             }
@@ -74,29 +76,30 @@ public class HomeController {
 
         if (foundStudent == null) {
             String notFoundFxml = "/com/school/studentmanagementfx/view/child/NotFound.fxml";
-            FXMLLoader nfLoader = new FXMLLoader(getClass().getResource(notFoundFxml));
-            indicatorVboxContainer.getChildren().add(nfLoader.load());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(notFoundFxml));
+            indicatorVboxContainer.getChildren().add(loader.load());
             return;
         }
 
-        Student targetStudent = foundStudent;
         String foundFxml = "/com/school/studentmanagementfx/view/child/Found.fxml";
         FXMLLoader loader = new FXMLLoader(getClass().getResource(foundFxml));
         Node childNode = loader.load();
 
         FoundStudentController foundStudentController = loader.getController();
-        foundStudentController.setStudentIdLabel(targetStudent.getId().get());
-        foundStudentController.setStudentNameLabel(targetStudent.getName().get());
-        foundStudentController.getViewStudentDetailButton().setOnAction((e) -> {
-            StudentDetailsController.showStudentDetails(e, targetStudent);
+        foundStudentController.setStudentIdLabel(foundStudent.getId().get());
+        foundStudentController.setStudentNameLabel(foundStudent.getName().get());
+
+        Student targetStudent = foundStudent;
+        foundStudentController.getViewStudentDetailButton().setOnAction((event) -> {
+            ViewManager.showStudentDetailView(event, targetStudent);
         });
         indicatorVboxContainer.getChildren().add(childNode);
     }
 
     @FXML
-    private void onAddStudentAction(ActionEvent event) throws IOException {
-        String addStudentFxml = "/com/school/studentmanagementfx/view/AddStudentView.fxml";
-        WindowManager.createModalWindow(event, addStudentFxml, "Add Student");
+    private void onAddStudentAction(ActionEvent event) {
+        Stage stage = WindowManager.getCurrentStage(event);
+        ViewManager.showAddStudentView(stage);
     }
 
     @FXML
@@ -111,7 +114,7 @@ public class HomeController {
             {
                 viewButton.setOnAction(event -> {
                     Student student = getTableView().getItems().get(getIndex());
-                    StudentDetailsController.showStudentDetails(event, student);
+                    ViewManager.showStudentDetailView(event, student);
                 });
                 String buttonCss = "/com/school/studentmanagementfx/style/Button.css";
                 viewButton.getStylesheets().add(Objects.requireNonNull(getClass().getResource(buttonCss)).toExternalForm());
