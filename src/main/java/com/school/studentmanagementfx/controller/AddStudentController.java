@@ -1,13 +1,12 @@
 package com.school.studentmanagementfx.controller;
 
-import com.school.studentmanagementfx.helper.WindowManager;
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
+import com.school.studentmanagementfx.util.ViewManager;
+import com.school.studentmanagementfx.util.WindowManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-
-import java.io.IOException;
 
 public class AddStudentController {
 
@@ -34,7 +33,7 @@ public class AddStudentController {
     }
 
     @FXML
-    private void onAddStudentAction(ActionEvent event) throws IOException {
+    private void onAddStudentAction(ActionEvent event) {
         if (idTextField.getText().isEmpty() ||
                 nameTextField.getText().isEmpty() ||
                 ageTextField.getText().isEmpty() ||
@@ -44,17 +43,12 @@ public class AddStudentController {
                 yearTextField.getText().isEmpty() ||
                 emailTextField.getText().isEmpty()) {
 
-            AlertController.showErrorWindowOne(event);
+            ViewManager.showErrorViewOne(event);
         } else {
             StudentRepo.getStudents().add(getStudentFromFields());
-            AlertController.showSuccessWindowOne(event);
+            ViewManager.showSuccessWindowOne(event);
             clearFields();
         }
-    }
-
-    public static void showAddStudentWindow(ActionEvent event) {
-        String addStudentFxml = "/com/school/studentmanagementfx/view/AddStudentView.fxml";
-        WindowManager.createModalWindow(event, addStudentFxml, "Add Student");
     }
 
     private Student getStudentFromFields() {

@@ -1,14 +1,16 @@
 package com.school.studentmanagementfx.controller;
 
-import com.school.studentmanagementfx.helper.WindowManager;
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
+import com.school.studentmanagementfx.util.ViewManager;
+import com.school.studentmanagementfx.util.WindowManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -87,15 +89,16 @@ public class HomeController {
         FoundStudentController foundStudentController = loader.getController();
         foundStudentController.setStudentIdLabel(targetStudent.getId().get());
         foundStudentController.setStudentNameLabel(targetStudent.getName().get());
-        foundStudentController.getViewStudentDetailButton().setOnAction((e) -> {
-            StudentDetailsController.showStudentDetails(e, targetStudent);
+        foundStudentController.getViewStudentDetailButton().setOnAction((event) -> {
+            ViewManager.showStudentDetailView(event, targetStudent);
         });
         indicatorVboxContainer.getChildren().add(childNode);
     }
 
     @FXML
     private void onAddStudentAction(ActionEvent event) {
-        AddStudentController.showAddStudentWindow(event);
+        Stage stage = WindowManager.getCurrentStage(event);
+        ViewManager.showAddStudentView(stage);
     }
 
     @FXML
@@ -110,7 +113,7 @@ public class HomeController {
             {
                 viewButton.setOnAction(event -> {
                     Student student = getTableView().getItems().get(getIndex());
-                    StudentDetailsController.showStudentDetails(event, student);
+                    ViewManager.showStudentDetailView(event, student);
                 });
                 String buttonCss = "/com/school/studentmanagementfx/style/Button.css";
                 viewButton.getStylesheets().add(Objects.requireNonNull(getClass().getResource(buttonCss)).toExternalForm());
