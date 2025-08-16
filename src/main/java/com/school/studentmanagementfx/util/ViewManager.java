@@ -20,7 +20,7 @@ public class ViewManager {
             Parent root = loader.load();
             StudentDetailsController studentDetailsController = loader.getController();
             studentDetailsController.setStudent(student);
-            WindowManager.createWindow(root, current, "Error", true);
+            WindowManager.createWindow(root, current, "Student Detail", true);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -77,7 +77,7 @@ public class ViewManager {
             Stage current = WindowManager.getCurrentStage(event);
             String fxmlPath = "/com/school/studentmanagementfx/view/dialog/SuccessStudentAdd.fxml";
             Parent root = WindowManager.loadFXML(fxmlPath);
-            WindowManager.createWindow(root, current, "Error", true);
+            WindowManager.createWindow(root, current, "Success", true);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -88,7 +88,7 @@ public class ViewManager {
             String fxmlPath = "/com/school/studentmanagementfx/view/HomeView.fxml";
             Parent root = WindowManager.loadFXML(fxmlPath);
             Stage current = WindowManager.getCurrentStage(event);
-            WindowManager.createWindow(root, current, "Error", false);
+            WindowManager.createWindow(root, current, "Student Management", false);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
