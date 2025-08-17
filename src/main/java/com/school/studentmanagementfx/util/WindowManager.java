@@ -2,6 +2,7 @@ package com.school.studentmanagementfx.util;
 
 import com.school.studentmanagementfx.Main;
 import java.io.IOException;
+
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -46,8 +47,7 @@ public class WindowManager {
             T controller = loader.getController();
             return new LoadedView<>(root, controller);
         } catch (IOException e) {
-            System.out.println(e.getMessage());
-            return null;
+            throw new RuntimeException("Failed to load FXML: " + fxmlPath, e);
         }
     }
 
