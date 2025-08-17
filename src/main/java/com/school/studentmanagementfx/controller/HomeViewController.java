@@ -87,7 +87,9 @@ public class HomeViewController {
 
     @FXML
     private void onLogOutAction(ActionEvent event) {
-        WindowManager.getCurrentStage(event).close();
+        Stage current = WindowManager.getCurrentStage(event);
+        current.close();
+        ViewManager.showLoginView(current);
     }
 
     private void addDetailButton() {
