@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class LoginController {
+public class LoginViewController {
     private static final String FIXED_USERNAME = "admin";
     private static final String FIXED_PASSWORD = "admin";
 
