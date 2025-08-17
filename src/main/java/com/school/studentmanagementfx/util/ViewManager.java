@@ -27,21 +27,12 @@ public class ViewManager {
         stage.show();
     }
 
-    public static void showFoundChild(VBox container, Student foundStudent) {
-        String fxmlPath = "/com/school/studentmanagementfx/view/child/Found.fxml";
-        LoadedView<FoundStudentController> view = WindowManager.loadView(fxmlPath);
-        view.getController().setStudentIdLabel(foundStudent.getId().get());
-        view.getController().setStudentNameLabel(foundStudent.getName().get());
-        view.getController().getViewStudentDetailButton().setOnAction(event -> {
-            ViewManager.showStudentDetailView(event, foundStudent);
-        });
-        container.getChildren().add(view.getRoot());
-    }
-
-    public static void showNotFoundChild(VBox container) {
-        String fxmlPath = "/com/school/studentmanagementfx/view/child/NotFound.fxml";
-        LoadedView<Object> view = WindowManager.loadView(fxmlPath);
-        container.getChildren().add(view.getRoot());
+    public static void showHomeView(Event event) {
+        String fxmlPath = "/com/school/studentmanagementfx/view/HomeView.fxml";
+        LoadedView<HomeViewController> view = WindowManager.loadView(fxmlPath);
+        Stage current = WindowManager.getCurrentStage(event);
+        WindowManager.createWindow(view.getRoot(), current, "Student Management", false).show();
+        current.close();
     }
 
     public static void showStudentDetailView(Event event, Student student) {
@@ -86,11 +77,20 @@ public class ViewManager {
         WindowManager.createWindow(view.getRoot(), current, "Success", true).showAndWait();
     }
 
-    public static void showHomeView(Event event) {
-        String fxmlPath = "/com/school/studentmanagementfx/view/HomeView.fxml";
-        LoadedView<HomeViewController> view = WindowManager.loadView(fxmlPath);
-        Stage current = WindowManager.getCurrentStage(event);
-        WindowManager.createWindow(view.getRoot(), current, "Student Management", false).show();
-        current.close();
+    public static void showFoundChild(VBox container, Student foundStudent) {
+        String fxmlPath = "/com/school/studentmanagementfx/view/child/Found.fxml";
+        LoadedView<FoundStudentController> view = WindowManager.loadView(fxmlPath);
+        view.getController().setStudentIdLabel(foundStudent.getId().get());
+        view.getController().setStudentNameLabel(foundStudent.getName().get());
+        view.getController().getViewStudentDetailButton().setOnAction(event -> {
+            ViewManager.showStudentDetailView(event, foundStudent);
+        });
+        container.getChildren().add(view.getRoot());
+    }
+
+    public static void showNotFoundChild(VBox container) {
+        String fxmlPath = "/com/school/studentmanagementfx/view/child/NotFound.fxml";
+        LoadedView<Object> view = WindowManager.loadView(fxmlPath);
+        container.getChildren().add(view.getRoot());
     }
 }
