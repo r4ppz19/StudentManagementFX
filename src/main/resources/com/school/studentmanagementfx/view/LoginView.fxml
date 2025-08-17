@@ -47,7 +47,7 @@
                                 <Font name="Segoe UI Black" size="11.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="usernameTextField" prefHeight="30.0" promptText="Enter username" styleClass="white-textfield">
+                        <TextField fx:id="usernameTextField" onAction="#onLoginAction" prefHeight="30.0" promptText="Enter username" styleClass="white-textfield">
                             <font>
                                 <Font name="Segoe UI Black" size="11.0" />
                             </font>

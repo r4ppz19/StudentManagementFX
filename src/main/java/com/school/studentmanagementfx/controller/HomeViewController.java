@@ -36,8 +36,6 @@ public class HomeViewController {
             StudentRepo.createDummyStudent();
         }
 
-        studentsTableView.setEditable(false);
-        studentsTableView.setFocusTraversable(false);
         studentsTableView
                 .getColumns()
                 .forEach(col -> {

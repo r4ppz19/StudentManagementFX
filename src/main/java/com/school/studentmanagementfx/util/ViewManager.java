@@ -1,151 +1,96 @@
 package com.school.studentmanagementfx.util;
 
+import com.school.studentmanagementfx.controller.AddStudentController;
+import com.school.studentmanagementfx.controller.DialogController;
 import com.school.studentmanagementfx.controller.FoundStudentController;
+import com.school.studentmanagementfx.controller.HomeViewController;
+import com.school.studentmanagementfx.controller.LoginViewController;
 import com.school.studentmanagementfx.controller.StudentDetailsController;
 import com.school.studentmanagementfx.controller.WarningController;
 import com.school.studentmanagementfx.model.Student;
-import java.io.IOException;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
+import javafx.event.Event;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ViewManager {
 
+    public static void showLoginView(Stage stage) {
+        String fxmlPath = "/com/school/studentmanagementfx/view/LoginView.fxml";
+        LoadedView<LoginViewController> view = WindowManager.loadView(fxmlPath);
+        Scene scene = new Scene(view.getRoot());
+        SetIcon.setAppIcon(stage);
+        stage.setTitle("Student Management");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setFullScreen(false);
+        stage.show();
+    }
+
     public static void showFoundChild(VBox container, Student foundStudent) {
-        try {
-            String fxmlPath = "/com/school/studentmanagementfx/view/child/Found.fxml";
-            FXMLLoader loader = new FXMLLoader(
-                    ViewManager.class.getResource(fxmlPath));
-            Node childNode = loader.load();
-
-            FoundStudentController foundStudentController = loader.getController();
-            foundStudentController.setStudentIdLabel(foundStudent.getId().get());
-            foundStudentController.setStudentNameLabel(foundStudent.getName().get());
-
-            foundStudentController
-                    .getViewStudentDetailButton()
-                    .setOnAction(event -> {
-                        ViewManager.showStudentDetailView(event, foundStudent);
-                    });
-            container.getChildren().add(childNode);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        String fxmlPath = "/com/school/studentmanagementfx/view/child/Found.fxml";
+        LoadedView<FoundStudentController> view = WindowManager.loadView(fxmlPath);
+        view.getController().setStudentIdLabel(foundStudent.getId().get());
+        view.getController().setStudentNameLabel(foundStudent.getName().get());
+        view.getController().getViewStudentDetailButton().setOnAction(event -> {
+            ViewManager.showStudentDetailView(event, foundStudent);
+        });
+        container.getChildren().add(view.getRoot());
     }
 
     public static void showNotFoundChild(VBox container) {
-        try {
-            String fxmlPath = "/com/school/studentmanagementfx/view/child/NotFound.fxml";
-            FXMLLoader loader = new FXMLLoader(
-                    ViewManager.class.getResource(fxmlPath));
-            container.getChildren().add(loader.load());
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        String fxmlPath = "/com/school/studentmanagementfx/view/child/NotFound.fxml";
+        LoadedView<Object> view = WindowManager.loadView(fxmlPath);
+        container.getChildren().add(view.getRoot());
     }
 
-    public static void showLoginView(Stage stage) {
-        try {
-            String fxmlPath = "/com/school/studentmanagementfx/view/LoginView.fxml";
-            FXMLLoader fxmlLoader = new FXMLLoader(
-                    ViewManager.class.getResource(fxmlPath));
-            Scene scene = new Scene(fxmlLoader.load());
-            SetIcon.setAppIcon(stage);
-            stage.setTitle("Student Management");
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.setFullScreen(false);
-            stage.show();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    public static void showStudentDetailView(ActionEvent event, Student student) {
-        try {
-            String fxmlPath = "/com/school/studentmanagementfx/view/modal/StudentDetails.fxml";
-            Stage current = WindowManager.getCurrentStage(event);
-            FXMLLoader loader = new FXMLLoader(
-                    ViewManager.class.getResource(fxmlPath));
-            Parent root = loader.load();
-            StudentDetailsController studentDetailsController = loader.getController();
-            studentDetailsController.setStudent(student);
-            WindowManager.createWindow(root, current, "Student Detail", true);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+    public static void showStudentDetailView(Event event, Student student) {
+        String fxmlPath = "/com/school/studentmanagementfx/view/modal/StudentDetails.fxml";
+        Stage current = WindowManager.getCurrentStage(event);
+        LoadedView<StudentDetailsController> view = WindowManager.loadView(fxmlPath);
+        view.getController().setStudent(student);
+        WindowManager.createWindow(view.getRoot(), current, "Student Detail", true).showAndWait();
     }
 
     public static boolean showWarningView(Stage owner) {
-        try {
-            String fxmlPath = "/com/school/studentmanagementfx/view/dialog/WarningDelete.fxml";
-            FXMLLoader loader = new FXMLLoader(
-                    ViewManager.class.getResource(fxmlPath));
-            Parent root = loader.load();
-            WarningController warningController = loader.getController();
-            WindowManager.createWindow(root, owner, "Warning", true);
-            return warningController.isConfirmed();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            return false;
-        }
+        String fxmlPath = "/com/school/studentmanagementfx/view/dialog/WarningDelete.fxml";
+        LoadedView<WarningController> view = WindowManager.loadView(fxmlPath);
+        WindowManager.createWindow(view.getRoot(), owner, "Warning", true).showAndWait();
+        return view.getController().isConfirmed();
     }
 
     public static void showAddStudentView(Stage owner) {
-        try {
-            String fxmlPath = "/com/school/studentmanagementfx/view/modal/AddStudent.fxml";
-            Parent root = WindowManager.loadFXML(fxmlPath);
-            WindowManager.createWindow(root, owner, "Add Student", true);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        String fxmlPath = "/com/school/studentmanagementfx/view/modal/AddStudent.fxml";
+        LoadedView<AddStudentController> view = WindowManager.loadView(fxmlPath);
+        WindowManager.createWindow(view.getRoot(), owner, "Add Student", true).showAndWait();
     }
 
-    public static void showErrorViewOne(ActionEvent event) {
-        try {
-            String fxmlPath = "/com/school/studentmanagementfx/view/dialog/ErrorEmptyField.fxml";
-            Parent root = WindowManager.loadFXML(fxmlPath);
-            Stage current = WindowManager.getCurrentStage(event);
-            WindowManager.createWindow(root, current, "Error", true);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+    public static void showErrorViewOne(Event event) {
+        String fxmlPath = "/com/school/studentmanagementfx/view/dialog/ErrorEmptyField.fxml";
+        LoadedView<DialogController> view = WindowManager.loadView(fxmlPath);
+        Stage current = WindowManager.getCurrentStage(event);
+        WindowManager.createWindow(view.getRoot(), current, "Error", true).showAndWait();
     }
 
-    public static void showErrorViewTwo(ActionEvent event) {
-        try {
-            String fxmlPath = "/com/school/studentmanagementfx/view/dialog/ErrorUserPass.fxml";
-            Parent root = WindowManager.loadFXML(fxmlPath);
-            Stage current = WindowManager.getCurrentStage(event);
-            WindowManager.createWindow(root, current, "Error", true);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+    public static void showErrorViewTwo(Event event) {
+        String fxmlPath = "/com/school/studentmanagementfx/view/dialog/ErrorUserPass.fxml";
+        LoadedView<DialogController> view = WindowManager.loadView(fxmlPath);
+        Stage current = WindowManager.getCurrentStage(event);
+        WindowManager.createWindow(view.getRoot(), current, "Error", true).showAndWait();
     }
 
-    public static void showSuccessWindowOne(ActionEvent event) {
-        try {
-            Stage current = WindowManager.getCurrentStage(event);
-            String fxmlPath = "/com/school/studentmanagementfx/view/dialog/SuccessStudentAdd.fxml";
-            Parent root = WindowManager.loadFXML(fxmlPath);
-            WindowManager.createWindow(root, current, "Success", true);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+    public static void showSuccessWindowOne(Event event) {
+        Stage current = WindowManager.getCurrentStage(event);
+        String fxmlPath = "/com/school/studentmanagementfx/view/dialog/SuccessStudentAdd.fxml";
+        LoadedView<DialogController> view = WindowManager.loadView(fxmlPath);
+        WindowManager.createWindow(view.getRoot(), current, "Success", true).showAndWait();
     }
 
-    public static void showHomeView(ActionEvent event) {
-        try {
-            String fxmlPath = "/com/school/studentmanagementfx/view/HomeView.fxml";
-            Parent root = WindowManager.loadFXML(fxmlPath);
-            Stage current = WindowManager.getCurrentStage(event);
-            WindowManager.createWindow(root, current, "Student Management", false);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+    public static void showHomeView(Event event) {
+        String fxmlPath = "/com/school/studentmanagementfx/view/HomeView.fxml";
+        LoadedView<HomeViewController> view = WindowManager.loadView(fxmlPath);
+        Stage current = WindowManager.getCurrentStage(event);
+        WindowManager.createWindow(view.getRoot(), current, "Student Management", false).show();
+        current.close();
     }
 }
