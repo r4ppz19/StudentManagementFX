@@ -38,6 +38,18 @@ public class AddStudentController {
     @FXML
     private void onAddStudentAction(ActionEvent event) {
         clearErrorLabels();
+            if (idTextField.getText().isEmpty() ||
+                    nameTextField.getText().isEmpty() ||
+                    ageTextField.getText().isEmpty() ||
+                    birthdayTextField.getText().isEmpty() ||
+                    addressTextField.getText().isEmpty() ||
+                    courseTextField.getText().isEmpty() ||
+                    yearTextField.getText().isEmpty() ||
+                    emailTextField.getText().isEmpty()) {
+
+                ViewManager.showErrorViewOne(event);
+                return;
+        }
         // Validate fields using StudentValidator
         Map<String, String> errors = StudentValidator.validateFields(
                 idTextField.getText(),
@@ -55,7 +67,10 @@ public class AddStudentController {
         }
         // Validation passed → add student
         StudentRepo.getStudents().add(getStudentFromFields());
+        ViewManager.showSuccessWindowOne(event);
         clearFields();
+
+
     }
 
     private Student getStudentFromFields() {
