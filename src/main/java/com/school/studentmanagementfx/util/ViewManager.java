@@ -4,6 +4,7 @@ import com.school.studentmanagementfx.controller.FoundStudentController;
 import com.school.studentmanagementfx.controller.StudentDetailsController;
 import com.school.studentmanagementfx.controller.WarningController;
 import com.school.studentmanagementfx.model.Student;
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -12,23 +13,24 @@ import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class ViewManager {
 
     public static void showFoundChild(VBox container, Student foundStudent) {
         try {
             String foundFxml = "/com/school/studentmanagementfx/view/child/Found.fxml";
-            FXMLLoader loader = new FXMLLoader(ViewManager.class.getResource(foundFxml));
+            FXMLLoader loader = new FXMLLoader(
+                    ViewManager.class.getResource(foundFxml));
             Node childNode = loader.load();
 
             FoundStudentController foundStudentController = loader.getController();
             foundStudentController.setStudentIdLabel(foundStudent.getId().get());
             foundStudentController.setStudentNameLabel(foundStudent.getName().get());
 
-            foundStudentController.getViewStudentDetailButton().setOnAction((event) -> {
-                ViewManager.showStudentDetailView(event, foundStudent);
-            });
+            foundStudentController
+                    .getViewStudentDetailButton()
+                    .setOnAction(event -> {
+                        ViewManager.showStudentDetailView(event, foundStudent);
+                    });
             container.getChildren().add(childNode);
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -38,7 +40,8 @@ public class ViewManager {
     public static void showNotFoundChild(VBox container) {
         try {
             String notFoundFxml = "/com/school/studentmanagementfx/view/child/NotFound.fxml";
-            FXMLLoader loader = new FXMLLoader(ViewManager.class.getResource(notFoundFxml));
+            FXMLLoader loader = new FXMLLoader(
+                    ViewManager.class.getResource(notFoundFxml));
             container.getChildren().add(loader.load());
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -48,7 +51,8 @@ public class ViewManager {
     public static void showLoginView(Stage stage) {
         try {
             String mainMenuViewFxml = "/com/school/studentmanagementfx/view/LoginView.fxml";
-            FXMLLoader fxmlLoader = new FXMLLoader(ViewManager.class.getResource(mainMenuViewFxml));
+            FXMLLoader fxmlLoader = new FXMLLoader(
+                    ViewManager.class.getResource(mainMenuViewFxml));
             Scene scene = new Scene(fxmlLoader.load());
             SetIcon.setAppIcon(stage);
             stage.setTitle("Student Management");
@@ -65,7 +69,8 @@ public class ViewManager {
         try {
             String fxmlPath = "/com/school/studentmanagementfx/view/modal/StudentDetails.fxml";
             Stage current = WindowManager.getCurrentStage(event);
-            FXMLLoader loader = new FXMLLoader(ViewManager.class.getResource(fxmlPath));
+            FXMLLoader loader = new FXMLLoader(
+                    ViewManager.class.getResource(fxmlPath));
             Parent root = loader.load();
             StudentDetailsController studentDetailsController = loader.getController();
             studentDetailsController.setStudent(student);
@@ -78,7 +83,8 @@ public class ViewManager {
     public static boolean showWarningView(Stage owner) {
         try {
             String fxmlPath = "/com/school/studentmanagementfx/view/dialog/WarningDelete.fxml";
-            FXMLLoader loader = new FXMLLoader(ViewManager.class.getResource(fxmlPath));
+            FXMLLoader loader = new FXMLLoader(
+                    ViewManager.class.getResource(fxmlPath));
             Parent root = loader.load();
             WarningController warningController = loader.getController();
             WindowManager.createWindow(root, owner, "Warning", true);

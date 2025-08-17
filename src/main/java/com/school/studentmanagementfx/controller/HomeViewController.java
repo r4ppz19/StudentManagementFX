@@ -4,13 +4,12 @@ import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
 import com.school.studentmanagementfx.util.ViewManager;
 import com.school.studentmanagementfx.util.WindowManager;
+import java.util.Objects;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.util.Objects;
 
 public class HomeViewController {
 
@@ -39,11 +38,13 @@ public class HomeViewController {
 
         studentsTableView.setEditable(false);
         studentsTableView.setFocusTraversable(false);
-        studentsTableView.getColumns().forEach(col -> {
-            col.setResizable(false);
-            col.setReorderable(false);
-            col.setSortable(false);
-        });
+        studentsTableView
+                .getColumns()
+                .forEach(col -> {
+                    col.setResizable(false);
+                    col.setReorderable(false);
+                    col.setSortable(false);
+                });
 
         idTableColumn.setCellValueFactory(cellData -> cellData.getValue().getId());
         nameTableColumn.setCellValueFactory(cellData -> cellData.getValue().getName());
@@ -102,9 +103,11 @@ public class HomeViewController {
                     ViewManager.showStudentDetailView(event, student);
                 });
                 String buttonCss = "/com/school/studentmanagementfx/style/Button.css";
-                viewButton.getStylesheets().add(
-                        Objects.requireNonNull(getClass().getResource(buttonCss)).toExternalForm()
-                );
+                viewButton
+                        .getStylesheets()
+                        .add(
+                                Objects.requireNonNull(
+                                        getClass().getResource(buttonCss)).toExternalForm());
             }
 
             @Override

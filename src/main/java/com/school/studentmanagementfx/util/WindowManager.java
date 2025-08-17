@@ -1,6 +1,7 @@
 package com.school.studentmanagementfx.util;
 
 import com.school.studentmanagementfx.Main;
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -9,11 +10,13 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class WindowManager {
 
-    public static void createWindow(Parent root, Stage owner, String title, boolean modal) {
+    public static void createWindow(
+            Parent root,
+            Stage owner,
+            String title,
+            boolean modal) {
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -44,8 +47,12 @@ public class WindowManager {
 
     private static void centerWindow(Stage parentStage, Stage childStage) {
         childStage.setOnShown(e -> {
-            double centerX = parentStage.getX() + parentStage.getWidth() / 2 - childStage.getWidth() / 2;
-            double centerY = parentStage.getY() + parentStage.getHeight() / 2 - childStage.getHeight() / 2;
+            double centerX = parentStage.getX() +
+                    parentStage.getWidth() / 2 -
+                    childStage.getWidth() / 2;
+            double centerY = parentStage.getY() +
+                    parentStage.getHeight() / 2 -
+                    childStage.getHeight() / 2;
             childStage.setX(centerX);
             childStage.setY(centerY);
         });

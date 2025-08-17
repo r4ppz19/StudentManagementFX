@@ -42,7 +42,6 @@ public class AddStudentController {
                 courseTextField.getText().isEmpty() ||
                 yearTextField.getText().isEmpty() ||
                 emailTextField.getText().isEmpty()) {
-
             ViewManager.showErrorViewOne(event);
         } else {
             StudentRepo.getStudents().add(getStudentFromFields());
@@ -60,8 +59,7 @@ public class AddStudentController {
                 addressTextField.getText().trim(),
                 courseTextField.getText().trim(),
                 yearTextField.getText().trim(),
-                emailTextField.getText().trim()
-        );
+                emailTextField.getText().trim());
     }
 
     private void clearFields() {

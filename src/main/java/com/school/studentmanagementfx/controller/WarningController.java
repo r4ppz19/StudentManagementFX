@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public class WarningController {
+
     private boolean confirmed = false;
 
     @FXML

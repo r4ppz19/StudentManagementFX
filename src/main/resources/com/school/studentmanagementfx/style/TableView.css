@@ -1,70 +1,67 @@
 .table-view {
-    -fx-font-family: "Segoe UI Black";
-    -fx-background-color: #EEEEEE;
-    -fx-border-color: #1E1E2E;
-    -fx-border-width: 0px;
-    -fx-border-radius: 5px;
-    -fx-background-radius: 5px;
-    -fx-font-size: 11px;
+  -fx-font-family: "Segoe UI Black";
+  -fx-background-color: #EEEEEE;
+  -fx-border-color: #1E1E2E;
+  -fx-border-width: 0px;
+  -fx-border-radius: 5px;
+  -fx-background-radius: 5px;
+  -fx-font-size: 11px;
 }
 
 .table-view:focused {
-    -fx-focus-color: transparent;
-    -fx-faint-focus-color: transparent;
-    -fx-background-insets: 0;
-    -fx-background-color: #EEEEEE;
-    -fx-border-color: #1E1E2E;
-    -fx-border-width: 0px;
-    -fx-border-radius: 5px;
-    -fx-background-radius: 5px;
+  -fx-focus-color: transparent;
+  -fx-faint-focus-color: transparent;
+  -fx-background-insets: 0;
+  -fx-background-color: #EEEEEE;
+  -fx-border-color: #1E1E2E;
+  -fx-border-width: 0px;
+  -fx-border-radius: 5px;
+  -fx-background-radius: 5px;
 }
 
 .table-view .column-header-background {
-    -fx-background-color: #EEEEEE;
+  -fx-background-color: #EEEEEE;
 }
 
 .table-view .column-header,
 .table-view .filler {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent transparent #1E1E2E transparent;
-    -fx-border-width: 0.5;
+  -fx-background-color: transparent;
+  -fx-border-color: transparent transparent #1E1E2E transparent;
+  -fx-border-width: 0.5;
 }
 
-.table-view .column-header .label {
-}
+.table-view .column-header .label {}
 
 .table-row-cell {
-    -fx-background-color: #EEEEEE;
-    -fx-border-color: #CCCCCC;
-    -fx-border-width: 0 0 1 0;
-    -fx-padding: 7px 0px;
+  -fx-background-color: #EEEEEE;
+  -fx-border-color: #CCCCCC;
+  -fx-border-width: 0 0 1 0;
+  -fx-padding: 7px 0px;
 }
 
 .table-row-cell:odd {
-    -fx-background-color: #EEEEEE;
+  -fx-background-color: #EEEEEE;
 }
 
 .table-row-cell:even {
-    -fx-background-color: #EEEEEE;
+  -fx-background-color: #EEEEEE;
 }
 
 .table-row-cell:selected {
-    -fx-background-color: #EEEEEE;
-    -fx-focus-color: transparent;
-    -fx-faint-focus-color: transparent;
+  -fx-background-color: #EEEEEE;
+  -fx-focus-color: transparent;
+  -fx-faint-focus-color: transparent;
 }
 
 .table-cell {
-    -fx-alignment: CENTER;
+  -fx-alignment: CENTER;
 }
 
 .table-cell:selected {
-    -fx-background-color: transparent;
+  -fx-background-color: transparent;
 }
 
 .table-view .scroll-bar:vertical,
-.table-view .scroll-bar:horizontal {
-}
+.table-view .scroll-bar:horizontal {}
 
-.table-view .scroll-bar .thumb {
-}
+.table-view .scroll-bar .thumb {}

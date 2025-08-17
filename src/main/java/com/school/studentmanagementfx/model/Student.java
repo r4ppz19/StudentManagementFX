@@ -3,6 +3,7 @@ package com.school.studentmanagementfx.model;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Student {
+
     private final SimpleStringProperty id;
     private final SimpleStringProperty name;
     private final SimpleStringProperty age;
@@ -12,7 +13,14 @@ public class Student {
     private final SimpleStringProperty year;
     private final SimpleStringProperty email;
 
-    public Student(String id, String name, String age, String birthday, String address, String course, String year,
+    public Student(
+            String id,
+            String name,
+            String age,
+            String birthday,
+            String address,
+            String course,
+            String year,
             String email) {
         this.id = new SimpleStringProperty(id);
         this.name = new SimpleStringProperty(name);
