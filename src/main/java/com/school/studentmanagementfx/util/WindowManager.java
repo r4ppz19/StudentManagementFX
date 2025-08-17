@@ -35,11 +35,6 @@ public class WindowManager {
         return (Stage) ((Node) event.getSource()).getScene().getWindow();
     }
 
-    public static Parent loadFXML(String fxmlPath) throws IOException {
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlPath));
-        return loader.load();
-    }
-
     public static <T> LoadedView<T> loadView(String fxmlPath) {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlPath));
