@@ -1,6 +1,7 @@
 package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.helper.WindowManager;
+import com.school.studentmanagementfx.model.AdminConfig;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -9,8 +10,7 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 
 public class LoginController {
-    private static final String FIXED_USERNAME = "admin";
-    private static final String FIXED_PASSWORD = "admin";
+    private final AdminConfig adminConfig = AdminConfig.getInstance();
 
     @FXML
     private TextField usernameTextField;
@@ -22,7 +22,7 @@ public class LoginController {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
 
-        if (FIXED_USERNAME.equals(username) && FIXED_PASSWORD.equals(password)) {
+        if (adminConfig.authenticate(username, password)) {
             String homePageFxml = "/com/school/studentmanagementfx/view/HomeView.fxml";
             WindowManager.createNewWindowAndClose(event, homePageFxml, "StudentManagementFX");
             clearFields();

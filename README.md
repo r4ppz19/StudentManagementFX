@@ -34,4 +34,25 @@ mvn clean javafx:run
 
 ```
 
+## Admin Login Configuration
+
+The application now supports configurable admin users through a properties file. Admin credentials are no longer hard-coded in the source code.
+
+### Default Login
+- Username: `admin`
+- Password: `admin`
+
+### Configuring Additional Admin Users
+
+You can add more admin users by editing the `admin.properties` file in the resources directory:
+
+```properties
+# Admin Users Configuration
+admin=admin
+administrator=secure123
+schooladmin=password456
+```
+
+If the properties file is not found or cannot be loaded, the application will fall back to the default admin user.
+
 _Student project - Work in progress_
