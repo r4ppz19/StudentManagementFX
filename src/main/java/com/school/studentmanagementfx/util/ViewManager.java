@@ -1,16 +1,65 @@
 package com.school.studentmanagementfx.util;
 
+import com.school.studentmanagementfx.controller.FoundStudentController;
 import com.school.studentmanagementfx.controller.StudentDetailsController;
 import com.school.studentmanagementfx.controller.WarningController;
 import com.school.studentmanagementfx.model.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class ViewManager {
+
+    public static void showFoundChild(VBox container, Student foundStudent) {
+        try {
+            String foundFxml = "/com/school/studentmanagementfx/view/child/Found.fxml";
+            FXMLLoader loader = new FXMLLoader(ViewManager.class.getResource(foundFxml));
+            Node childNode = loader.load();
+
+            FoundStudentController foundStudentController = loader.getController();
+            foundStudentController.setStudentIdLabel(foundStudent.getId().get());
+            foundStudentController.setStudentNameLabel(foundStudent.getName().get());
+
+            foundStudentController.getViewStudentDetailButton().setOnAction((event) -> {
+                ViewManager.showStudentDetailView(event, foundStudent);
+            });
+            container.getChildren().add(childNode);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void showNotFoundChild(VBox container) {
+        try {
+            String notFoundFxml = "/com/school/studentmanagementfx/view/child/NotFound.fxml";
+            FXMLLoader loader = new FXMLLoader(ViewManager.class.getResource(notFoundFxml));
+            container.getChildren().add(loader.load());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void showLoginView(Stage stage) {
+        try {
+            String mainMenuViewFxml = "/com/school/studentmanagementfx/view/LoginView.fxml";
+            FXMLLoader fxmlLoader = new FXMLLoader(ViewManager.class.getResource(mainMenuViewFxml));
+            Scene scene = new Scene(fxmlLoader.load());
+            SetIcon.setAppIcon(stage);
+            stage.setTitle("Student Management");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setFullScreen(false);
+            stage.show();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     public static void showStudentDetailView(ActionEvent event, Student student) {
         try {
