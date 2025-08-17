@@ -17,9 +17,9 @@ public class ViewManager {
 
     public static void showFoundChild(VBox container, Student foundStudent) {
         try {
-            String foundFxml = "/com/school/studentmanagementfx/view/child/Found.fxml";
+            String fxmlPath = "/com/school/studentmanagementfx/view/child/Found.fxml";
             FXMLLoader loader = new FXMLLoader(
-                    ViewManager.class.getResource(foundFxml));
+                    ViewManager.class.getResource(fxmlPath));
             Node childNode = loader.load();
 
             FoundStudentController foundStudentController = loader.getController();
@@ -39,9 +39,9 @@ public class ViewManager {
 
     public static void showNotFoundChild(VBox container) {
         try {
-            String notFoundFxml = "/com/school/studentmanagementfx/view/child/NotFound.fxml";
+            String fxmlPath = "/com/school/studentmanagementfx/view/child/NotFound.fxml";
             FXMLLoader loader = new FXMLLoader(
-                    ViewManager.class.getResource(notFoundFxml));
+                    ViewManager.class.getResource(fxmlPath));
             container.getChildren().add(loader.load());
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -50,9 +50,9 @@ public class ViewManager {
 
     public static void showLoginView(Stage stage) {
         try {
-            String mainMenuViewFxml = "/com/school/studentmanagementfx/view/LoginView.fxml";
+            String fxmlPath = "/com/school/studentmanagementfx/view/LoginView.fxml";
             FXMLLoader fxmlLoader = new FXMLLoader(
-                    ViewManager.class.getResource(mainMenuViewFxml));
+                    ViewManager.class.getResource(fxmlPath));
             Scene scene = new Scene(fxmlLoader.load());
             SetIcon.setAppIcon(stage);
             stage.setTitle("Student Management");
