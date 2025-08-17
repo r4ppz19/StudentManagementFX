@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
-public class HomeController {
+public class HomeViewController {
 
     @FXML
     private TextField searchTextField;
