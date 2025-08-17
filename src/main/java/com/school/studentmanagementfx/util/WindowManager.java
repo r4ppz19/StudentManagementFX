@@ -15,7 +15,8 @@ public class WindowManager {
 
     public static void createWindow(Parent root, Stage owner, String title, boolean modal) {
         Stage stage = new Stage();
-        stage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
         SetIcon.setAppIcon(stage);
         stage.setTitle(title);
         stage.setResizable(false);
