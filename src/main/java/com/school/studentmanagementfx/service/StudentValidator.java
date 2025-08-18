@@ -1,4 +1,4 @@
-package com.school.studentmanagementfx.util;
+package com.school.studentmanagementfx.service;
 
 import java.util.HashMap;
 import java.util.Map;

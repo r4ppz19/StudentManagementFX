@@ -2,7 +2,7 @@ package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
-import com.school.studentmanagementfx.util.StudentValidator;
+import com.school.studentmanagementfx.service.StudentValidator;
 import com.school.studentmanagementfx.service.StudentFileService;
 import com.school.studentmanagementfx.view.ViewManager;
 import com.school.studentmanagementfx.view.WindowManager;
