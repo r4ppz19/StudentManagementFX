@@ -1,6 +1,6 @@
 package com.school.studentmanagementfx.controller;
 
-import com.school.studentmanagementfx.util.ViewManager;
+import com.school.studentmanagementfx.view.ViewManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
