@@ -1,8 +1,9 @@
-package com.school.studentmanagementfx.util;
+package com.school.studentmanagementfx.view;
 
 import com.school.studentmanagementfx.Main;
 import java.io.IOException;
 
+import com.school.studentmanagementfx.util.SetIcon;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;

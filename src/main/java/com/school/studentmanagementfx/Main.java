@@ -1,6 +1,6 @@
 package com.school.studentmanagementfx;
 
-import com.school.studentmanagementfx.util.ViewManager;
+import com.school.studentmanagementfx.view.ViewManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

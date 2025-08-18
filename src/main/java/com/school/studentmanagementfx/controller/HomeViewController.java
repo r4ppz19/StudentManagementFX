@@ -2,8 +2,9 @@ package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
-import com.school.studentmanagementfx.util.ViewManager;
-import com.school.studentmanagementfx.util.WindowManager;
+import com.school.studentmanagementfx.service.StudentFileService;
+import com.school.studentmanagementfx.view.ViewManager;
+import com.school.studentmanagementfx.view.WindowManager;
 import java.util.Objects;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,6 +33,7 @@ public class HomeViewController {
 
     @FXML
     private void initialize() {
+        StudentFileService.loadFromDataBase();
         if (StudentRepo.getStudents().isEmpty()) {
             StudentRepo.createDummyStudent();
         }
@@ -71,6 +73,7 @@ public class HomeViewController {
 
     @FXML
     private void onLogOutAction(ActionEvent event) {
+        StudentFileService.saveToDataBase();
         Stage current = WindowManager.getCurrentStage(event);
         current.close();
         ViewManager.showLoginView(current);

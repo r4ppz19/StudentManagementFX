@@ -1,4 +1,4 @@
-package com.school.studentmanagementfx.util;
+package com.school.studentmanagementfx.view;
 
 import com.school.studentmanagementfx.controller.AddStudentController;
 import com.school.studentmanagementfx.controller.DialogController;
@@ -8,6 +8,7 @@ import com.school.studentmanagementfx.controller.LoginViewController;
 import com.school.studentmanagementfx.controller.StudentDetailsController;
 import com.school.studentmanagementfx.controller.WarningController;
 import com.school.studentmanagementfx.model.Student;
+import com.school.studentmanagementfx.util.SetIcon;
 import javafx.event.Event;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;

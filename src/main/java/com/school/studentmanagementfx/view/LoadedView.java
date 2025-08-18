@@ -1,8 +1,8 @@
-package com.school.studentmanagementfx.util;
+package com.school.studentmanagementfx.view;
 
 import javafx.scene.Parent;
 
-class LoadedView<T> {
+public class LoadedView<T> {
     private final Parent root;
     private final T controller;
 
