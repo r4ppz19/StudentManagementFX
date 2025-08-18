@@ -1,5 +1,6 @@
 package com.school.studentmanagementfx.controller;
 
+import com.school.studentmanagementfx.service.StudentFileService;
 import com.school.studentmanagementfx.view.ViewManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,11 @@ public class LoginViewController {
     private TextField usernameTextField;
     @FXML
     private PasswordField passwordTextField;
+
+    @FXML
+    private void initialize() {
+        StudentFileService.loadFromDataBase();
+    }
 
     @FXML
     private void onLoginAction(ActionEvent event) {
