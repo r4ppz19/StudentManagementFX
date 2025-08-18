@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="341.0" minWidth="345.0" prefHeight="420.0" prefWidth="345.0" spacing="10.0" style="-fx-background-color: #EEEEEE;" stylesheets="@../../style/Shared.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.school.studentmanagementfx.controller.AddStudentController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="341.0" minWidth="345.0" prefHeight="451.0" prefWidth="345.0" spacing="10.0" style="-fx-background-color: #EEEEEE;" stylesheets="@../../style/Shared.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.school.studentmanagementfx.controller.AddStudentController">
     <children>
         <!-- Header -->
         <VBox alignment="CENTER_LEFT" minHeight="43.0" prefHeight="43.0" style="-fx-background-color: #1E1E2E; -fx-border-color: transparent transparent #1E1E2E transparent; -fx-border-width: 0.5;">
@@ -36,7 +36,10 @@
                                     <font><Font name="Segoe UI Black" size="11.0" /></font>
                                 </Label>
                                 <TextField fx:id="idTextField" minHeight="25.0" promptText="Enter ID" styleClass="white-textfield" />
-                                <Label fx:id="idErrorLabel" style="-fx-font-size: 10px;" textFill="RED" />
+                                <Label fx:id="idErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="5.0" top="2.0" />
+                           </VBox.margin></Label>
                             </children>
                         </VBox>
                         <VBox spacing="2.0">
@@ -45,7 +48,10 @@
                                     <font><Font name="Segoe UI Black" size="11.0" /></font>
                                 </Label>
                                 <TextField fx:id="nameTextField" minHeight="25.0" promptText="Enter name" styleClass="white-textfield" />
-                                <Label fx:id="nameErrorLabel" style="-fx-font-size: 10px;" textFill="RED" />
+                                <Label fx:id="nameErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="5.0" top="2.0" />
+                           </VBox.margin></Label>
                             </children>
                         </VBox>
                     </children>
@@ -60,7 +66,10 @@
                                     <font><Font name="Segoe UI Black" size="11.0" /></font>
                                 </Label>
                                 <TextField fx:id="ageTextField" minHeight="25.0" promptText="Enter age" styleClass="white-textfield" />
-                                <Label fx:id="ageErrorLabel" style="-fx-font-size: 10px;" textFill="RED" />
+                                <Label fx:id="ageErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="5.0" top="2.0" />
+                           </VBox.margin></Label>
                             </children>
                         </VBox>
                         <VBox spacing="2.0">
@@ -68,8 +77,11 @@
                                 <Label text="Birthday" textFill="#1e1e2e">
                                     <font><Font name="Segoe UI Black" size="11.0" /></font>
                                 </Label>
-                                <TextField fx:id="birthdayTextField" minHeight="25.0" promptText="MM/DD/YYYY" styleClass="white-textfield" />
-                                <Label fx:id="birthdayErrorLabel" style="-fx-font-size: 10px;" textFill="RED" />
+                                <TextField fx:id="birthdayTextField" minHeight="25.0" promptText="mm/dd/yyyy" styleClass="white-textfield" />
+                                <Label fx:id="birthdayErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="5.0" top="2.0" />
+                           </VBox.margin></Label>
                             </children>
                         </VBox>
                     </children>
@@ -82,7 +94,10 @@
                             <font><Font name="Segoe UI Black" size="11.0" /></font>
                         </Label>
                         <TextField fx:id="addressTextField" minHeight="35.0" promptText="Enter address" styleClass="white-textfield" />
-                        <Label fx:id="addressErrorLabel" style="-fx-font-size: 10px;" textFill="RED" />
+                        <Label fx:id="addressErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
+                     <VBox.margin>
+                        <Insets bottom="2.0" left="5.0" top="2.0" />
+                     </VBox.margin></Label>
                     </children>
                 </VBox>
 
@@ -95,7 +110,10 @@
                                     <font><Font name="Segoe UI Black" size="11.0" /></font>
                                 </Label>
                                 <TextField fx:id="courseTextField" minHeight="25.0" promptText="Enter course" styleClass="white-textfield" />
-                                <Label fx:id="courseErrorLabel" style="-fx-font-size: 10px;" textFill="RED" />
+                                <Label fx:id="courseErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="5.0" top="2.0" />
+                           </VBox.margin></Label>
                             </children>
                         </VBox>
                         <VBox spacing="2.0">
@@ -104,7 +122,10 @@
                                     <font><Font name="Segoe UI Black" size="11.0" /></font>
                                 </Label>
                                 <TextField fx:id="yearTextField" minHeight="25.0" promptText="Enter year" styleClass="white-textfield" />
-                                <Label fx:id="yearErrorLabel" style="-fx-font-size: 10px;" textFill="RED" />
+                                <Label fx:id="yearErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="5.0" top="2.0" />
+                           </VBox.margin></Label>
                             </children>
                         </VBox>
                     </children>
@@ -117,7 +138,10 @@
                             <font><Font name="Segoe UI Black" size="11.0" /></font>
                         </Label>
                         <TextField fx:id="emailTextField" minHeight="25.0" onAction="#onAddStudentAction" promptText=" example@gmail.com" styleClass="white-textfield" />
-                        <Label fx:id="emailErrorLabel" style="-fx-font-size: 10px;" textFill="RED" />
+                        <Label fx:id="emailErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
+                     <VBox.margin>
+                        <Insets left="5.0" top="2.0" />
+                     </VBox.margin></Label>
                     </children>
                 </VBox>
             </children>
@@ -133,7 +157,7 @@
                 <Button minHeight="25.0" minWidth="60.0" onAction="#onAddStudentAction" styleClass="blue-button" text="Add" textFill="WHITE" />
             </children>
             <padding><Insets right="20.0" /></padding>
-            <VBox.margin><Insets top="5.0" /></VBox.margin>
+            <VBox.margin><Insets /></VBox.margin>
         </HBox>
     </children>
 </VBox>
