@@ -2,7 +2,7 @@ package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
-import com.school.studentmanagementfx.service.StudentValidator;
+import com.school.studentmanagementfx.service.AddStudentValidator;
 import com.school.studentmanagementfx.service.StudentFileService;
 import com.school.studentmanagementfx.view.ViewManager;
 import com.school.studentmanagementfx.view.WindowManager;
@@ -30,7 +30,6 @@ public class AddStudentController {
     @FXML
     private TextField emailTextField;
 
-    // Error labels for inline validation
     @FXML
     private Label idErrorLabel;
     @FXML
@@ -55,7 +54,8 @@ public class AddStudentController {
 
     @FXML
     private void onAddStudentAction(ActionEvent event) {
-        clearErrorLabels();
+        /*
+        Useless:
         if (idTextField.getText().isEmpty() ||
                 nameTextField.getText().isEmpty() ||
                 ageTextField.getText().isEmpty() ||
@@ -68,8 +68,10 @@ public class AddStudentController {
             ViewManager.showErrorViewOne(event);
             return;
         }
-        // Validate fields using StudentValidator
-        Map<String, String> errors = StudentValidator.validateFields(
+        */
+
+        clearErrorLabels();
+        Map<String, String> errors = AddStudentValidator.validateFields(
                 idTextField.getText(),
                 nameTextField.getText(),
                 ageTextField.getText(),
@@ -80,14 +82,12 @@ public class AddStudentController {
                 emailTextField.getText());
         if (!errors.isEmpty()) {
             showErrors(errors);
-            return; // Stop if validation fails
+            return;
         }
-        // Validation passed → add student
         StudentRepo.getStudents().add(getStudentFromFields());
         StudentFileService.saveToDataBase();
         ViewManager.showSuccessWindowOne(event);
         clearFields();
-
     }
 
     private Student getStudentFromFields() {
