@@ -1,5 +1,0 @@
-1,John Rey Rabosa,19,2005-12-31,Panacan, Davao City,BSIT,2nd Year
-2,Erwin Curato,20,2004-08-15,Bajada, Davao City,BSIT,3rd Year
-3,Mark Anthony Villanueva,18,2006-05-20,Toril, Davao City,BSIT,1st Year
-5,Christian James Delos Santos,19,2005-02-18,Lanang, Davao City,BSIT,2nd Year
-7,Joshua Emmanuel Cruz,22,2002-07-25,Sasa, Davao City,BSIT,4th Year
