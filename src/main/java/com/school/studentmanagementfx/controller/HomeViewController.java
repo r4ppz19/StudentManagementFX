@@ -35,22 +35,7 @@ public class HomeViewController {
         if (StudentRepo.getStudents().isEmpty()) {
             StudentRepo.createDummyStudent();
         }
-
-        studentsTableView
-                .getColumns()
-                .forEach(col -> {
-                    col.setResizable(false);
-                    col.setReorderable(false);
-                    col.setSortable(false);
-                });
-
-        idTableColumn.setCellValueFactory(cellData -> cellData.getValue().getId());
-        nameTableColumn.setCellValueFactory(cellData -> cellData.getValue().getName());
-        courseTableColumn.setCellValueFactory(cellData -> cellData.getValue().getCourse());
-        yearTableColumn.setCellValueFactory(cellData -> cellData.getValue().getYear());
-        addDetailButton();
-
-        studentsTableView.setItems(StudentRepo.getStudents());
+        configureTable();
     }
 
     @FXML
@@ -89,6 +74,20 @@ public class HomeViewController {
         Stage current = WindowManager.getCurrentStage(event);
         current.close();
         ViewManager.showLoginView(current);
+    }
+
+    private void configureTable() {
+        studentsTableView.getColumns().forEach(col -> {
+            col.setResizable(false);
+            col.setReorderable(false);
+            col.setSortable(false);
+        });
+        idTableColumn.setCellValueFactory(cellData -> cellData.getValue().getId());
+        nameTableColumn.setCellValueFactory(cellData -> cellData.getValue().getName());
+        courseTableColumn.setCellValueFactory(cellData -> cellData.getValue().getCourse());
+        yearTableColumn.setCellValueFactory(cellData -> cellData.getValue().getYear());
+        addDetailButton();
+        studentsTableView.setItems(StudentRepo.getStudents());
     }
 
     private void addDetailButton() {
