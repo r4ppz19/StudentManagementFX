@@ -2,8 +2,9 @@ package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
-import com.school.studentmanagementfx.util.ViewManager;
-import com.school.studentmanagementfx.util.WindowManager;
+import com.school.studentmanagementfx.service.StudentFileService;
+import com.school.studentmanagementfx.view.ViewManager;
+import com.school.studentmanagementfx.view.WindowManager;
 import java.util.Objects;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,25 +33,11 @@ public class HomeViewController {
 
     @FXML
     private void initialize() {
+        StudentFileService.loadFromDataBase();
         if (StudentRepo.getStudents().isEmpty()) {
             StudentRepo.createDummyStudent();
         }
-
-        studentsTableView
-                .getColumns()
-                .forEach(col -> {
-                    col.setResizable(false);
-                    col.setReorderable(false);
-                    col.setSortable(false);
-                });
-
-        idTableColumn.setCellValueFactory(cellData -> cellData.getValue().getId());
-        nameTableColumn.setCellValueFactory(cellData -> cellData.getValue().getName());
-        courseTableColumn.setCellValueFactory(cellData -> cellData.getValue().getCourse());
-        yearTableColumn.setCellValueFactory(cellData -> cellData.getValue().getYear());
-        addDetailButton();
-
-        studentsTableView.setItems(StudentRepo.getStudents());
+        configureTable();
     }
 
     @FXML
@@ -86,9 +73,24 @@ public class HomeViewController {
 
     @FXML
     private void onLogOutAction(ActionEvent event) {
+        StudentFileService.saveToDataBase();
         Stage current = WindowManager.getCurrentStage(event);
         current.close();
         ViewManager.showLoginView(current);
+    }
+
+    private void configureTable() {
+        studentsTableView.getColumns().forEach(col -> {
+            col.setResizable(false);
+            col.setReorderable(false);
+            col.setSortable(false);
+        });
+        idTableColumn.setCellValueFactory(cellData -> cellData.getValue().getId());
+        nameTableColumn.setCellValueFactory(cellData -> cellData.getValue().getName());
+        courseTableColumn.setCellValueFactory(cellData -> cellData.getValue().getCourse());
+        yearTableColumn.setCellValueFactory(cellData -> cellData.getValue().getYear());
+        addDetailButton();
+        studentsTableView.setItems(StudentRepo.getStudents());
     }
 
     private void addDetailButton() {

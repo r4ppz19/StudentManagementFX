@@ -1,6 +1,6 @@
 package com.school.studentmanagementfx.controller;
 
-import com.school.studentmanagementfx.util.WindowManager;
+import com.school.studentmanagementfx.view.WindowManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 

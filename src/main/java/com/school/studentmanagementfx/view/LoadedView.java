@@ -1,4 +1,4 @@
-package com.school.studentmanagementfx.util;
+package com.school.studentmanagementfx.view;
 
 import javafx.scene.Parent;
 
