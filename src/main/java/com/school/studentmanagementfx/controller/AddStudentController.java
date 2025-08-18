@@ -12,24 +12,40 @@ import javafx.scene.control.TextField;
 import java.util.Map;
 
 public class AddStudentController {
-    @FXML private TextField idTextField;
-    @FXML private TextField nameTextField;
-    @FXML private TextField ageTextField;
-    @FXML private TextField birthdayTextField;
-    @FXML private TextField addressTextField;
-    @FXML private TextField courseTextField;
-    @FXML private TextField yearTextField;
-    @FXML private TextField emailTextField;
+    @FXML
+    private TextField idTextField;
+    @FXML
+    private TextField nameTextField;
+    @FXML
+    private TextField ageTextField;
+    @FXML
+    private TextField birthdayTextField;
+    @FXML
+    private TextField addressTextField;
+    @FXML
+    private TextField courseTextField;
+    @FXML
+    private TextField yearTextField;
+    @FXML
+    private TextField emailTextField;
 
     // Error labels for inline validation
-    @FXML private Label idErrorLabel;
-    @FXML private Label nameErrorLabel;
-    @FXML private Label ageErrorLabel;
-    @FXML private Label birthdayErrorLabel;
-    @FXML private Label addressErrorLabel;
-    @FXML private Label courseErrorLabel;
-    @FXML private Label yearErrorLabel;
-    @FXML private Label emailErrorLabel;
+    @FXML
+    private Label idErrorLabel;
+    @FXML
+    private Label nameErrorLabel;
+    @FXML
+    private Label ageErrorLabel;
+    @FXML
+    private Label birthdayErrorLabel;
+    @FXML
+    private Label addressErrorLabel;
+    @FXML
+    private Label courseErrorLabel;
+    @FXML
+    private Label yearErrorLabel;
+    @FXML
+    private Label emailErrorLabel;
 
     @FXML
     private void onCancelAction(ActionEvent event) {
@@ -39,17 +55,17 @@ public class AddStudentController {
     @FXML
     private void onAddStudentAction(ActionEvent event) {
         clearErrorLabels();
-            if (idTextField.getText().isEmpty() ||
-                    nameTextField.getText().isEmpty() ||
-                    ageTextField.getText().isEmpty() ||
-                    birthdayTextField.getText().isEmpty() ||
-                    addressTextField.getText().isEmpty() ||
-                    courseTextField.getText().isEmpty() ||
-                    yearTextField.getText().isEmpty() ||
-                    emailTextField.getText().isEmpty()) {
+        if (idTextField.getText().isEmpty() ||
+                nameTextField.getText().isEmpty() ||
+                ageTextField.getText().isEmpty() ||
+                birthdayTextField.getText().isEmpty() ||
+                addressTextField.getText().isEmpty() ||
+                courseTextField.getText().isEmpty() ||
+                yearTextField.getText().isEmpty() ||
+                emailTextField.getText().isEmpty()) {
 
-                ViewManager.showErrorViewOne(event);
-                return;
+            ViewManager.showErrorViewOne(event);
+            return;
         }
         // Validate fields using StudentValidator
         Map<String, String> errors = StudentValidator.validateFields(
@@ -60,8 +76,7 @@ public class AddStudentController {
                 addressTextField.getText(),
                 courseTextField.getText(),
                 yearTextField.getText(),
-                emailTextField.getText()
-        );
+                emailTextField.getText());
         if (!errors.isEmpty()) {
             showErrors(errors);
             return; // Stop if validation fails
@@ -70,7 +85,6 @@ public class AddStudentController {
         StudentRepo.getStudents().add(getStudentFromFields());
         ViewManager.showSuccessWindowOne(event);
         clearFields();
-
 
     }
 
@@ -83,8 +97,7 @@ public class AddStudentController {
                 addressTextField.getText().trim(),
                 courseTextField.getText().trim(),
                 yearTextField.getText().trim(),
-                emailTextField.getText().trim()
-        );
+                emailTextField.getText().trim());
     }
 
     private void clearFields() {
@@ -110,13 +123,21 @@ public class AddStudentController {
     }
 
     private void showErrors(Map<String, String> errors) {
-        if (errors.containsKey("id")) idErrorLabel.setText(errors.get("id"));
-        if (errors.containsKey("name")) nameErrorLabel.setText(errors.get("name"));
-        if (errors.containsKey("age")) ageErrorLabel.setText(errors.get("age"));
-        if (errors.containsKey("birthday")) birthdayErrorLabel.setText(errors.get("birthday"));
-        if (errors.containsKey("address")) addressErrorLabel.setText(errors.get("address"));
-        if (errors.containsKey("course")) courseErrorLabel.setText(errors.get("course"));
-        if (errors.containsKey("year")) yearErrorLabel.setText(errors.get("year"));
-        if (errors.containsKey("email")) emailErrorLabel.setText(errors.get("email"));
+        if (errors.containsKey("id"))
+            idErrorLabel.setText(errors.get("id"));
+        if (errors.containsKey("name"))
+            nameErrorLabel.setText(errors.get("name"));
+        if (errors.containsKey("age"))
+            ageErrorLabel.setText(errors.get("age"));
+        if (errors.containsKey("birthday"))
+            birthdayErrorLabel.setText(errors.get("birthday"));
+        if (errors.containsKey("address"))
+            addressErrorLabel.setText(errors.get("address"));
+        if (errors.containsKey("course"))
+            courseErrorLabel.setText(errors.get("course"));
+        if (errors.containsKey("year"))
+            yearErrorLabel.setText(errors.get("year"));
+        if (errors.containsKey("email"))
+            emailErrorLabel.setText(errors.get("email"));
     }
 }

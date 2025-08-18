@@ -12,8 +12,7 @@ public class StudentValidator {
             String address,
             String course,
             String year,
-            String email
-    ) {
+            String email) {
         Map<String, String> errors = new HashMap<>();
         if (id == null || !id.matches("\\d+")) {
             errors.put("id", "ID must be a number");
