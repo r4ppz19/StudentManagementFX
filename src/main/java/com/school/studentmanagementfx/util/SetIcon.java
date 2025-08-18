@@ -3,7 +3,7 @@ package com.school.studentmanagementfx.util;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public class SetIcon {
+class SetIcon {
 
     private static final String ICON_PATH = "/com/school/studentmanagementfx/image/icon.png";
 
