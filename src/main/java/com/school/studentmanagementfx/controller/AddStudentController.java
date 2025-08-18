@@ -2,6 +2,7 @@ package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
+import com.school.studentmanagementfx.util.StudentValidator;
 import com.school.studentmanagementfx.util.ViewManager;
 import com.school.studentmanagementfx.util.WindowManager;
 import javafx.event.ActionEvent;

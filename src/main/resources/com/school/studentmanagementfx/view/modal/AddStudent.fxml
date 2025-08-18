@@ -13,7 +13,7 @@
         <!-- Header -->
         <VBox alignment="CENTER_LEFT" minHeight="43.0" prefHeight="43.0" style="-fx-background-color: #1E1E2E; -fx-border-color: transparent transparent #1E1E2E transparent; -fx-border-width: 0.5;">
             <children>
-                <Label text="Add Student" textFill="#efefef">
+                <Label text="Add Student" textFill="#eeeeee">
                     <font>
                         <Font name="Segoe UI Black" size="13.0" />
                     </font>
@@ -68,7 +68,7 @@
                                 <Label text="Birthday" textFill="#1e1e2e">
                                     <font><Font name="Segoe UI Black" size="11.0" /></font>
                                 </Label>
-                                <TextField fx:id="birthdayTextField" minHeight="25.0" promptText="Enter birthday" styleClass="white-textfield" />
+                                <TextField fx:id="birthdayTextField" minHeight="25.0" promptText="MM/DD/YYYY" styleClass="white-textfield" />
                                 <Label fx:id="birthdayErrorLabel" style="-fx-font-size: 10px;" textFill="RED" />
                             </children>
                         </VBox>
