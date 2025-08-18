@@ -5,12 +5,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class FoundStudentController {
+
     @FXML
     private Button viewStudentDetailButton;
-
     @FXML
     private Label studentIdLabel;
-
     @FXML
     private Label studentNameLabel;
 

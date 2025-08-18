@@ -1,14 +1,13 @@
 package com.school.studentmanagementfx.controller;
 
-import com.school.studentmanagementfx.helper.WindowManager;
+import com.school.studentmanagementfx.util.ViewManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
+public class LoginViewController {
 
-public class LoginController {
     private static final String FIXED_USERNAME = "admin";
     private static final String FIXED_PASSWORD = "admin";
 
@@ -18,18 +17,15 @@ public class LoginController {
     private PasswordField passwordTextField;
 
     @FXML
-    private void onLoginAction(ActionEvent event) throws IOException {
+    private void onLoginAction(ActionEvent event) {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
 
         if (FIXED_USERNAME.equals(username) && FIXED_PASSWORD.equals(password)) {
-            String homePageFxml = "/com/school/studentmanagementfx/view/HomeView.fxml";
-            WindowManager.createNewWindowAndClose(event, homePageFxml, "StudentManagementFX");
+            ViewManager.showHomeView(event);
             clearFields();
         } else {
-            System.out.println("Wrong username or password");
-            String errorUserPass = "/com/school/studentmanagementfx/view/alert/ErrorUserPass.fxml";
-            WindowManager.createModalWindow(event, errorUserPass, "Error");
+            ViewManager.showErrorViewTwo(event);
             clearFields();
         }
     }

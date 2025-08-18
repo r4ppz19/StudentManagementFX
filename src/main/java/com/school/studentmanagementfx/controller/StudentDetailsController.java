@@ -1,19 +1,16 @@
 package com.school.studentmanagementfx.controller;
 
-import com.school.studentmanagementfx.helper.WindowManager;
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
+import com.school.studentmanagementfx.util.ViewManager;
+import com.school.studentmanagementfx.util.WindowManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class StudentDetailsController {
+
     private Student student;
 
     @FXML
@@ -33,40 +30,21 @@ public class StudentDetailsController {
     @FXML
     private TextField emailTextField;
 
-    public static void showStudentDetails(ActionEvent event, Student student) {
-        try {
-            Stage parentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            String fxmlPath = "/com/school/studentmanagementfx/view/StudentDetailsView.fxml";
-
-            FXMLLoader loader = new FXMLLoader(WindowManager.class.getResource(fxmlPath));
-            Parent root = loader.load();
-
-            StudentDetailsController controller = loader.getController();
-            controller.setStudent(student);
-
-            WindowManager.createWindow(root, parentStage, "Student Details");
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
     @FXML
     private void onCloseAction(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
+        WindowManager.getCurrentStage(event).close();
     }
 
     @FXML
     private void onDeleteStudentAction(ActionEvent event) {
-        Stage parentStage = WindowManager.getCurrentStage(event);
-        if (WarningController.showWarning(parentStage)) {
+        Stage owner = WindowManager.getCurrentStage(event);
+        if (ViewManager.showWarningView(owner)) {
             StudentRepo.getStudents().remove(student);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.close();
+            WindowManager.getCurrentStage(event).close();
         }
     }
 
-    private void setStudent(Student student) {
+    public void setStudent(Student student) {
         this.student = student;
         idTextField.setText(student.getId().get());
         nameTextField.setText(student.getName().get());
