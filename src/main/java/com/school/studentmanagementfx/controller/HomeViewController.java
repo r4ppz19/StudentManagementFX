@@ -44,14 +44,14 @@ public class HomeViewController {
     private void onSearchStudentAction() {
         indicatorVboxContainer.getChildren().clear();
 
-        String queryId = searchTextField.getText().trim().toLowerCase();
+        String queryId = searchTextField.getText().trim();
         if (queryId.isEmpty()) {
             return;
         }
 
         Student foundStudent = null;
         for (Student s : StudentRepo.getStudents()) {
-            if (s.getId().get().toLowerCase().equals(queryId)) {
+            if (s.getId().get().equals(queryId)) {
                 foundStudent = s;
                 break;
             }
@@ -75,7 +75,6 @@ public class HomeViewController {
     private void onLogOutAction(ActionEvent event) {
         StudentFileService.saveToDataBase();
         Stage current = WindowManager.getCurrentStage(event);
-        current.close();
         ViewManager.showLoginView(current);
     }
 
@@ -99,7 +98,7 @@ public class HomeViewController {
 
             {
                 viewButton.setOnAction(event -> {
-                    Student student = getTableView().getItems().get(getIndex());
+                    Student student = studentsTableView.getItems().get(getIndex());
                     ViewManager.showStudentDetailView(event, student);
                 });
                 String buttonCss = "/com/school/studentmanagementfx/style/Button.css";

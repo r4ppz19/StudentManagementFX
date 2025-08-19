@@ -80,6 +80,7 @@ public class AddStudentController {
                 courseTextField.getText(),
                 yearTextField.getText(),
                 emailTextField.getText());
+
         if (!errors.isEmpty()) {
             showErrors(errors);
             return;

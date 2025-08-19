@@ -1,12 +1,6 @@
 package com.school.studentmanagementfx.view;
 
-import com.school.studentmanagementfx.controller.AddStudentController;
-import com.school.studentmanagementfx.controller.DialogController;
-import com.school.studentmanagementfx.controller.FoundStudentController;
-import com.school.studentmanagementfx.controller.HomeViewController;
-import com.school.studentmanagementfx.controller.LoginViewController;
-import com.school.studentmanagementfx.controller.StudentDetailsController;
-import com.school.studentmanagementfx.controller.WarningController;
+import com.school.studentmanagementfx.controller.*;
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.util.SetIcon;
 import javafx.event.Event;
@@ -38,9 +32,9 @@ public class ViewManager {
 
     public static void showStudentDetailView(Event event, Student student) {
         String fxmlPath = "/com/school/studentmanagementfx/view/modal/StudentDetails.fxml";
-        Stage current = WindowManager.getCurrentStage(event);
         LoadedView<StudentDetailsController> view = WindowManager.loadView(fxmlPath);
         view.getController().setStudent(student);
+        Stage current = WindowManager.getCurrentStage(event);
         WindowManager.createWindow(view.getRoot(), current, "Student Detail", true).showAndWait();
     }
 
