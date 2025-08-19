@@ -2,11 +2,11 @@ package com.school.studentmanagementfx.view;
 
 import javafx.scene.Parent;
 
-public class LoadedView<T> {
+public class LoadedView<C> {
     private final Parent root;
-    private final T controller;
+    private final C controller;
 
-    public LoadedView(Parent root, T controller) {
+    public LoadedView(Parent root, C controller) {
         this.root = root;
         this.controller = controller;
     }
@@ -15,7 +15,7 @@ public class LoadedView<T> {
         return root;
     }
 
-    public T getController() {
+    public C getController() {
         return controller;
     }
 }

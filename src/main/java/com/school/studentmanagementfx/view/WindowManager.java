@@ -36,11 +36,11 @@ public class WindowManager {
         return (Stage) ((Node) event.getSource()).getScene().getWindow();
     }
 
-    public static <T> LoadedView<T> loadView(String fxmlPath) {
+    public static <C> LoadedView<C> loadView(String fxmlPath) {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlPath));
             Parent root = loader.load();
-            T controller = loader.getController();
+            C controller = loader.getController();
             return new LoadedView<>(root, controller);
         } catch (IOException e) {
             throw new RuntimeException("Failed to load FXML: " + fxmlPath, e);
