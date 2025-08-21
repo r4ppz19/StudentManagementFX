@@ -101,7 +101,7 @@ public class HomeViewController {
                     Student student = studentsTableView.getItems().get(getIndex());
                     ViewManager.showStudentDetailView(event, student);
                 });
-                String buttonCss = "/com/school/studentmanagementfx/style/Button.css";
+                String buttonCss = "/com/school/studentmanagementfx/style/ViewButton.css";
                 viewButton
                         .getStylesheets()
                         .add(
