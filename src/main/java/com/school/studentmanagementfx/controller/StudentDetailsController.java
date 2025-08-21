@@ -42,7 +42,7 @@ public class StudentDetailsController {
         if (ViewManager.showWarningView(owner)) {
             StudentRepo.getStudents().remove(student);
             StudentFileService.saveToDataBase();
-            WindowManager.getCurrentStage(event).close();
+            owner.close();
         }
     }
 

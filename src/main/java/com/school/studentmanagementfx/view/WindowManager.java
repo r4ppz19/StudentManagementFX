@@ -1,8 +1,5 @@
 package com.school.studentmanagementfx.view;
 
-import com.school.studentmanagementfx.Main;
-import java.io.IOException;
-
 import com.school.studentmanagementfx.util.SetIcon;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class WindowManager {
 
@@ -36,11 +35,11 @@ public class WindowManager {
         return (Stage) ((Node) event.getSource()).getScene().getWindow();
     }
 
-    public static <T> LoadedView<T> loadView(String fxmlPath) {
+    public static <C> LoadedView<C> loadView(String fxmlPath) {
         try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlPath));
+            FXMLLoader loader = new FXMLLoader(WindowManager.class.getResource(fxmlPath));
             Parent root = loader.load();
-            T controller = loader.getController();
+            C controller = loader.getController();
             return new LoadedView<>(root, controller);
         } catch (IOException e) {
             throw new RuntimeException("Failed to load FXML: " + fxmlPath, e);
