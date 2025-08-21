@@ -1,6 +1,5 @@
 package com.school.studentmanagementfx.view;
 
-import com.school.studentmanagementfx.Main;
 import com.school.studentmanagementfx.util.SetIcon;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;

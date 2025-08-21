@@ -5,12 +5,13 @@ import com.school.studentmanagementfx.model.StudentRepo;
 import com.school.studentmanagementfx.service.StudentFileService;
 import com.school.studentmanagementfx.view.ViewManager;
 import com.school.studentmanagementfx.view.WindowManager;
-import java.util.Objects;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.util.Objects;
 
 public class HomeViewController {
 
@@ -33,10 +34,7 @@ public class HomeViewController {
 
     @FXML
     private void initialize() {
-        if (StudentRepo.getStudents().isEmpty()) {
-            StudentRepo.createDummyStudent();
-        }
-        StudentFileService.saveToDataBase();
+        StudentFileService.loadFromDataBase();
         configureTable();
     }
 

@@ -51,6 +51,7 @@ public class ViewManager {
         WindowManager.createWindow(view.getRoot(), owner, "Add Student", true).showAndWait();
     }
 
+    // Might delete later
     public static void showErrorViewOne(Event event) {
         String fxmlPath = "/com/school/studentmanagementfx/view/dialog/ErrorEmptyField.fxml";
         LoadedView<DialogController> view = WindowManager.loadView(fxmlPath);
