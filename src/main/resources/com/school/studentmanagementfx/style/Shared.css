@@ -54,13 +54,12 @@
 .logout-button:hover {
     -fx-cursor: hand;
     -fx-text-fill: #141427;
-    -fx-font-size: 12px;
 }
 
 .logout-button:pressed {
     -fx-cursor: hand;
     -fx-text-fill: #141427;
-    -fx-font-size: 10px;
+    -fx-translate-y: 2px;
 }
 
 .white-textfield {
