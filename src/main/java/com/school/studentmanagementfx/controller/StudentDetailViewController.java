@@ -97,11 +97,10 @@ public class StudentDetailViewController {
     }
 
     @FXML
-    private void onCancelAction() {
+    private void onCancelAction(ActionEvent event) {
+        Stage current = StageManager.getCurrentStage(event);
         if (hasChanges()) {
-            Stage current = (Stage) cancelButton.getScene().getWindow();
-            boolean confirmed = ViewManager.showWarningCancelView(current);
-            if (!confirmed) {
+            if (!ViewManager.showWarningCancelView(current)){
                 return;
             }
         }
