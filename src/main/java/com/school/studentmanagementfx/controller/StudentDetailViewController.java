@@ -93,7 +93,7 @@ public class StudentDetailViewController {
         );
 
         StudentForm.setFieldsEditable(false, textFields);
-        setInitialButtonState();
+        setReadOnlyModeButtonState();
         Platform.runLater(() -> closeButton.requestFocus());
     }
 
@@ -150,14 +150,6 @@ public class StudentDetailViewController {
         courseTextField.setText(student.getCourse().get());
         yearTextField.setText(student.getYear().get());
         emailTextField.setText(student.getEmail().get());
-    }
-
-    private void setInitialButtonState() {
-        setButtonVisibilityAndManaged(saveButton, false);
-        setButtonVisibilityAndManaged(deleteButton, false);
-        setButtonVisibilityAndManaged(cancelButton, false);
-        setButtonVisibilityAndManaged(editButton, true);
-        setButtonVisibilityAndManaged(closeButton, true);
     }
 
     private void setEditModeButtonState() {
