@@ -13,7 +13,7 @@
         <!-- Header -->
         <VBox alignment="CENTER_LEFT" minHeight="43.0" prefHeight="43.0" style="-fx-background-color: #1E1E2E; -fx-border-color: transparent transparent #1E1E2E transparent; -fx-border-width: 0.5;">
             <children>
-                <Label text="Student Details" textFill="#eeeeee">
+                <Label fx:id="headerLabel" text="Student Details" textFill="#eeeeee">
                     <font>
                         <Font name="Segoe UI Black" size="13.0" />
                     </font>

@@ -48,6 +48,9 @@ public class StudentDetailViewController {
     private Button deleteButton;
 
     @FXML
+    private Label headerLabel;
+
+    @FXML
     private Label idErrorLabel;
     @FXML
     private Label nameErrorLabel;
@@ -157,6 +160,7 @@ public class StudentDetailViewController {
     }
 
     private void setEditModeState() {
+        headerLabel.setText("Student Details  (Edit Mode)");
         UIComponentHelper.showButton(saveButton, true);
         UIComponentHelper.showButton(deleteButton, true);
         UIComponentHelper.showButton(cancelButton, true);
@@ -166,6 +170,7 @@ public class StudentDetailViewController {
     }
 
     private void setReadOnlyModeState() {
+        headerLabel.setText("Student Details");
         UIComponentHelper.showButton(saveButton, false);
         UIComponentHelper.showButton(deleteButton, false);
         UIComponentHelper.showButton(cancelButton, false);
