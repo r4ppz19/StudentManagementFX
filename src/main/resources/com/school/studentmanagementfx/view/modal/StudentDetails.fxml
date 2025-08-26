@@ -8,8 +8,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="341.0" minWidth="345.0" prefHeight="379.0" prefWidth="345.0" spacing="10.0" style="-fx-background-color: #EEEEEE;" stylesheets="@../../style/Shared.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.school.studentmanagementfx.controller.StudentDetailsController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="341.0" minWidth="345.0" prefHeight="451.0" prefWidth="345.0" spacing="10.0" style="-fx-background-color: #EEEEEE;" stylesheets="@../../style/Shared.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.school.studentmanagementfx.controller.StudentDetailsController">
     <children>
+        <!-- Header -->
         <VBox alignment="CENTER_LEFT" minHeight="43.0" prefHeight="43.0" style="-fx-background-color: #1E1E2E; -fx-border-color: transparent transparent #1E1E2E transparent; -fx-border-width: 0.5;">
             <children>
                 <Label text="Student Details" textFill="#eeeeee">
@@ -22,130 +23,125 @@
                 </Label>
             </children>
         </VBox>
-        <VBox spacing="10.0">
+
+        <!-- Form Fields -->
+        <VBox prefHeight="302.0" prefWidth="346.0">
             <children>
-                <HBox alignment="CENTER" prefHeight="0.0" prefWidth="345.0" spacing="15.0">
+                <!-- ID & Name -->
+                <HBox alignment="CENTER" spacing="15.0">
                     <children>
                         <VBox spacing="2.0">
                             <children>
                                 <Label text="ID" textFill="#1e1e2e">
-                                    <font>
-                                        <Font name="Segoe UI Black" size="11.0" />
-                                    </font>
+                                    <font><Font name="Segoe UI Black" size="11.0" /></font>
                                 </Label>
-                                <TextField fx:id="idTextField" editable="false" focusTraversable="false" minHeight="25.0" prefHeight="25.0" promptText="Enter ID" styleClass="white-textfield">
-                                    <font>
-                                        <Font name="Segoe UI Black" size="11.0" />
-                                    </font>
-                                </TextField>
+                                <TextField fx:id="idTextField" editable="false" minHeight="25.0" promptText="Enter ID" styleClass="white-textfield" />
+                                <Label fx:id="idErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="5.0" top="2.0" />
+                           </VBox.margin></Label>
                             </children>
                         </VBox>
                         <VBox spacing="2.0">
                             <children>
                                 <Label text="Name" textFill="#1e1e2e">
-                                    <font>
-                                        <Font name="Segoe UI Black" size="11.0" />
-                                    </font>
+                                    <font><Font name="Segoe UI Black" size="11.0" /></font>
                                 </Label>
-                                <TextField fx:id="nameTextField" editable="false" focusTraversable="false" minHeight="25.0" prefHeight="25.0" promptText="Enter name" styleClass="white-textfield">
-                                    <font>
-                                        <Font name="Segoe UI Black" size="11.0" />
-                                    </font>
-                                </TextField>
+                                <TextField fx:id="nameTextField" editable="false" minHeight="25.0" promptText="Enter name" styleClass="white-textfield" />
+                                <Label fx:id="nameErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="5.0" top="2.0" />
+                           </VBox.margin></Label>
                             </children>
                         </VBox>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER" prefHeight="0.0" prefWidth="345.0" spacing="15.0">
+
+                <!-- Age & Birthday -->
+                <HBox alignment="CENTER" spacing="15.0">
                     <children>
                         <VBox spacing="2.0">
                             <children>
                                 <Label text="Age" textFill="#1e1e2e">
-                                    <font>
-                                        <Font name="Segoe UI Black" size="11.0" />
-                                    </font>
+                                    <font><Font name="Segoe UI Black" size="11.0" /></font>
                                 </Label>
-                                <TextField fx:id="ageTextField" editable="false" focusTraversable="false" minHeight="25.0" prefHeight="25.0" promptText="Enter age" styleClass="white-textfield">
-                                    <font>
-                                        <Font name="Segoe UI Black" size="11.0" />
-                                    </font>
-                                </TextField>
+                                <TextField fx:id="ageTextField" editable="false" minHeight="25.0" promptText="Enter age" styleClass="white-textfield" />
+                                <Label fx:id="ageErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="5.0" top="2.0" />
+                           </VBox.margin></Label>
                             </children>
                         </VBox>
                         <VBox spacing="2.0">
                             <children>
                                 <Label text="Birthday" textFill="#1e1e2e">
-                                    <font>
-                                        <Font name="Segoe UI Black" size="11.0" />
-                                    </font>
+                                    <font><Font name="Segoe UI Black" size="11.0" /></font>
                                 </Label>
-                                <TextField fx:id="birthdayTextField" editable="false" focusTraversable="false" minHeight="25.0" prefHeight="25.0" promptText="Enter birthday" styleClass="white-textfield">
-                                    <font>
-                                        <Font name="Segoe UI Black" size="11.0" />
-                                    </font>
-                                </TextField>
+                                <TextField fx:id="birthdayTextField" editable="false" minHeight="25.0" promptText="mm/dd/yyyy" styleClass="white-textfield" />
+                                <Label fx:id="birthdayErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="5.0" top="2.0" />
+                           </VBox.margin></Label>
                             </children>
                         </VBox>
                     </children>
                 </HBox>
+
+                <!-- Address -->
                 <VBox spacing="2.0">
                     <children>
                         <Label text="Address" textFill="#1e1e2e">
-                            <font>
-                                <Font name="Segoe UI Black" size="11.0" />
-                            </font>
+                            <font><Font name="Segoe UI Black" size="11.0" /></font>
                         </Label>
-                        <TextField fx:id="addressTextField" editable="false" focusTraversable="false" minHeight="35.0" prefHeight="35.0" promptText="Enter address" styleClass="white-textfield">
-                            <font>
-                                <Font name="Segoe UI Black" size="11.0" />
-                            </font>
-                        </TextField>
+                        <TextField fx:id="addressTextField" editable="false" minHeight="35.0" promptText="Enter address" styleClass="white-textfield" />
+                        <Label fx:id="addressErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
+                     <VBox.margin>
+                        <Insets bottom="2.0" left="5.0" top="2.0" />
+                     </VBox.margin></Label>
                     </children>
                 </VBox>
-                <HBox alignment="CENTER" prefHeight="0.0" prefWidth="345.0" spacing="15.0">
+
+                <!-- Course & Year -->
+                <HBox alignment="CENTER" spacing="15.0">
                     <children>
                         <VBox spacing="2.0">
                             <children>
                                 <Label text="Course" textFill="#1e1e2e">
-                                    <font>
-                                        <Font name="Segoe UI Black" size="11.0" />
-                                    </font>
+                                    <font><Font name="Segoe UI Black" size="11.0" /></font>
                                 </Label>
-                                <TextField fx:id="courseTextField" editable="false" focusTraversable="false" minHeight="25.0" prefHeight="25.0" promptText="Enter course" styleClass="white-textfield">
-                                    <font>
-                                        <Font name="Segoe UI Black" size="11.0" />
-                                    </font>
-                                </TextField>
+                                <TextField fx:id="courseTextField" editable="false" minHeight="25.0" promptText="Enter course" styleClass="white-textfield" />
+                                <Label fx:id="courseErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="5.0" top="2.0" />
+                           </VBox.margin></Label>
                             </children>
                         </VBox>
                         <VBox spacing="2.0">
                             <children>
                                 <Label text="Year" textFill="#1e1e2e">
-                                    <font>
-                                        <Font name="Segoe UI Black" size="11.0" />
-                                    </font>
+                                    <font><Font name="Segoe UI Black" size="11.0" /></font>
                                 </Label>
-                                <TextField fx:id="yearTextField" editable="false" focusTraversable="false" minHeight="25.0" prefHeight="25.0" promptText="Enter year" styleClass="white-textfield">
-                                    <font>
-                                        <Font name="Segoe UI Black" size="11.0" />
-                                    </font>
-                                </TextField>
+                                <TextField fx:id="yearTextField" editable="false" minHeight="25.0" promptText="Enter year" styleClass="white-textfield" />
+                                <Label fx:id="yearErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="5.0" top="2.0" />
+                           </VBox.margin></Label>
                             </children>
                         </VBox>
                     </children>
                 </HBox>
+
+                <!-- Email -->
                 <VBox spacing="2.0">
                     <children>
                         <Label text="Email" textFill="#1e1e2e">
-                            <font>
-                                <Font name="Segoe UI Black" size="11.0" />
-                            </font>
+                            <font><Font name="Segoe UI Black" size="11.0" /></font>
                         </Label>
-                        <TextField fx:id="emailTextField" editable="false" focusTraversable="false" minHeight="25.0" prefHeight="25.0" promptText="Enter email" styleClass="white-textfield">
-                            <font>
-                                <Font name="Segoe UI Black" size="11.0" />
-                            </font>
-                        </TextField>
+                        <TextField fx:id="emailTextField" editable="false" minHeight="25.0" promptText=" example@gmail.com" styleClass="white-textfield" />
+                        <Label fx:id="emailErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
+                     <VBox.margin>
+                        <Insets left="5.0" top="2.0" />
+                     </VBox.margin></Label>
                     </children>
                 </VBox>
             </children>
@@ -153,25 +149,15 @@
                 <Insets left="20.0" right="20.0" />
             </padding>
         </VBox>
+
+        <!-- Buttons -->
         <HBox alignment="CENTER_RIGHT" spacing="10.0">
             <children>
-                <Button minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onDeleteStudentAction" prefHeight="25.0" prefWidth="60.0" styleClass="blue-button" text="Delete" textFill="#1e1e2e">
-                    <font>
-                        <Font name="Segoe UI Black" size="11.0" />
-                    </font>
-                </Button>
-            <Button minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onCloseAction" prefHeight="25.0" prefWidth="60.0" styleClass="white-button" text="Close" textFill="#1e1e2e">
-               <font>
-                  <Font name="Segoe UI Black" size="11.0" />
-               </font>
-            </Button>
+            <Button fx:id="editSaveButton" minHeight="25.0" minWidth="60.0" onAction="#onEditSaveAction" styleClass="blue-button" text="Edit" textFill="WHITE" />
+                <Button fx:id="closeDeleteButton" minHeight="25.0" minWidth="60.0" onAction="#onCloseDeleteAction" styleClass="white-button" text="Close" textFill="#1e1e2e" />
             </children>
-            <padding>
-                <Insets right="20.0" />
-            </padding>
-            <VBox.margin>
-                <Insets top="5.0" />
-            </VBox.margin>
+            <padding><Insets right="20.0" /></padding>
+            <VBox.margin><Insets /></VBox.margin>
         </HBox>
     </children>
 </VBox>

@@ -17,8 +17,8 @@ public class StudentRepo {
                 "1",
                 "John Rey Rabosa",
                 "19",
-                "2005-12-31",
-                "Panacan, Davao City",
+                "12/31/2005", // Updated format
+                "Panacan Davao City",
                 "BSIT",
                 "2nd Year",
                 "john.rabosa@example.com");
@@ -27,8 +27,8 @@ public class StudentRepo {
                 "2",
                 "Erwin Curato",
                 "20",
-                "2004-08-15",
-                "Bajada, Davao City",
+                "08/15/2004", // Updated format
+                "Bajada Davao City",
                 "BSIT",
                 "3rd Year",
                 "erwin.curato@example.com");
@@ -37,8 +37,8 @@ public class StudentRepo {
                 "3",
                 "Mark Anthony Villanueva",
                 "18",
-                "2006-05-20",
-                "Toril, Davao City",
+                "05/20/2006", // Updated format
+                "Toril Davao City",
                 "BSIT",
                 "1st Year",
                 "mark.villanueva@example.com");
@@ -47,8 +47,8 @@ public class StudentRepo {
                 "4",
                 "Anna Mae Castillo",
                 "21",
-                "2003-09-02",
-                "Matina, Davao City",
+                "09/02/2003", // Updated format
+                "Matina Davao City",
                 "BSIT",
                 "4th Year",
                 "anna.castillo@example.com");
@@ -57,8 +57,8 @@ public class StudentRepo {
                 "5",
                 "Christian James Delos Santos",
                 "19",
-                "2005-02-18",
-                "Lanang, Davao City",
+                "02/18/2005", // Updated format
+                "Lanang Davao City",
                 "BSIT",
                 "2nd Year",
                 "christian.santos@example.com");
@@ -67,8 +67,8 @@ public class StudentRepo {
                 "6",
                 "Rochelle Mae Bautista",
                 "20",
-                "2004-11-10",
-                "Mintal, Davao City",
+                "11/10/2004", // Updated format
+                "Mintal Davao City",
                 "BSIT",
                 "3rd Year",
                 "rochelle.bautista@example.com");
@@ -77,8 +77,8 @@ public class StudentRepo {
                 "7",
                 "Joshua Emmanuel Cruz",
                 "22",
-                "2002-07-25",
-                "Sasa, Davao City",
+                "07/25/2002", // Updated format
+                "Sasa Davao City",
                 "BSIT",
                 "4th Year",
                 "joshua.cruz@example.com");

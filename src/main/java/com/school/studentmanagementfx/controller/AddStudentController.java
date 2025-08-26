@@ -2,8 +2,8 @@ package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
-import com.school.studentmanagementfx.service.AddStudentValidator;
 import com.school.studentmanagementfx.service.StudentFileService;
+import com.school.studentmanagementfx.util.StudentFormUtils;
 import com.school.studentmanagementfx.view.ViewManager;
 import com.school.studentmanagementfx.view.WindowManager;
 import javafx.event.ActionEvent;
@@ -48,6 +48,32 @@ public class AddStudentController {
     @FXML
     private Label emailErrorLabel;
 
+    private Map<String, Label> errorLabels;
+    private Map<String, TextField> textFields;
+
+    @FXML
+    private void initialize() {
+        textFields = Map.of(
+                "id", idTextField,
+                "name", nameTextField,
+                "age", ageTextField,
+                "birthday", birthdayTextField,
+                "address", addressTextField,
+                "course", courseTextField,
+                "year", yearTextField,
+                "email", emailTextField);
+
+        errorLabels = Map.of(
+                "id", idErrorLabel,
+                "name", nameErrorLabel,
+                "age", ageErrorLabel,
+                "birthday", birthdayErrorLabel,
+                "address", addressErrorLabel,
+                "course", courseErrorLabel,
+                "year", yearErrorLabel,
+                "email", emailErrorLabel);
+    }
+
     @FXML
     private void onCancelAction(ActionEvent event) {
         WindowManager.getCurrentStage(event).close();
@@ -55,93 +81,26 @@ public class AddStudentController {
 
     @FXML
     private void onAddStudentAction(ActionEvent event) {
-        /*
-        Useless:
-        if (idTextField.getText().isEmpty() ||
-                nameTextField.getText().isEmpty() ||
-                ageTextField.getText().isEmpty() ||
-                birthdayTextField.getText().isEmpty() ||
-                addressTextField.getText().isEmpty() ||
-                courseTextField.getText().isEmpty() ||
-                yearTextField.getText().isEmpty() ||
-                emailTextField.getText().isEmpty()) {
-
-            ViewManager.showErrorViewOne(event);
+        if (StudentFormUtils.validateAndShowErrors(errorLabels, textFields)) {
             return;
         }
-        */
 
-        clearErrorLabels();
-        Map<String, String> errors = AddStudentValidator.validateFields(
-                idTextField.getText(),
-                nameTextField.getText(),
-                ageTextField.getText(),
-                birthdayTextField.getText(),
-                addressTextField.getText(),
-                courseTextField.getText(),
-                yearTextField.getText(),
-                emailTextField.getText());
-
-        if (!errors.isEmpty()) {
-            showErrors(errors);
-            return;
-        }
         StudentRepo.getStudents().add(getStudentFromFields());
         StudentFileService.saveToDataBase();
         ViewManager.showSuccessWindowOne(event);
-        clearFields();
+
+        StudentFormUtils.clearFields(textFields);
     }
 
     private Student getStudentFromFields() {
         return new Student(
-                idTextField.getText().trim(),
-                nameTextField.getText().trim(),
-                ageTextField.getText().trim(),
-                birthdayTextField.getText().trim(),
-                addressTextField.getText().trim(),
-                courseTextField.getText().trim(),
-                yearTextField.getText().trim(),
-                emailTextField.getText().trim());
-    }
-
-    private void clearFields() {
-        idTextField.clear();
-        nameTextField.clear();
-        ageTextField.clear();
-        birthdayTextField.clear();
-        addressTextField.clear();
-        courseTextField.clear();
-        yearTextField.clear();
-        emailTextField.clear();
-    }
-
-    private void clearErrorLabels() {
-        idErrorLabel.setText("");
-        nameErrorLabel.setText("");
-        ageErrorLabel.setText("");
-        birthdayErrorLabel.setText("");
-        addressErrorLabel.setText("");
-        courseErrorLabel.setText("");
-        yearErrorLabel.setText("");
-        emailErrorLabel.setText("");
-    }
-
-    private void showErrors(Map<String, String> errors) {
-        if (errors.containsKey("id"))
-            idErrorLabel.setText(errors.get("id"));
-        if (errors.containsKey("name"))
-            nameErrorLabel.setText(errors.get("name"));
-        if (errors.containsKey("age"))
-            ageErrorLabel.setText(errors.get("age"));
-        if (errors.containsKey("birthday"))
-            birthdayErrorLabel.setText(errors.get("birthday"));
-        if (errors.containsKey("address"))
-            addressErrorLabel.setText(errors.get("address"));
-        if (errors.containsKey("course"))
-            courseErrorLabel.setText(errors.get("course"));
-        if (errors.containsKey("year"))
-            yearErrorLabel.setText(errors.get("year"));
-        if (errors.containsKey("email"))
-            emailErrorLabel.setText(errors.get("email"));
+                textFields.get("id").getText().trim(),
+                textFields.get("name").getText().trim(),
+                textFields.get("age").getText().trim(),
+                textFields.get("birthday").getText().trim(),
+                textFields.get("address").getText().trim(),
+                textFields.get("course").getText().trim(),
+                textFields.get("year").getText().trim(),
+                textFields.get("email").getText().trim());
     }
 }
