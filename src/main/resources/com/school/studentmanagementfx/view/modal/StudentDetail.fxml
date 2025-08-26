@@ -35,7 +35,7 @@
                                 <Label text="ID" textFill="#1e1e2e">
                                     <font><Font name="Segoe UI Black" size="11.0" /></font>
                                 </Label>
-                                <TextField fx:id="idTextField" editable="false" minHeight="25.0" promptText="Enter ID" styleClass="white-textfield" />
+                                <TextField fx:id="idTextField" minHeight="25.0" promptText="Enter ID" styleClass="white-textfield" />
                                 <Label fx:id="idErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
                            <VBox.margin>
                               <Insets bottom="2.0" left="5.0" top="2.0" />
@@ -47,7 +47,7 @@
                                 <Label text="Name" textFill="#1e1e2e">
                                     <font><Font name="Segoe UI Black" size="11.0" /></font>
                                 </Label>
-                                <TextField fx:id="nameTextField" editable="false" minHeight="25.0" promptText="Enter name" styleClass="white-textfield" />
+                                <TextField fx:id="nameTextField" minHeight="25.0" promptText="Enter name" styleClass="white-textfield" />
                                 <Label fx:id="nameErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
                            <VBox.margin>
                               <Insets bottom="2.0" left="5.0" top="2.0" />
@@ -65,7 +65,7 @@
                                 <Label text="Age" textFill="#1e1e2e">
                                     <font><Font name="Segoe UI Black" size="11.0" /></font>
                                 </Label>
-                                <TextField fx:id="ageTextField" editable="false" minHeight="25.0" promptText="Enter age" styleClass="white-textfield" />
+                                <TextField fx:id="ageTextField" minHeight="25.0" promptText="Enter age" styleClass="white-textfield" />
                                 <Label fx:id="ageErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
                            <VBox.margin>
                               <Insets bottom="2.0" left="5.0" top="2.0" />
@@ -77,7 +77,7 @@
                                 <Label text="Birthday" textFill="#1e1e2e">
                                     <font><Font name="Segoe UI Black" size="11.0" /></font>
                                 </Label>
-                                <TextField fx:id="birthdayTextField" editable="false" minHeight="25.0" promptText="mm/dd/yyyy" styleClass="white-textfield" />
+                                <TextField fx:id="birthdayTextField" minHeight="25.0" promptText="mm/dd/yyyy" styleClass="white-textfield" />
                                 <Label fx:id="birthdayErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
                            <VBox.margin>
                               <Insets bottom="2.0" left="5.0" top="2.0" />
@@ -93,7 +93,7 @@
                         <Label text="Address" textFill="#1e1e2e">
                             <font><Font name="Segoe UI Black" size="11.0" /></font>
                         </Label>
-                        <TextField fx:id="addressTextField" editable="false" minHeight="35.0" promptText="Enter address" styleClass="white-textfield" />
+                        <TextField fx:id="addressTextField" minHeight="35.0" promptText="Enter address" styleClass="white-textfield" />
                         <Label fx:id="addressErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
                      <VBox.margin>
                         <Insets bottom="2.0" left="5.0" top="2.0" />
@@ -109,7 +109,7 @@
                                 <Label text="Course" textFill="#1e1e2e">
                                     <font><Font name="Segoe UI Black" size="11.0" /></font>
                                 </Label>
-                                <TextField fx:id="courseTextField" editable="false" minHeight="25.0" promptText="Enter course" styleClass="white-textfield" />
+                                <TextField fx:id="courseTextField" minHeight="25.0" promptText="Enter course" styleClass="white-textfield" />
                                 <Label fx:id="courseErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
                            <VBox.margin>
                               <Insets bottom="2.0" left="5.0" top="2.0" />
@@ -121,7 +121,7 @@
                                 <Label text="Year" textFill="#1e1e2e">
                                     <font><Font name="Segoe UI Black" size="11.0" /></font>
                                 </Label>
-                                <TextField fx:id="yearTextField" editable="false" minHeight="25.0" promptText="Enter year" styleClass="white-textfield" />
+                                <TextField fx:id="yearTextField" minHeight="25.0" promptText="Enter year" styleClass="white-textfield" />
                                 <Label fx:id="yearErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
                            <VBox.margin>
                               <Insets bottom="2.0" left="5.0" top="2.0" />
@@ -137,7 +137,7 @@
                         <Label text="Email" textFill="#1e1e2e">
                             <font><Font name="Segoe UI Black" size="11.0" /></font>
                         </Label>
-                        <TextField fx:id="emailTextField" editable="false" minHeight="25.0" promptText=" example@gmail.com" styleClass="white-textfield" />
+                        <TextField fx:id="emailTextField" minHeight="25.0" promptText=" example@gmail.com" styleClass="white-textfield" />
                         <Label fx:id="emailErrorLabel" style="-fx-font-size: 10px;" textFill="#eb0000">
                      <VBox.margin>
                         <Insets left="5.0" top="2.0" />
