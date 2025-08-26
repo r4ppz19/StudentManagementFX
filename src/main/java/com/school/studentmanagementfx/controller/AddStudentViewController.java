@@ -3,9 +3,9 @@ package com.school.studentmanagementfx.controller;
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
 import com.school.studentmanagementfx.service.StudentFileService;
-import com.school.studentmanagementfx.util.StudentFormUtils;
+import com.school.studentmanagementfx.util.StudentForm;
 import com.school.studentmanagementfx.view.ViewManager;
-import com.school.studentmanagementfx.view.WindowManager;
+import com.school.studentmanagementfx.view.StageManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 
 import java.util.Map;
 
-public class AddStudentController {
+public class AddStudentViewController {
     @FXML
     private TextField idTextField;
     @FXML
@@ -76,12 +76,12 @@ public class AddStudentController {
 
     @FXML
     private void onCancelAction(ActionEvent event) {
-        WindowManager.getCurrentStage(event).close();
+        StageManager.getCurrentStage(event).close();
     }
 
     @FXML
     private void onAddStudentAction(ActionEvent event) {
-        if (StudentFormUtils.validateAndShowErrors(errorLabels, textFields)) {
+        if (StudentForm.validateAndShowErrors(errorLabels, textFields)) {
             return;
         }
 
@@ -89,7 +89,7 @@ public class AddStudentController {
         StudentFileService.saveToDataBase();
         ViewManager.showSuccessWindowOne(event);
 
-        StudentFormUtils.clearFields(textFields);
+        StudentForm.clearFields(textFields);
     }
 
     private Student getStudentFromFields() {

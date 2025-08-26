@@ -3,7 +3,7 @@ package com.school.studentmanagementfx.service;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddStudentValidator {
+public class StudentValidator {
     public static Map<String, String> validateFields(
             String id,
             String name,

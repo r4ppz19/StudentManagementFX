@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="215.0" maxWidth="230.0" minHeight="190.0" minWidth="230.0" prefHeight="190.0" prefWidth="230.0" spacing="15.0" style="-fx-background-color: #EEEEEE;" stylesheets="@../../style/Shared.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.school.studentmanagementfx.controller.WarningController">
+<VBox alignment="TOP_CENTER" maxHeight="215.0" maxWidth="230.0" minHeight="190.0" minWidth="230.0" prefHeight="190.0" prefWidth="230.0" spacing="15.0" style="-fx-background-color: #EEEEEE;" stylesheets="@../../style/Shared.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.school.studentmanagementfx.controller.WarningViewController">
     <children>
         <VBox alignment="CENTER" minHeight="41.0" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #1E1E2E;">
             <children>

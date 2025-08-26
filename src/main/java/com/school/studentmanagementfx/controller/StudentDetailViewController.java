@@ -3,9 +3,9 @@ package com.school.studentmanagementfx.controller;
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
 import com.school.studentmanagementfx.service.StudentFileService;
-import com.school.studentmanagementfx.util.StudentFormUtils;
+import com.school.studentmanagementfx.util.StudentForm;
 import com.school.studentmanagementfx.view.ViewManager;
-import com.school.studentmanagementfx.view.WindowManager;
+import com.school.studentmanagementfx.view.StageManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 import java.util.Map;
 
-public class StudentDetailsController {
+public class StudentDetailViewController {
 
     private Student student;
 
@@ -82,22 +82,22 @@ public class StudentDetailsController {
                 "year", yearErrorLabel,
                 "email", emailErrorLabel);
 
-        StudentFormUtils.setFieldsEditable(false, textFields);
+        StudentForm.setFieldsEditable(false, textFields);
     }
 
     @FXML
     private void onEditSaveAction(ActionEvent event) {
         if ("Edit".equals(editSaveButton.getText())) {
-            StudentFormUtils.setFieldsEditable(true, textFields);
+            StudentForm.setFieldsEditable(true, textFields);
             editSaveButton.setText("Save");
             closeDeleteButton.setText("Delete");
         } else {
-            if (StudentFormUtils.validateAndShowErrors(errorLabels, textFields)) {
+            if (StudentForm.validateAndShowErrors(errorLabels, textFields)) {
                 return;
             }
 
             if (hasChanges()) {
-                Stage current = WindowManager.getCurrentStage(event);
+                Stage current = StageManager.getCurrentStage(event);
                 if (!ViewManager.showWarningViewTwo(current)) {
                     return;
                 }
@@ -105,7 +105,7 @@ public class StudentDetailsController {
                 StudentFileService.saveToDataBase();
             }
 
-            StudentFormUtils.setFieldsEditable(false, textFields);
+            StudentForm.setFieldsEditable(false, textFields);
             editSaveButton.setText("Edit");
             closeDeleteButton.setText("Close");
         }
@@ -115,9 +115,9 @@ public class StudentDetailsController {
     @FXML
     private void onCloseDeleteAction(ActionEvent event) {
         if ("Close".equals(closeDeleteButton.getText())) {
-            WindowManager.getCurrentStage(event).close();
+            StageManager.getCurrentStage(event).close();
         } else {
-            Stage owner = WindowManager.getCurrentStage(event);
+            Stage owner = StageManager.getCurrentStage(event);
             if (ViewManager.showWarningViewOne(owner)) {
                 StudentRepo.getStudents().remove(student);
                 StudentFileService.saveToDataBase();

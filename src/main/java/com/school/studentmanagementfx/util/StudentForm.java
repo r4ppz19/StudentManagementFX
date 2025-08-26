@@ -1,17 +1,17 @@
 package com.school.studentmanagementfx.util;
 
-import com.school.studentmanagementfx.service.AddStudentValidator;
+import com.school.studentmanagementfx.service.StudentValidator;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.util.Map;
 
-public class StudentFormUtils {
+public class StudentForm {
 
     public static boolean validateAndShowErrors(Map<String, Label> errorLabels, Map<String, TextField> textFields) {
         clearErrorLabels(errorLabels);
 
-        Map<String, String> errors = AddStudentValidator.validateFields(
+        Map<String, String> errors = StudentValidator.validateFields(
                 textFields.get("id").getText(),
                 textFields.get("name").getText(),
                 textFields.get("age").getText(),

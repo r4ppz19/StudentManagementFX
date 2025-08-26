@@ -13,4 +13,5 @@ module com.school.studentmanagementfx {
     opens com.school.studentmanagementfx to javafx.fxml, javafx.graphics;
     opens com.school.studentmanagementfx.controller to javafx.fxml;
     opens com.school.studentmanagementfx.view to javafx.fxml;
+    opens com.school.studentmanagementfx.util to javafx.fxml;
 }
