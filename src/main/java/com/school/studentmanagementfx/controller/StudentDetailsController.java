@@ -2,8 +2,8 @@ package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
-import com.school.studentmanagementfx.service.AddStudentValidator;
 import com.school.studentmanagementfx.service.StudentFileService;
+import com.school.studentmanagementfx.util.StudentForm;
 import com.school.studentmanagementfx.view.ViewManager;
 import com.school.studentmanagementfx.view.WindowManager;
 import javafx.event.ActionEvent;
@@ -36,9 +36,9 @@ public class StudentDetailsController {
     @FXML
     private TextField emailTextField;
     @FXML
-    private Button saveButton;
+    private Button editSaveButton;
     @FXML
-    private Button editButton;
+    private Button closeDeleteButton;
 
     @FXML
     private Label idErrorLabel;
@@ -57,68 +57,65 @@ public class StudentDetailsController {
     @FXML
     private Label emailErrorLabel;
 
+    private Map<String, Label> errorLabels;
+    private Map<String, TextField> textFields;
+
     @FXML
-    private void onEditAction() {
-        setFieldsEditable(true);
-        saveButton.setDisable(false);
-        editButton.setDisable(true);
+    private void initialize() {
+        textFields = Map.of(
+                "id", idTextField,
+                "name", nameTextField,
+                "age", ageTextField,
+                "birthday", birthdayTextField,
+                "address", addressTextField,
+                "course", courseTextField,
+                "year", yearTextField,
+                "email", emailTextField);
+
+        errorLabels = Map.of(
+                "id", idErrorLabel,
+                "name", nameErrorLabel,
+                "age", ageErrorLabel,
+                "birthday", birthdayErrorLabel,
+                "address", addressErrorLabel,
+                "course", courseErrorLabel,
+                "year", yearErrorLabel,
+                "email", emailErrorLabel);
+
+        StudentForm.setFieldsEditable(false, textFields);
     }
 
     @FXML
-    private void onSaveAction() {
-        clearErrorLabels();
+    private void onEditSaveAction() {
+        if ("Edit".equals(editSaveButton.getText())) {
+            StudentForm.setFieldsEditable(true, textFields);
+            editSaveButton.setText("Save");
+            closeDeleteButton.setText("Delete");
+        } else {
+            if (StudentForm.validateAndShowErrors(errorLabels, textFields))
+                return;
 
-        // Validate fields
-        Map<String, String> errors = AddStudentValidator.validateFields(
-                idTextField.getText(),
-                nameTextField.getText(),
-                ageTextField.getText(),
-                birthdayTextField.getText(),
-                addressTextField.getText(),
-                courseTextField.getText(),
-                yearTextField.getText(),
-                emailTextField.getText());
-
-        if (!errors.isEmpty()) {
-            showErrors(errors);
-            return;
-        }
-
-        student.getId().set(idTextField.getText());
-        student.getName().set(nameTextField.getText());
-        student.getAge().set(ageTextField.getText());
-        student.getBirthday().set(birthdayTextField.getText());
-        student.getAddress().set(addressTextField.getText());
-        student.getCourse().set(courseTextField.getText());
-        student.getYear().set(yearTextField.getText());
-        student.getEmail().set(emailTextField.getText());
-
-        StudentFileService.saveToDataBase();
-
-        setFieldsEditable(false);
-        saveButton.setDisable(true);
-        editButton.setDisable(false);
-    }
-
-    @FXML
-    private void onDeleteAction(ActionEvent event) {
-        Stage owner = WindowManager.getCurrentStage(event);
-        if (ViewManager.showWarningView(owner)) {
-            StudentRepo.getStudents().remove(student);
+            updateStudentFromFields();
             StudentFileService.saveToDataBase();
-            owner.close();
+
+            StudentForm.setFieldsEditable(false, textFields);
+            editSaveButton.setText("Edit");
+            closeDeleteButton.setText("Close");
         }
     }
 
-    private void setFieldsEditable(boolean editable) {
-        idTextField.setEditable(editable);
-        nameTextField.setEditable(editable);
-        ageTextField.setEditable(editable);
-        birthdayTextField.setEditable(editable);
-        addressTextField.setEditable(editable);
-        courseTextField.setEditable(editable);
-        yearTextField.setEditable(editable);
-        emailTextField.setEditable(editable);
+    @FXML
+    private void onCloseDeleteAction(ActionEvent event) {
+        if ("Close".equals(closeDeleteButton.getText())) {
+            WindowManager.getCurrentStage(event).close();
+        } else {
+            Stage owner = WindowManager.getCurrentStage(event);
+            if (ViewManager.showWarningView(owner)) {
+                StudentRepo.getStudents().remove(student);
+                StudentFileService.saveToDataBase();
+                owner.close();
+            }
+        }
     }
 
     public void setStudent(Student student) {
@@ -131,38 +128,16 @@ public class StudentDetailsController {
         courseTextField.setText(student.getCourse().get());
         yearTextField.setText(student.getYear().get());
         emailTextField.setText(student.getEmail().get());
-        setFieldsEditable(false);
-        saveButton.setDisable(true);
-        editButton.setDisable(false);
     }
 
-    private void clearErrorLabels() {
-        idErrorLabel.setText("");
-        nameErrorLabel.setText("");
-        ageErrorLabel.setText("");
-        birthdayErrorLabel.setText("");
-        addressErrorLabel.setText("");
-        courseErrorLabel.setText("");
-        yearErrorLabel.setText("");
-        emailErrorLabel.setText("");
-    }
-
-    private void showErrors(Map<String, String> errors) {
-        if (errors.containsKey("id"))
-            idErrorLabel.setText(errors.get("id"));
-        if (errors.containsKey("name"))
-            nameErrorLabel.setText(errors.get("name"));
-        if (errors.containsKey("age"))
-            ageErrorLabel.setText(errors.get("age"));
-        if (errors.containsKey("birthday"))
-            birthdayErrorLabel.setText(errors.get("birthday"));
-        if (errors.containsKey("address"))
-            addressErrorLabel.setText(errors.get("address"));
-        if (errors.containsKey("course"))
-            courseErrorLabel.setText(errors.get("course"));
-        if (errors.containsKey("year"))
-            yearErrorLabel.setText(errors.get("year"));
-        if (errors.containsKey("email"))
-            emailErrorLabel.setText(errors.get("email"));
+    private void updateStudentFromFields() {
+        student.getId().set(textFields.get("id").getText());
+        student.getName().set(textFields.get("name").getText());
+        student.getAge().set(textFields.get("age").getText());
+        student.getBirthday().set(textFields.get("birthday").getText());
+        student.getAddress().set(textFields.get("address").getText());
+        student.getCourse().set(textFields.get("course").getText());
+        student.getYear().set(textFields.get("year").getText());
+        student.getEmail().set(textFields.get("email").getText());
     }
 }
