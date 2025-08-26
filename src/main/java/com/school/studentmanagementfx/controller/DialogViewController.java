@@ -1,13 +1,13 @@
 package com.school.studentmanagementfx.controller;
 
-import com.school.studentmanagementfx.view.WindowManager;
+import com.school.studentmanagementfx.view.StageManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-public class DialogController {
+public class DialogViewController {
 
     @FXML
     private void onTryAgainAction(ActionEvent event) {
-        WindowManager.getCurrentStage(event).close();
+        StageManager.getCurrentStage(event).close();
     }
 }

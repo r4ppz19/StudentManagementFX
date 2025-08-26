@@ -1,0 +1,106 @@
+package com.school.studentmanagementfx.controller;
+
+import com.school.studentmanagementfx.model.Student;
+import com.school.studentmanagementfx.model.StudentRepo;
+import com.school.studentmanagementfx.service.StudentFileService;
+import com.school.studentmanagementfx.util.StudentForm;
+import com.school.studentmanagementfx.view.StageManager;
+import com.school.studentmanagementfx.view.ViewManager;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+
+import java.util.Map;
+
+public class AddStudentViewController {
+    @FXML
+    private TextField idTextField;
+    @FXML
+    private TextField nameTextField;
+    @FXML
+    private TextField ageTextField;
+    @FXML
+    private TextField birthdayTextField;
+    @FXML
+    private TextField addressTextField;
+    @FXML
+    private TextField courseTextField;
+    @FXML
+    private TextField yearTextField;
+    @FXML
+    private TextField emailTextField;
+
+    @FXML
+    private Label idErrorLabel;
+    @FXML
+    private Label nameErrorLabel;
+    @FXML
+    private Label ageErrorLabel;
+    @FXML
+    private Label birthdayErrorLabel;
+    @FXML
+    private Label addressErrorLabel;
+    @FXML
+    private Label courseErrorLabel;
+    @FXML
+    private Label yearErrorLabel;
+    @FXML
+    private Label emailErrorLabel;
+
+    private Map<String, Label> errorLabels;
+    private Map<String, TextField> textFields;
+
+    @FXML
+    private void initialize() {
+        textFields = Map.of(
+                "id", idTextField,
+                "name", nameTextField,
+                "age", ageTextField,
+                "birthday", birthdayTextField,
+                "address", addressTextField,
+                "course", courseTextField,
+                "year", yearTextField,
+                "email", emailTextField);
+
+        errorLabels = Map.of(
+                "id", idErrorLabel,
+                "name", nameErrorLabel,
+                "age", ageErrorLabel,
+                "birthday", birthdayErrorLabel,
+                "address", addressErrorLabel,
+                "course", courseErrorLabel,
+                "year", yearErrorLabel,
+                "email", emailErrorLabel);
+    }
+
+    @FXML
+    private void onCancelAction(ActionEvent event) {
+        StageManager.getCurrentStage(event).close();
+    }
+
+    @FXML
+    private void onAddStudentAction(ActionEvent event) {
+        if (StudentForm.validateAndShowErrors(errorLabels, textFields)) {
+            return;
+        }
+
+        StudentRepo.getStudents().add(getStudentFromFields());
+        StudentFileService.saveToDataBase();
+        ViewManager.showSuccessWindowOne(event);
+
+        StudentForm.clearFields(textFields);
+    }
+
+    private Student getStudentFromFields() {
+        return new Student(
+                textFields.get("id").getText().trim(),
+                textFields.get("name").getText().trim(),
+                textFields.get("age").getText().trim(),
+                textFields.get("birthday").getText().trim(),
+                textFields.get("address").getText().trim(),
+                textFields.get("course").getText().trim(),
+                textFields.get("year").getText().trim(),
+                textFields.get("email").getText().trim());
+    }
+}

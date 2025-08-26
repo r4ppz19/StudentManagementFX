@@ -1,6 +1,6 @@
 package com.school.studentmanagementfx.view;
 
-import com.school.studentmanagementfx.util.SetIcon;
+import com.school.studentmanagementfx.util.IconUtil;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -11,13 +11,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class WindowManager {
+public class StageManager {
 
     public static Stage createWindow(Parent root, Stage owner, String title, boolean modal) {
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        SetIcon.setAppIcon(stage);
+        IconUtil.setAppIcon(stage);
         stage.setTitle(title);
         stage.setResizable(false);
         stage.setFullScreen(false);
@@ -37,7 +37,7 @@ public class WindowManager {
 
     public static <C> LoadedView<C> loadView(String fxmlPath) {
         try {
-            FXMLLoader loader = new FXMLLoader(WindowManager.class.getResource(fxmlPath));
+            FXMLLoader loader = new FXMLLoader(StageManager.class.getResource(fxmlPath));
             Parent root = loader.load();
             C controller = loader.getController();
             return new LoadedView<>(root, controller);

@@ -3,8 +3,9 @@ package com.school.studentmanagementfx.controller;
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
 import com.school.studentmanagementfx.service.StudentFileService;
+import com.school.studentmanagementfx.service.StudentSearchService;
+import com.school.studentmanagementfx.view.StageManager;
 import com.school.studentmanagementfx.view.ViewManager;
-import com.school.studentmanagementfx.view.WindowManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -35,6 +36,10 @@ public class HomeViewController {
     @FXML
     private void initialize() {
         StudentFileService.loadFromDataBase();
+        if (StudentRepo.getStudents().isEmpty()) {
+            StudentRepo.createDummyStudent();
+        }
+        StudentFileService.saveToDataBase();
         configureTable();
     }
 
@@ -47,32 +52,25 @@ public class HomeViewController {
             return;
         }
 
-        Student foundStudent = null;
-        for (Student s : StudentRepo.getStudents()) {
-            if (s.getId().get().equals(queryId)) {
-                foundStudent = s;
-                break;
-            }
-        }
+        Student foundStudent = StudentSearchService.findById(queryId);
 
         if (foundStudent == null) {
             ViewManager.showNotFoundChild(indicatorVboxContainer);
-            return;
+        } else {
+            ViewManager.showFoundChild(indicatorVboxContainer, foundStudent);
         }
-
-        ViewManager.showFoundChild(indicatorVboxContainer, foundStudent);
     }
 
     @FXML
     private void onAddStudentAction(ActionEvent event) {
-        Stage stage = WindowManager.getCurrentStage(event);
+        Stage stage = StageManager.getCurrentStage(event);
         ViewManager.showAddStudentView(stage);
     }
 
     @FXML
     private void onLogOutAction(ActionEvent event) {
         StudentFileService.saveToDataBase();
-        Stage current = WindowManager.getCurrentStage(event);
+        Stage current = StageManager.getCurrentStage(event);
         ViewManager.showLoginView(current);
     }
 
@@ -86,11 +84,6 @@ public class HomeViewController {
         nameTableColumn.setCellValueFactory(cellData -> cellData.getValue().getName());
         courseTableColumn.setCellValueFactory(cellData -> cellData.getValue().getCourse());
         yearTableColumn.setCellValueFactory(cellData -> cellData.getValue().getYear());
-        addDetailButton();
-        studentsTableView.setItems(StudentRepo.getStudents());
-    }
-
-    private void addDetailButton() {
         detailTableColumn.setCellFactory(col -> new TableCell<>() {
             private final Button viewButton = new Button("View");
 
@@ -113,5 +106,6 @@ public class HomeViewController {
                 setGraphic(empty ? null : viewButton);
             }
         });
+        studentsTableView.setItems(StudentRepo.getStudents());
     }
 }

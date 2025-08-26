@@ -11,7 +11,7 @@
     <children>
         <VBox alignment="CENTER" minHeight="41.0" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #1E1E2E;">
             <children>
-                <Label text="Delete Student" textFill="WHITE">
+                <Label text="Save Changes?" textFill="WHITE">
                     <font>
                         <Font name="Segoe UI Black" size="20.0" />
                     </font>
@@ -21,7 +21,7 @@
                 </Label>
             </children>
         </VBox>
-      <Label prefHeight="58.0" prefWidth="180.0" text="Are you sure you want to delete this student? This action cannot be undone." textAlignment="CENTER" textFill="#1e1e2e" wrapText="true">
+      <Label prefHeight="58.0" prefWidth="180.0" text="Are you sure you want to save changes? This will overwrite the student details." textAlignment="CENTER" textFill="#1e1e2e" wrapText="true">
          <font>
             <Font name="Segoe UI Black" size="11.0" />
          </font>

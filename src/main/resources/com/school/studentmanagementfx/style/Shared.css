@@ -54,33 +54,38 @@
 .logout-button:hover {
     -fx-cursor: hand;
     -fx-text-fill: #141427;
-    -fx-font-size: 12px;
 }
 
 .logout-button:pressed {
     -fx-cursor: hand;
     -fx-text-fill: #141427;
-    -fx-font-size: 10px;
+    -fx-translate-y: 2px;
 }
 
 .white-textfield {
-    -fx-background-color: #EEEEEE;
+    -fx-background-color: #e3e3e3;
     -fx-text-fill: #141427;
     -fx-font-size: 11px;
     -fx-background-radius: 5;
     -fx-border-radius: 5;
     -fx-border-color: #1E1E2E;
     -fx-border-width: 0.5;
+    -fx-cursor: text;
 }
 
 .white-textfield:hover {
-    -fx-background-color: #e8e8e8;
+    -fx-background-color: #e1e1e1;
 }
 
 .white-textfield:focused {
-    -fx-background-color: #e8e8e8;
-    -fx-border-width: 0.8;
+    -fx-background-color: #e1e1e1;
+    -fx-border-width: 1;
     -fx-border-color: #141427;
+}
+
+.white-textfield:readonly {
+    -fx-background-color: #EEEEEE;
+    -fx-cursor: default;
 }
 
 .shadow-container {
