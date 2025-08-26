@@ -153,8 +153,11 @@
         <!-- Buttons -->
         <HBox alignment="CENTER_RIGHT" spacing="10.0">
             <children>
-            <Button fx:id="editSaveButton" minHeight="25.0" minWidth="60.0" onAction="#onEditSaveAction" styleClass="blue-button" text="Edit" textFill="WHITE" />
-                <Button fx:id="closeDeleteButton" minHeight="25.0" minWidth="60.0" onAction="#onCloseDeleteAction" styleClass="white-button" text="Close" textFill="#1e1e2e" />
+            <Button fx:id="deleteButton" minHeight="25.0" minWidth="60.0" onAction="#onDeleteAction" styleClass="blue-button" text="Delete" textFill="WHITE" />
+            <Button fx:id="saveButton" minHeight="25.0" minWidth="60.0" onAction="#onSaveAction" styleClass="blue-button" text="Save" textFill="WHITE" />
+            <Button fx:id="cancelButton" minHeight="25.0" minWidth="60.0" onAction="#onCancelAction" styleClass="white-button" text="Cancel" textFill="WHITE" />
+            <Button fx:id="editButton" minHeight="25.0" minWidth="60.0" onAction="#onEditAction" styleClass="blue-button" text="Edit" textFill="WHITE" />
+                <Button fx:id="closeButton" minHeight="25.0" minWidth="60.0" onAction="#onCloseAction" styleClass="white-button" text="Close" textFill="#1e1e2e" />
             </children>
             <padding><Insets right="20.0" /></padding>
             <VBox.margin><Insets /></VBox.margin>

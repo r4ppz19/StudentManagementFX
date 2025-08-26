@@ -36,10 +36,17 @@ public class StudentDetailViewController {
     private TextField yearTextField;
     @FXML
     private TextField emailTextField;
+
     @FXML
-    private Button editSaveButton;
+    private Button editButton;
     @FXML
-    private Button closeDeleteButton;
+    private Button closeButton;
+    @FXML
+    private Button cancelButton;
+    @FXML
+    private Button saveButton;
+    @FXML
+    private Button deleteButton;
 
     @FXML
     private Label idErrorLabel;
@@ -71,7 +78,8 @@ public class StudentDetailViewController {
                 "address", addressTextField,
                 "course", courseTextField,
                 "year", yearTextField,
-                "email", emailTextField);
+                "email", emailTextField
+        );
 
         errorLabels = Map.of(
                 "id", idErrorLabel,
@@ -81,50 +89,55 @@ public class StudentDetailViewController {
                 "address", addressErrorLabel,
                 "course", courseErrorLabel,
                 "year", yearErrorLabel,
-                "email", emailErrorLabel);
+                "email", emailErrorLabel
+        );
 
         StudentForm.setFieldsEditable(false, textFields);
-        Platform.runLater(() -> closeDeleteButton.requestFocus());
+        setInitialButtonState();
+        Platform.runLater(() -> closeButton.requestFocus());
     }
 
     @FXML
-    private void onEditSaveAction(ActionEvent event) {
-        if ("Edit".equals(editSaveButton.getText())) {
-            StudentForm.setFieldsEditable(true, textFields);
-            editSaveButton.setText("Save");
-            closeDeleteButton.setText("Delete");
-        } else {
-            if (StudentForm.validateAndShowErrors(errorLabels, textFields)) {
-                return;
-            }
+    private void onCancelAction() {
+        setStudent(student);
+        StudentForm.setFieldsEditable(false, textFields);
+        setReadOnlyModeButtonState();
+    }
 
-            if (hasChanges()) {
-                Stage current = StageManager.getCurrentStage(event);
-                if (!ViewManager.showWarningViewTwo(current)) {
-                    return;
-                }
+    @FXML
+    private void onEditAction() {
+        StudentForm.setFieldsEditable(true, textFields);
+        setEditModeButtonState();
+    }
+
+    @FXML
+    private void onSaveAction(ActionEvent event) {
+        if (StudentForm.validateAndShowErrors(errorLabels, textFields)) return;
+
+        if (hasChanges()) {
+            Stage current = StageManager.getCurrentStage(event);
+            if (ViewManager.showWarningViewTwo(current)) {
                 updateStudentFromFields();
                 StudentFileService.saveToDataBase();
+                StudentForm.setFieldsEditable(false, textFields);
+                setReadOnlyModeButtonState();
             }
-
-            StudentForm.setFieldsEditable(false, textFields);
-            editSaveButton.setText("Edit");
-            closeDeleteButton.setText("Close");
         }
     }
 
     @FXML
-    private void onCloseDeleteAction(ActionEvent event) {
-        if ("Close".equals(closeDeleteButton.getText())) {
-            StageManager.getCurrentStage(event).close();
-        } else {
-            Stage owner = StageManager.getCurrentStage(event);
-            if (ViewManager.showWarningViewOne(owner)) {
-                StudentRepo.getStudents().remove(student);
-                StudentFileService.saveToDataBase();
-                owner.close();
-            }
+    private void onDeleteAction(ActionEvent event) {
+        Stage owner = StageManager.getCurrentStage(event);
+        if (ViewManager.showWarningViewOne(owner)) {
+            StudentRepo.getStudents().remove(student);
+            StudentFileService.saveToDataBase();
+            owner.close();
         }
+    }
+
+    @FXML
+    private void onCloseAction(ActionEvent event) {
+        StageManager.getCurrentStage(event).close();
     }
 
     public void setStudent(Student student) {
@@ -139,15 +152,44 @@ public class StudentDetailViewController {
         emailTextField.setText(student.getEmail().get());
     }
 
+    private void setInitialButtonState() {
+        setButtonVisibilityAndManaged(saveButton, false);
+        setButtonVisibilityAndManaged(deleteButton, false);
+        setButtonVisibilityAndManaged(cancelButton, false);
+        setButtonVisibilityAndManaged(editButton, true);
+        setButtonVisibilityAndManaged(closeButton, true);
+    }
+
+    private void setEditModeButtonState() {
+        setButtonVisibilityAndManaged(saveButton, true);
+        setButtonVisibilityAndManaged(deleteButton, true);
+        setButtonVisibilityAndManaged(cancelButton, true);
+        setButtonVisibilityAndManaged(editButton, false);
+        setButtonVisibilityAndManaged(closeButton, false);
+    }
+
+    private void setReadOnlyModeButtonState() {
+        setButtonVisibilityAndManaged(saveButton, false);
+        setButtonVisibilityAndManaged(deleteButton, false);
+        setButtonVisibilityAndManaged(cancelButton, false);
+        setButtonVisibilityAndManaged(editButton, true);
+        setButtonVisibilityAndManaged(closeButton, true);
+    }
+
+    private void setButtonVisibilityAndManaged(Button button, boolean visible) {
+        button.setVisible(visible);
+        button.setManaged(visible);
+    }
+
     private void updateStudentFromFields() {
-        student.getId().set(textFields.get("id").getText());
-        student.getName().set(textFields.get("name").getText());
-        student.getAge().set(textFields.get("age").getText());
-        student.getBirthday().set(textFields.get("birthday").getText());
-        student.getAddress().set(textFields.get("address").getText());
-        student.getCourse().set(textFields.get("course").getText());
-        student.getYear().set(textFields.get("year").getText());
-        student.getEmail().set(textFields.get("email").getText());
+        student.getId().set(idTextField.getText());
+        student.getName().set(nameTextField.getText());
+        student.getAge().set(ageTextField.getText());
+        student.getBirthday().set(birthdayTextField.getText());
+        student.getAddress().set(addressTextField.getText());
+        student.getCourse().set(courseTextField.getText());
+        student.getYear().set(yearTextField.getText());
+        student.getEmail().set(emailTextField.getText());
     }
 
     private boolean hasChanges() {
