@@ -86,17 +86,24 @@ public class StudentDetailsController {
     }
 
     @FXML
-    private void onEditSaveAction() {
+    private void onEditSaveAction(ActionEvent event) {
         if ("Edit".equals(editSaveButton.getText())) {
             StudentFormUtils.setFieldsEditable(true, textFields);
             editSaveButton.setText("Save");
             closeDeleteButton.setText("Delete");
         } else {
-            if (StudentFormUtils.validateAndShowErrors(errorLabels, textFields))
+            if (StudentFormUtils.validateAndShowErrors(errorLabels, textFields)) {
                 return;
+            }
 
-            updateStudentFromFields();
-            StudentFileService.saveToDataBase();
+            if (hasChanges()) {
+                Stage current = WindowManager.getCurrentStage(event);
+                if (!ViewManager.showWarningViewTwo(current)) {
+                    return;
+                }
+                updateStudentFromFields();
+                StudentFileService.saveToDataBase();
+            }
 
             StudentFormUtils.setFieldsEditable(false, textFields);
             editSaveButton.setText("Edit");
@@ -104,13 +111,14 @@ public class StudentDetailsController {
         }
     }
 
+
     @FXML
     private void onCloseDeleteAction(ActionEvent event) {
         if ("Close".equals(closeDeleteButton.getText())) {
             WindowManager.getCurrentStage(event).close();
         } else {
             Stage owner = WindowManager.getCurrentStage(event);
-            if (ViewManager.showWarningView(owner)) {
+            if (ViewManager.showWarningViewOne(owner)) {
                 StudentRepo.getStudents().remove(student);
                 StudentFileService.saveToDataBase();
                 owner.close();
@@ -139,5 +147,16 @@ public class StudentDetailsController {
         student.getCourse().set(textFields.get("course").getText());
         student.getYear().set(textFields.get("year").getText());
         student.getEmail().set(textFields.get("email").getText());
+    }
+
+    private boolean hasChanges() {
+        return !student.getId().get().equals(idTextField.getText()) ||
+                !student.getName().get().equals(nameTextField.getText()) ||
+                !student.getAge().get().equals(ageTextField.getText()) ||
+                !student.getBirthday().get().equals(birthdayTextField.getText()) ||
+                !student.getAddress().get().equals(addressTextField.getText()) ||
+                !student.getCourse().get().equals(courseTextField.getText()) ||
+                !student.getYear().get().equals(yearTextField.getText()) ||
+                !student.getEmail().get().equals(emailTextField.getText());
     }
 }

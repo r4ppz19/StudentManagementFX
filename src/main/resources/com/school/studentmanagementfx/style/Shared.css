@@ -70,6 +70,7 @@
     -fx-border-radius: 5;
     -fx-border-color: #1E1E2E;
     -fx-border-width: 0.5;
+    -fx-cursor: text;
 }
 
 .white-textfield:hover {
@@ -80,6 +81,17 @@
     -fx-background-color: #e8e8e8;
     -fx-border-width: 0.8;
     -fx-border-color: #141427;
+}
+
+.white-textfield:readonly {
+    -fx-background-color: #e3e3e3;
+    -fx-text-fill: #141427;
+    -fx-font-size: 11px;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #1E1E2E;
+    -fx-border-width: 0.5;
+    -fx-cursor: default;
 }
 
 .shadow-container {

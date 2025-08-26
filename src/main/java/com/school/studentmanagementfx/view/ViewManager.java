@@ -38,8 +38,15 @@ public class ViewManager {
         WindowManager.createWindow(view.getRoot(), current, "Student Detail", true).showAndWait();
     }
 
-    public static boolean showWarningView(Stage owner) {
+    public static boolean showWarningViewOne(Stage owner) {
         String fxmlPath = "/com/school/studentmanagementfx/view/dialog/WarningDelete.fxml";
+        LoadedView<WarningController> view = WindowManager.loadView(fxmlPath);
+        WindowManager.createWindow(view.getRoot(), owner, "Warning", true).showAndWait();
+        return view.getController().isConfirmed();
+    }
+
+    public static boolean showWarningViewTwo(Stage owner) {
+        String fxmlPath = "/com/school/studentmanagementfx/view/dialog/WarningSave.fxml";
         LoadedView<WarningController> view = WindowManager.loadView(fxmlPath);
         WindowManager.createWindow(view.getRoot(), owner, "Warning", true).showAndWait();
         return view.getController().isConfirmed();
