@@ -19,7 +19,7 @@ import java.util.Map;
 
 public class StudentDetailViewController {
 
-    private Student student;
+    private Student currentStudent;
 
     @FXML
     private TextField idTextField;
@@ -104,7 +104,7 @@ public class StudentDetailViewController {
                 return;
             }
         }
-        setStudent(student);
+        setStudent(currentStudent);
         setReadOnlyModeState();
     }
 
@@ -133,7 +133,7 @@ public class StudentDetailViewController {
     private void onDeleteAction(ActionEvent event) {
         Stage current = StageManager.getCurrentStage(event);
         if (ViewManager.showWarningDeleteView(current)) {
-            StudentRepo.getStudents().remove(student);
+            StudentRepo.getStudents().remove(currentStudent);
             StudentFileService.saveToDataBase();
             current.close();
         }
@@ -145,7 +145,7 @@ public class StudentDetailViewController {
     }
 
     public void setStudent(Student student) {
-        this.student = student;
+        this.currentStudent = student;
         idTextField.setText(student.getId().get());
         nameTextField.setText(student.getName().get());
         ageTextField.setText(student.getAge().get());
@@ -175,24 +175,24 @@ public class StudentDetailViewController {
     }
 
     private void updateStudentFromFields() {
-        student.getId().set(idTextField.getText());
-        student.getName().set(nameTextField.getText());
-        student.getAge().set(ageTextField.getText());
-        student.getBirthday().set(birthdayTextField.getText());
-        student.getAddress().set(addressTextField.getText());
-        student.getCourse().set(courseTextField.getText());
-        student.getYear().set(yearTextField.getText());
-        student.getEmail().set(emailTextField.getText());
+        currentStudent.getId().set(idTextField.getText());
+        currentStudent.getName().set(nameTextField.getText());
+        currentStudent.getAge().set(ageTextField.getText());
+        currentStudent.getBirthday().set(birthdayTextField.getText());
+        currentStudent.getAddress().set(addressTextField.getText());
+        currentStudent.getCourse().set(courseTextField.getText());
+        currentStudent.getYear().set(yearTextField.getText());
+        currentStudent.getEmail().set(emailTextField.getText());
     }
 
     private boolean hasChanges() {
-        return !student.getId().get().equals(idTextField.getText()) ||
-                !student.getName().get().equals(nameTextField.getText()) ||
-                !student.getAge().get().equals(ageTextField.getText()) ||
-                !student.getBirthday().get().equals(birthdayTextField.getText()) ||
-                !student.getAddress().get().equals(addressTextField.getText()) ||
-                !student.getCourse().get().equals(courseTextField.getText()) ||
-                !student.getYear().get().equals(yearTextField.getText()) ||
-                !student.getEmail().get().equals(emailTextField.getText());
+        return !currentStudent.getId().get().equals(idTextField.getText()) ||
+                !currentStudent.getName().get().equals(nameTextField.getText()) ||
+                !currentStudent.getAge().get().equals(ageTextField.getText()) ||
+                !currentStudent.getBirthday().get().equals(birthdayTextField.getText()) ||
+                !currentStudent.getAddress().get().equals(addressTextField.getText()) ||
+                !currentStudent.getCourse().get().equals(courseTextField.getText()) ||
+                !currentStudent.getYear().get().equals(yearTextField.getText()) ||
+                !currentStudent.getEmail().get().equals(emailTextField.getText());
     }
 }
