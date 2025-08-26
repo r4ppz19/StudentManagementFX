@@ -2,7 +2,7 @@ package com.school.studentmanagementfx.view;
 
 import com.school.studentmanagementfx.controller.*;
 import com.school.studentmanagementfx.model.Student;
-import com.school.studentmanagementfx.util.IconUtil;
+import com.school.studentmanagementfx.util.IconSetter;
 import javafx.event.Event;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
@@ -14,7 +14,7 @@ public class ViewManager {
         String fxmlPath = "/com/school/studentmanagementfx/view/LoginView.fxml";
         LoadedView<LoginViewController> view = StageManager.loadView(fxmlPath);
         Scene scene = new Scene(view.getRoot());
-        IconUtil.setAppIcon(stage);
+        IconSetter.setAppIcon(stage);
         stage.setTitle("Student Management");
         stage.setScene(scene);
         stage.setResizable(false);

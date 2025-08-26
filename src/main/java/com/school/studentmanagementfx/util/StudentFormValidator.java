@@ -6,7 +6,7 @@ import javafx.scene.control.TextField;
 
 import java.util.Map;
 
-public class StudentForm {
+public class StudentFormValidator {
 
     public static boolean validateAndShowErrors(Map<String, Label> errorLabels, Map<String, TextField> textFields) {
         clearErrorLabels(errorLabels);
@@ -26,14 +26,6 @@ public class StudentForm {
             return true;
         }
         return false;
-    }
-
-    public static void clearFields(Map<String, TextField> textFields) {
-        textFields.values().forEach(TextField::clear);
-    }
-
-    public static void setFieldsEditable(boolean editable, Map<String, TextField> textFields) {
-        textFields.values().forEach((field) -> field.setEditable(editable));
     }
 
     private static void showErrors(Map<String, String> errors, Map<String, Label> errorLabels) {
