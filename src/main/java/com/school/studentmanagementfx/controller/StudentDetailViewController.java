@@ -19,8 +19,6 @@ import java.util.Map;
 
 public class StudentDetailViewController {
 
-    private Student currentStudent;
-
     @FXML
     private TextField idTextField;
     @FXML
@@ -66,6 +64,8 @@ public class StudentDetailViewController {
     @FXML
     private Label emailErrorLabel;
 
+    private Student currentStudent;
+
     private Map<String, Label> errorLabels;
     private Map<String, TextField> textFields;
 
@@ -100,7 +100,7 @@ public class StudentDetailViewController {
     private void onCancelAction(ActionEvent event) {
         Stage current = StageManager.getCurrentStage(event);
         if (hasChanges()) {
-            if (!ViewManager.showWarningCancelView(current)){
+            if (!ViewManager.showWarningCancelView(current)) {
                 return;
             }
         }
