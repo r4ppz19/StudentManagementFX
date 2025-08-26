@@ -8,8 +8,6 @@ import java.util.Arrays;
 
 public class StudentFileService {
     private static final String FILE_PATH = "data/DataBase.txt";
-    private static final String SEPARATOR = "\\|";
-    private static final String SEPARATOR_WRITE = "|";
 
     public static void saveToDataBase() {
         try {
@@ -46,7 +44,7 @@ public class StudentFileService {
     }
 
     private static String formatStudent(Student student) {
-        return String.join(SEPARATOR_WRITE,
+        return String.join("|",
                 student.getId().get(),
                 student.getName().get(),
                 student.getAge().get(),
@@ -58,7 +56,7 @@ public class StudentFileService {
     }
 
     private static Student parseStudentFromFile(String line) {
-        String[] parts = line.split(SEPARATOR); // Split using the pipe separator
+        String[] parts = line.split("\\|");
         if (parts.length != 8) {
             System.out.println("Invalid data format: " + Arrays.toString(parts));
             return null;

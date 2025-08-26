@@ -3,7 +3,7 @@ package com.school.studentmanagementfx.controller;
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
 import com.school.studentmanagementfx.service.StudentFileService;
-import com.school.studentmanagementfx.util.StudentForm;
+import com.school.studentmanagementfx.util.StudentFormUtils;
 import com.school.studentmanagementfx.view.ViewManager;
 import com.school.studentmanagementfx.view.WindowManager;
 import javafx.event.ActionEvent;
@@ -81,7 +81,7 @@ public class AddStudentController {
 
     @FXML
     private void onAddStudentAction(ActionEvent event) {
-        if (StudentForm.validateAndShowErrors(errorLabels, textFields)) {
+        if (StudentFormUtils.validateAndShowErrors(errorLabels, textFields)) {
             return;
         }
 
@@ -89,7 +89,7 @@ public class AddStudentController {
         StudentFileService.saveToDataBase();
         ViewManager.showSuccessWindowOne(event);
 
-        StudentForm.clearFields(textFields);
+        StudentFormUtils.clearFields(textFields);
     }
 
     private Student getStudentFromFields() {

@@ -3,7 +3,7 @@ package com.school.studentmanagementfx.controller;
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
 import com.school.studentmanagementfx.service.StudentFileService;
-import com.school.studentmanagementfx.util.StudentForm;
+import com.school.studentmanagementfx.util.StudentFormUtils;
 import com.school.studentmanagementfx.view.ViewManager;
 import com.school.studentmanagementfx.view.WindowManager;
 import javafx.event.ActionEvent;
@@ -82,23 +82,23 @@ public class StudentDetailsController {
                 "year", yearErrorLabel,
                 "email", emailErrorLabel);
 
-        StudentForm.setFieldsEditable(false, textFields);
+        StudentFormUtils.setFieldsEditable(false, textFields);
     }
 
     @FXML
     private void onEditSaveAction() {
         if ("Edit".equals(editSaveButton.getText())) {
-            StudentForm.setFieldsEditable(true, textFields);
+            StudentFormUtils.setFieldsEditable(true, textFields);
             editSaveButton.setText("Save");
             closeDeleteButton.setText("Delete");
         } else {
-            if (StudentForm.validateAndShowErrors(errorLabels, textFields))
+            if (StudentFormUtils.validateAndShowErrors(errorLabels, textFields))
                 return;
 
             updateStudentFromFields();
             StudentFileService.saveToDataBase();
 
-            StudentForm.setFieldsEditable(false, textFields);
+            StudentFormUtils.setFieldsEditable(false, textFields);
             editSaveButton.setText("Edit");
             closeDeleteButton.setText("Close");
         }
