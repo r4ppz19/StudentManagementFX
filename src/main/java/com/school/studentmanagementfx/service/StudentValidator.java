@@ -47,7 +47,7 @@ public class StudentValidator {
         }
         if (email == null || email.trim().isEmpty()) {
             errors.put("email", "Email required");
-        } else if (!email.matches("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+        } else if (!email.matches("[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,4}")) {
             errors.put("email", "Invalid email");
         }
         return errors;
