@@ -10,8 +10,10 @@ module com.school.studentmanagementfx {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.ikonli.materialdesign2;
 
-    opens com.school.studentmanagementfx to javafx.fxml, javafx.graphics;
+    // Export main package so JavaFX can see Main
+    exports com.school.studentmanagementfx;
+
+    // Reflection for FXML
     opens com.school.studentmanagementfx.controller to javafx.fxml;
     opens com.school.studentmanagementfx.view to javafx.fxml;
-    opens com.school.studentmanagementfx.util to javafx.fxml;
 }

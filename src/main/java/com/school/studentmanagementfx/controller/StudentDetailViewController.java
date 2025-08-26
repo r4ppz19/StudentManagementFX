@@ -4,8 +4,9 @@ import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
 import com.school.studentmanagementfx.service.StudentFileService;
 import com.school.studentmanagementfx.util.StudentForm;
-import com.school.studentmanagementfx.view.ViewManager;
 import com.school.studentmanagementfx.view.StageManager;
+import com.school.studentmanagementfx.view.ViewManager;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -83,6 +84,7 @@ public class StudentDetailViewController {
                 "email", emailErrorLabel);
 
         StudentForm.setFieldsEditable(false, textFields);
+        Platform.runLater(() -> closeDeleteButton.requestFocus());
     }
 
     @FXML
@@ -110,7 +112,6 @@ public class StudentDetailViewController {
             closeDeleteButton.setText("Close");
         }
     }
-
 
     @FXML
     private void onCloseDeleteAction(ActionEvent event) {
