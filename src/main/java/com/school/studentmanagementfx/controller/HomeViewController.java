@@ -35,6 +35,8 @@ public class HomeViewController {
     @FXML
     private void initialize() {
         StudentFileService.loadFromDataBase();
+        StudentRepo.createDummyStudent();
+        StudentFileService.saveToDataBase();
         configureTable();
     }
 

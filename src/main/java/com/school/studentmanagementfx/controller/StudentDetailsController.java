@@ -7,6 +7,7 @@ import com.school.studentmanagementfx.view.ViewManager;
 import com.school.studentmanagementfx.view.WindowManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -30,10 +31,32 @@ public class StudentDetailsController {
     private TextField yearTextField;
     @FXML
     private TextField emailTextField;
+    @FXML
+    private Button saveButton;
+    @FXML
+    private Button editButton;
 
     @FXML
-    private void onCloseAction(ActionEvent event) {
-        WindowManager.getCurrentStage(event).close();
+    private void onEditAction() {
+        setFieldsEditable(true);
+        saveButton.setDisable(false);
+        editButton.setDisable(true);
+    }
+
+    @FXML
+    private void onSaveStudentAction() {
+        student.getId().set(idTextField.getText());
+        student.getName().set(nameTextField.getText());
+        student.getAge().set(ageTextField.getText());
+        student.getBirthday().set(birthdayTextField.getText());
+        student.getAddress().set(addressTextField.getText());
+        student.getCourse().set(courseTextField.getText());
+        student.getYear().set(yearTextField.getText());
+        student.getEmail().set(emailTextField.getText());
+        StudentFileService.saveToDataBase();
+        setFieldsEditable(false);
+        saveButton.setDisable(true);
+        editButton.setDisable(false);
     }
 
     @FXML
@@ -46,6 +69,17 @@ public class StudentDetailsController {
         }
     }
 
+    private void setFieldsEditable(boolean editable) {
+        idTextField.setEditable(editable);
+        nameTextField.setEditable(editable);
+        ageTextField.setEditable(editable);
+        birthdayTextField.setEditable(editable);
+        addressTextField.setEditable(editable);
+        courseTextField.setEditable(editable);
+        yearTextField.setEditable(editable);
+        emailTextField.setEditable(editable);
+    }
+
     public void setStudent(Student student) {
         this.student = student;
         idTextField.setText(student.getId().get());
@@ -56,5 +90,8 @@ public class StudentDetailsController {
         courseTextField.setText(student.getCourse().get());
         yearTextField.setText(student.getYear().get());
         emailTextField.setText(student.getEmail().get());
+        setFieldsEditable(false);
+        saveButton.setDisable(true);
+        editButton.setDisable(false);
     }
 }
