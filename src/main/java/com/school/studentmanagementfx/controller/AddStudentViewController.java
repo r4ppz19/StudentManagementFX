@@ -88,7 +88,7 @@ public class AddStudentViewController {
 
         StudentRepo.getStudents().add(getStudentFromFields());
         StudentFileService.saveToDataBase();
-        ViewManager.showSuccessWindowOne(event);
+        ViewManager.showSuccessStudentAddView(event);
         UIComponentHelper.clearFields(textFields);
     }
 

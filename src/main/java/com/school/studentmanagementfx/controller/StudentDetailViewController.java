@@ -98,6 +98,13 @@ public class StudentDetailViewController {
 
     @FXML
     private void onCancelAction() {
+        if (hasChanges()) {
+            Stage current = (Stage) cancelButton.getScene().getWindow();
+            boolean confirmed = ViewManager.showWarningCancelView(current);
+            if (!confirmed) {
+                return;
+            }
+        }
         setStudent(student);
         setReadOnlyModeState();
     }
@@ -115,7 +122,7 @@ public class StudentDetailViewController {
 
         if (hasChanges()) {
             Stage current = StageManager.getCurrentStage(event);
-            if (ViewManager.showWarningViewTwo(current)) {
+            if (ViewManager.showWarningSaveView(current)) {
                 updateStudentFromFields();
                 StudentFileService.saveToDataBase();
                 setReadOnlyModeState();
@@ -126,7 +133,7 @@ public class StudentDetailViewController {
     @FXML
     private void onDeleteAction(ActionEvent event) {
         Stage current = StageManager.getCurrentStage(event);
-        if (ViewManager.showWarningViewOne(current)) {
+        if (ViewManager.showWarningDeleteView(current)) {
             StudentRepo.getStudents().remove(student);
             StudentFileService.saveToDataBase();
             current.close();
