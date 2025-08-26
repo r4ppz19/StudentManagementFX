@@ -23,15 +23,8 @@ public class LoginViewController {
 
         if (FIXED_USERNAME.equals(username) && FIXED_PASSWORD.equals(password)) {
             ViewManager.showHomeView(event);
-            clearFields();
         } else {
             ViewManager.showErrorViewTwo(event);
-            clearFields();
         }
-    }
-
-    private void clearFields() {
-        usernameTextField.clear();
-        passwordTextField.clear();
     }
 }
