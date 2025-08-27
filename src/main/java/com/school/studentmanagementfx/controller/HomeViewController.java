@@ -4,15 +4,16 @@ import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
 import com.school.studentmanagementfx.service.StudentFileService;
 import com.school.studentmanagementfx.service.StudentSearchService;
+import com.school.studentmanagementfx.util.UIComponentHelper;
 import com.school.studentmanagementfx.view.StageManager;
 import com.school.studentmanagementfx.view.ViewManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.util.Objects;
 
 public class HomeViewController {
 
@@ -40,7 +41,8 @@ public class HomeViewController {
             StudentRepo.createDummyStudent();
         }
         StudentFileService.saveToDataBase();
-        configureTable();
+        UIComponentHelper.configureTable(studentsTableView, idTableColumn, nameTableColumn, courseTableColumn,
+                yearTableColumn, detailTableColumn);
     }
 
     @FXML
@@ -72,40 +74,5 @@ public class HomeViewController {
         StudentFileService.saveToDataBase();
         Stage current = StageManager.getCurrentStage(event);
         ViewManager.showLoginView(current);
-    }
-
-    private void configureTable() {
-        studentsTableView.getColumns().forEach(col -> {
-            col.setResizable(false);
-            col.setReorderable(false);
-            col.setSortable(false);
-        });
-        idTableColumn.setCellValueFactory(cellData -> cellData.getValue().getId());
-        nameTableColumn.setCellValueFactory(cellData -> cellData.getValue().getName());
-        courseTableColumn.setCellValueFactory(cellData -> cellData.getValue().getCourse());
-        yearTableColumn.setCellValueFactory(cellData -> cellData.getValue().getYear());
-        detailTableColumn.setCellFactory(col -> new TableCell<>() {
-            private final Button viewButton = new Button("View");
-
-            {
-                viewButton.setOnAction(event -> {
-                    Student student = studentsTableView.getItems().get(getIndex());
-                    ViewManager.showStudentDetailView(event, student);
-                });
-                String buttonCss = "/com/school/studentmanagementfx/style/ViewButton.css";
-                viewButton
-                        .getStylesheets()
-                        .add(
-                                Objects.requireNonNull(
-                                        getClass().getResource(buttonCss)).toExternalForm());
-            }
-
-            @Override
-            protected void updateItem(Void item, boolean empty) {
-                super.updateItem(item, empty);
-                setGraphic(empty ? null : viewButton);
-            }
-        });
-        studentsTableView.setItems(StudentRepo.getStudents());
     }
 }

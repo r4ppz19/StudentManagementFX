@@ -86,6 +86,7 @@
 .white-textfield:readonly {
     -fx-background-color: #EEEEEE;
     -fx-cursor: default;
+    -fx-border-width: 0.4;
 }
 
 .shadow-container {

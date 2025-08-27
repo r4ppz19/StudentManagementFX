@@ -24,7 +24,7 @@ public class LoginViewController {
         if (FIXED_USERNAME.equals(username) && FIXED_PASSWORD.equals(password)) {
             ViewManager.showHomeView(event);
         } else {
-            ViewManager.showErrorViewTwo(event);
+            ViewManager.showErrorUserPassView(event);
         }
     }
 }

@@ -5,12 +5,12 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
-public class IconUtil {
+public class IconSetter {
 
     private static final String ICON_PATH = "/com/school/studentmanagementfx/image/icon.png";
 
     private static final Image APP_ICON = new Image(
-            Objects.requireNonNull(IconUtil.class.getResourceAsStream(ICON_PATH)));
+            Objects.requireNonNull(IconSetter.class.getResourceAsStream(ICON_PATH)));
 
     public static void setAppIcon(Stage stage) {
         stage.getIcons().add(APP_ICON);
