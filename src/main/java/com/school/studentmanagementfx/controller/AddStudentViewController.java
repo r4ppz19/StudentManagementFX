@@ -49,7 +49,6 @@ public class AddStudentViewController {
     @FXML
     private Label emailErrorLabel;
 
-    // Just a storage for all the labels and textfield to pass around
     private Map<String, Label> errorLabels;
     private Map<String, TextField> textFields;
 

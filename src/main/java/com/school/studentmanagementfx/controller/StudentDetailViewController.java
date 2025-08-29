@@ -67,10 +67,8 @@ public class StudentDetailViewController {
     @FXML
     private Label emailErrorLabel;
 
-    // Keeps track on whos the student
     private Student currentStudent;
 
-    // Just a storage for all the labels and textfield to pass around
     private Map<String, Label> errorLabels;
     private Map<String, TextField> textFields;
 
