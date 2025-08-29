@@ -22,12 +22,10 @@ public class StageManager {
         stage.setResizable(false);
         stage.setFullScreen(false);
         centerWindow(owner, stage);
-
         if (modal) {
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(owner);
         }
-
         return stage;
     }
 
@@ -48,12 +46,8 @@ public class StageManager {
 
     private static void centerWindow(Stage parentStage, Stage childStage) {
         childStage.setOnShown(e -> {
-            double centerX = parentStage.getX() +
-                    parentStage.getWidth() / 2 -
-                    childStage.getWidth() / 2;
-            double centerY = parentStage.getY() +
-                    parentStage.getHeight() / 2 -
-                    childStage.getHeight() / 2;
+            double centerX = parentStage.getX() + parentStage.getWidth() / 2 - childStage.getWidth() / 2;
+            double centerY = parentStage.getY() + parentStage.getHeight() / 2 - childStage.getHeight() / 2;
             childStage.setX(centerX);
             childStage.setY(centerY);
         });
