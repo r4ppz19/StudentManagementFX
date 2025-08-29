@@ -67,8 +67,10 @@ public class StudentDetailViewController {
     @FXML
     private Label emailErrorLabel;
 
+    // Keeps track on whos the student
     private Student currentStudent;
 
+    // Just a storage for all the labels and textfield to pass around
     private Map<String, Label> errorLabels;
     private Map<String, TextField> textFields;
 
@@ -82,8 +84,7 @@ public class StudentDetailViewController {
                 "address", addressTextField,
                 "course", courseTextField,
                 "year", yearTextField,
-                "email", emailTextField
-        );
+                "email", emailTextField);
 
         errorLabels = Map.of(
                 "id", idErrorLabel,
@@ -93,8 +94,7 @@ public class StudentDetailViewController {
                 "address", addressErrorLabel,
                 "course", courseErrorLabel,
                 "year", yearErrorLabel,
-                "email", emailErrorLabel
-        );
+                "email", emailErrorLabel);
         setReadOnlyModeState();
         Platform.runLater(() -> closeButton.requestFocus());
     }
@@ -147,6 +147,7 @@ public class StudentDetailViewController {
         StageManager.getCurrentStage(event).close();
     }
 
+    // The only public setter method to set and pass student object
     public void setStudent(Student student) {
         this.currentStudent = student;
         idTextField.setText(student.getId().get());
@@ -157,26 +158,6 @@ public class StudentDetailViewController {
         courseTextField.setText(student.getCourse().get());
         yearTextField.setText(student.getYear().get());
         emailTextField.setText(student.getEmail().get());
-    }
-
-    private void setEditModeState() {
-        headerLabel.setText("Student Details  (Edit Mode)");
-        UIComponentHelper.showButton(saveButton, true);
-        UIComponentHelper.showButton(deleteButton, true);
-        UIComponentHelper.showButton(cancelButton, true);
-        UIComponentHelper.showButton(editButton, false);
-        UIComponentHelper.showButton(closeButton, false);
-        UIComponentHelper.setFieldsEditable(textFields, true);
-    }
-
-    private void setReadOnlyModeState() {
-        headerLabel.setText("Student Details");
-        UIComponentHelper.showButton(saveButton, false);
-        UIComponentHelper.showButton(deleteButton, false);
-        UIComponentHelper.showButton(cancelButton, false);
-        UIComponentHelper.showButton(editButton, true);
-        UIComponentHelper.showButton(closeButton, true);
-        UIComponentHelper.setFieldsEditable(textFields, false);
     }
 
     private void updateStudentFromFields() {
@@ -199,5 +180,25 @@ public class StudentDetailViewController {
                 !currentStudent.getCourse().get().equals(courseTextField.getText()) ||
                 !currentStudent.getYear().get().equals(yearTextField.getText()) ||
                 !currentStudent.getEmail().get().equals(emailTextField.getText());
+    }
+
+    private void setEditModeState() {
+        headerLabel.setText("Student Details  (Edit Mode)");
+        UIComponentHelper.showButton(saveButton, true);
+        UIComponentHelper.showButton(deleteButton, true);
+        UIComponentHelper.showButton(cancelButton, true);
+        UIComponentHelper.showButton(editButton, false);
+        UIComponentHelper.showButton(closeButton, false);
+        UIComponentHelper.setFieldsEditable(textFields, true);
+    }
+
+    private void setReadOnlyModeState() {
+        headerLabel.setText("Student Details");
+        UIComponentHelper.showButton(saveButton, false);
+        UIComponentHelper.showButton(deleteButton, false);
+        UIComponentHelper.showButton(cancelButton, false);
+        UIComponentHelper.showButton(editButton, true);
+        UIComponentHelper.showButton(closeButton, true);
+        UIComponentHelper.setFieldsEditable(textFields, false);
     }
 }

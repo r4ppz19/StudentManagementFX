@@ -17,7 +17,7 @@ public class StudentRepo {
                 "1",
                 "John Rey Rabosa",
                 "19",
-                "12/31/2005", // Updated format
+                "12/31/2005",
                 "Panacan Davao City",
                 "BSIT",
                 "2nd Year",
@@ -27,7 +27,7 @@ public class StudentRepo {
                 "2",
                 "Erwin Curato",
                 "20",
-                "08/15/2004", // Updated format
+                "08/15/2004",
                 "Bajada Davao City",
                 "BSIT",
                 "3rd Year",
@@ -37,7 +37,7 @@ public class StudentRepo {
                 "3",
                 "Mark Anthony Villanueva",
                 "18",
-                "05/20/2006", // Updated format
+                "05/20/2006",
                 "Toril Davao City",
                 "BSIT",
                 "1st Year",
@@ -47,7 +47,7 @@ public class StudentRepo {
                 "4",
                 "Anna Mae Castillo",
                 "21",
-                "09/02/2003", // Updated format
+                "09/02/2003",
                 "Matina Davao City",
                 "BSIT",
                 "4th Year",
@@ -57,7 +57,7 @@ public class StudentRepo {
                 "5",
                 "Christian James Delos Santos",
                 "19",
-                "02/18/2005", // Updated format
+                "02/18/2005",
                 "Lanang Davao City",
                 "BSIT",
                 "2nd Year",
@@ -67,7 +67,7 @@ public class StudentRepo {
                 "6",
                 "Rochelle Mae Bautista",
                 "20",
-                "11/10/2004", // Updated format
+                "11/10/2004",
                 "Mintal Davao City",
                 "BSIT",
                 "3rd Year",
@@ -77,7 +77,7 @@ public class StudentRepo {
                 "7",
                 "Joshua Emmanuel Cruz",
                 "22",
-                "07/25/2002", // Updated format
+                "07/25/2002",
                 "Sasa Davao City",
                 "BSIT",
                 "4th Year",

@@ -10,23 +10,21 @@ import java.util.Objects;
 
 public class UIComponentHelper {
     public static void configureTable(TableView<Student> studentsTableView,
-                                      TableColumn<Student, String> idTableColumn,
-                                      TableColumn<Student, String> nameTableColumn,
-                                      TableColumn<Student, String> courseTableColumn,
-                                      TableColumn<Student, String> yearTableColumn,
-                                      TableColumn<Student, Void> detailTableColumn) {
+            TableColumn<Student, String> idTableColumn,
+            TableColumn<Student, String> nameTableColumn,
+            TableColumn<Student, String> courseTableColumn,
+            TableColumn<Student, String> yearTableColumn,
+            TableColumn<Student, Void> detailTableColumn) {
 
         studentsTableView.getColumns().forEach(col -> {
             col.setResizable(false);
             col.setReorderable(false);
             col.setSortable(false);
         });
-
         idTableColumn.setCellValueFactory(cellData -> cellData.getValue().getId());
         nameTableColumn.setCellValueFactory(cellData -> cellData.getValue().getName());
         courseTableColumn.setCellValueFactory(cellData -> cellData.getValue().getCourse());
         yearTableColumn.setCellValueFactory(cellData -> cellData.getValue().getYear());
-
         detailTableColumn.setCellFactory(col -> new TableCell<>() {
             private final Button viewButton = new Button("View");
 
@@ -46,7 +44,6 @@ public class UIComponentHelper {
                 setGraphic(empty ? null : viewButton);
             }
         });
-
         studentsTableView.setItems(StudentRepo.getStudents());
     }
 
