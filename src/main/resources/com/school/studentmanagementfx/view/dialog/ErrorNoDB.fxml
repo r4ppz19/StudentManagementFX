@@ -10,7 +10,7 @@
     <children>
         <VBox alignment="CENTER" minHeight="41.0" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #1E1E2E;">
             <children>
-                <Label text="No DataBase!" textFill="WHITE">
+                <Label text="No Database!" textFill="WHITE">
                     <font>
                         <Font name="Segoe UI Black" size="20.0" />
                     </font>
