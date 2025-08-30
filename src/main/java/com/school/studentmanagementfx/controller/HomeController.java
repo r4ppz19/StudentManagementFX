@@ -1,6 +1,7 @@
 package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.model.Student;
+import com.school.studentmanagementfx.model.StudentRepo;
 import com.school.studentmanagementfx.service.DatabaseService;
 import com.school.studentmanagementfx.util.UIHelper;
 import com.school.studentmanagementfx.view.StageManager;
@@ -34,6 +35,7 @@ public class HomeController {
 
     @FXML
     private void initialize() {
+        StudentRepo.createDummyStudent(); // For testing
         DatabaseService.loadAllStudents();
         UIHelper.configureTable(
                 studentsTableView,
