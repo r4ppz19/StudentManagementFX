@@ -107,6 +107,7 @@ public class StudentService {
 
         try (Statement statement = DBConnection.getConnection().createStatement();
                 ResultSet result = statement.executeQuery(sql)) {
+            System.out.println("CONNECTION IS OPEN!!!!!!!!!");
             StudentRepo.getStudents().clear();
 
             while (result.next()) {
