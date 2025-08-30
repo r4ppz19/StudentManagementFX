@@ -7,8 +7,31 @@ import javafx.scene.control.TextField;
 import java.util.Map;
 
 public class StudentFromUtil {
+    public static boolean validateUniqueIdField(
+            Map<String, Label> errorLabels,
+            Map<String, TextField> textFields) {
 
-    public static boolean validateAndShowErrors(Map<String, Label> errorLabels, Map<String, TextField> textFields) {
+        Map<String, String> errors = StudentValidator.validateIdUniqueness(
+                textFields.get("id").getText(),
+                textFields.get("name").getText(),
+                textFields.get("age").getText(),
+                textFields.get("birthday").getText(),
+                textFields.get("address").getText(),
+                textFields.get("course").getText(),
+                textFields.get("year").getText(),
+                textFields.get("email").getText());
+
+        if (!errors.isEmpty()) {
+            showErrors(errors, errorLabels);
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean validateAndShowErrors(
+            Map<String, Label> errorLabels,
+            Map<String, TextField> textFields) {
+
         clearErrorLabels(errorLabels);
 
         Map<String, String> errors = StudentValidator.validateFields(
@@ -28,6 +51,10 @@ public class StudentFromUtil {
         return false;
     }
 
+    public static void clearErrorLabels(Map<String, Label> errorLabels) {
+        errorLabels.values().forEach(label -> label.setText(""));
+    }
+
     private static void showErrors(Map<String, String> errors, Map<String, Label> errorLabels) {
         errors.forEach((field, message) -> {
             Label label = errorLabels.get(field);
@@ -35,9 +62,5 @@ public class StudentFromUtil {
                 label.setText(message == null ? "" : message.trim());
             }
         });
-    }
-
-    public static void clearErrorLabels(Map<String, Label> errorLabels) {
-        errorLabels.values().forEach(label -> label.setText(""));
     }
 }

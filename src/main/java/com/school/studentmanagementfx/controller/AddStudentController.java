@@ -82,9 +82,9 @@ public class AddStudentController {
     private void onAddStudentAction(ActionEvent event) {
         if (StudentFromUtil.validateAndShowErrors(errorLabels, textFields)) {
             return;
-        }
-
-        if (DatabaseService.addStudent(UIHelper.getStudentFromFields(textFields))) {
+        } else if (StudentFromUtil.validateUniqueIdField(errorLabels, textFields)) {
+            return;
+        } else if (DatabaseService.addStudent(UIHelper.getStudentFromFields(textFields))) {
             ViewManager.showSuccessStudentAddView(event);
             UIHelper.clearFields(textFields);
         }

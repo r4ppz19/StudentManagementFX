@@ -106,7 +106,7 @@ public class DatabaseService {
         String sql = "SELECT id, name, age, birthday, address, course, year, email FROM student";
 
         try (Statement statement = DatabaseConnector.getConnection().createStatement();
-             ResultSet result = statement.executeQuery(sql)) {
+                ResultSet result = statement.executeQuery(sql)) {
             StudentRepo.getStudents().clear();
 
             while (result.next()) {

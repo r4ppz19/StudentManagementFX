@@ -22,8 +22,6 @@ public class StudentValidator {
 
         if (id == null || id.trim().isEmpty()) {
             errors.put("id", "ID required");
-        } else if (!isIdUnique(id)) {
-            errors.put("id", "ID already exists");
         } else if (!id.matches("\\d+")) {
             errors.put("id", "Invalid ID");
         }
@@ -59,7 +57,25 @@ public class StudentValidator {
         return errors;
     }
 
-    public static boolean isIdUnique(String id) {
+    public static Map<String, String> validateIdUniqueness(
+            String id,
+            String name,
+            String age,
+            String birthday,
+            String address,
+            String course,
+            String year,
+            String email) {
+
+        Map<String, String> errors = new HashMap<>();
+
+        if (!isIdUnique(id)) {
+            errors.put("id", "ID already exists");
+        }
+        return errors;
+    }
+
+    private static boolean isIdUnique(String id) {
         ObservableList<Student> students = StudentRepo.getStudents();
         return students.stream().noneMatch(student -> student.getId().get().equals(id));
     }
