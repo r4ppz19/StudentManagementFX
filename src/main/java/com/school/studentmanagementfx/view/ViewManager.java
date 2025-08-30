@@ -81,6 +81,13 @@ public class ViewManager {
         StageManager.createWindow(view.getRoot(), current, "Success", true).showAndWait();
     }
 
+    public static void showErrorNoDB(Event event) {
+        String fxmlPath = "/com/school/studentmanagementfx/view/dialog/ErrorNoDB.fxml";
+        LoadedView<DialogViewController> view = StageManager.loadView(fxmlPath);
+        Stage current = StageManager.getCurrentStage(event);
+        StageManager.createWindow(view.getRoot(), current, "Error", true).showAndWait();
+    }
+
     // Might delete later
     public static void showErrorEmptyFieldView(Event event) {
         String fxmlPath = "/com/school/studentmanagementfx/view/dialog/ErrorEmptyField.fxml";
