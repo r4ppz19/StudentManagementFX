@@ -1,8 +1,7 @@
 package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.model.Student;
-import com.school.studentmanagementfx.service.StudentFileService;
-import com.school.studentmanagementfx.service.StudentSearchService;
+import com.school.studentmanagementfx.service.StudentService;
 import com.school.studentmanagementfx.util.UIComponentHelper;
 import com.school.studentmanagementfx.view.StageManager;
 import com.school.studentmanagementfx.view.ViewManager;
@@ -35,8 +34,7 @@ public class HomeViewController {
 
     @FXML
     private void initialize() {
-        StudentFileService.loadFromDataBase();
-        StudentFileService.saveToDataBase();
+        StudentService.loadAllStudents();
         UIComponentHelper.configureTable(
                 studentsTableView,
                 idTableColumn,
@@ -55,7 +53,7 @@ public class HomeViewController {
             return;
         }
 
-        Student foundStudent = StudentSearchService.findById(queryId);
+        Student foundStudent = StudentService.findStudentById(queryId);
 
         if (foundStudent == null) {
             ViewManager.showNotFoundChild(indicatorVboxContainer);
@@ -72,7 +70,6 @@ public class HomeViewController {
 
     @FXML
     private void onLogOutAction(ActionEvent event) {
-        StudentFileService.saveToDataBase();
         Stage current = StageManager.getCurrentStage(event);
         ViewManager.showLoginView(current);
     }

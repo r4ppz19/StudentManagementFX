@@ -1,8 +1,7 @@
 package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.model.Student;
-import com.school.studentmanagementfx.model.StudentRepo;
-import com.school.studentmanagementfx.service.StudentFileService;
+import com.school.studentmanagementfx.service.StudentService;
 import com.school.studentmanagementfx.util.StudentFormValidator;
 import com.school.studentmanagementfx.util.UIComponentHelper;
 import com.school.studentmanagementfx.view.StageManager;
@@ -86,10 +85,10 @@ public class AddStudentViewController {
             return;
         }
 
-        StudentRepo.getStudents().add(getStudentFromFields());
-        StudentFileService.saveToDataBase();
-        ViewManager.showSuccessStudentAddView(event);
-        UIComponentHelper.clearFields(textFields);
+        if (StudentService.addStudent(getStudentFromFields())) {
+            ViewManager.showSuccessStudentAddView(event);
+            UIComponentHelper.clearFields(textFields);
+        }
     }
 
     private Student getStudentFromFields() {

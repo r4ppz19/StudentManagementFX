@@ -10,6 +10,9 @@ module com.school.studentmanagementfx {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.ikonli.materialdesign2;
 
+    // SQL
+    requires java.sql;
+
     // Export main package so JavaFX can see Main
     exports com.school.studentmanagementfx;
 

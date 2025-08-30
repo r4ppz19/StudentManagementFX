@@ -1,8 +1,7 @@
 package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.model.Student;
-import com.school.studentmanagementfx.model.StudentRepo;
-import com.school.studentmanagementfx.service.StudentFileService;
+import com.school.studentmanagementfx.service.StudentService;
 import com.school.studentmanagementfx.util.StudentFormValidator;
 import com.school.studentmanagementfx.util.UIComponentHelper;
 import com.school.studentmanagementfx.view.StageManager;
@@ -123,8 +122,7 @@ public class StudentDetailViewController {
         if (hasChanges()) {
             Stage current = StageManager.getCurrentStage(event);
             if (ViewManager.showWarningSaveView(current)) {
-                updateStudentFromFields();
-                StudentFileService.saveToDataBase();
+                StudentService.updateStudent(getStudentFromFields());
                 setReadOnlyModeState();
             }
         }
@@ -134,8 +132,8 @@ public class StudentDetailViewController {
     private void onDeleteAction(ActionEvent event) {
         Stage current = StageManager.getCurrentStage(event);
         if (ViewManager.showWarningDeleteView(current)) {
-            StudentRepo.getStudents().remove(currentStudent);
-            StudentFileService.saveToDataBase();
+            String id = idTextField.getText();
+            StudentService.deleteStudent(id);
             current.close();
         }
     }
@@ -158,15 +156,16 @@ public class StudentDetailViewController {
         emailTextField.setText(student.getEmail().get());
     }
 
-    private void updateStudentFromFields() {
-        currentStudent.getId().set(idTextField.getText());
-        currentStudent.getName().set(nameTextField.getText());
-        currentStudent.getAge().set(ageTextField.getText());
-        currentStudent.getBirthday().set(birthdayTextField.getText());
-        currentStudent.getAddress().set(addressTextField.getText());
-        currentStudent.getCourse().set(courseTextField.getText());
-        currentStudent.getYear().set(yearTextField.getText());
-        currentStudent.getEmail().set(emailTextField.getText());
+    private Student getStudentFromFields() {
+        return new Student(
+                idTextField.getText(),
+                nameTextField.getText(),
+                ageTextField.getText(),
+                birthdayTextField.getText(),
+                addressTextField.getText(),
+                courseTextField.getText(),
+                yearTextField.getText(),
+                emailTextField.getText());
     }
 
     private boolean hasChanges() {
