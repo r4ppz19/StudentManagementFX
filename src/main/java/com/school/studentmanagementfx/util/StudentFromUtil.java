@@ -6,7 +6,7 @@ import javafx.scene.control.TextField;
 
 import java.util.Map;
 
-public class StudentFormValidator {
+public class StudentFromUtil {
 
     public static boolean validateAndShowErrors(Map<String, Label> errorLabels, Map<String, TextField> textFields) {
         clearErrorLabels(errorLabels);

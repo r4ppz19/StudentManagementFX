@@ -2,14 +2,14 @@ package com.school.studentmanagementfx.controller;
 
 import java.sql.SQLException;
 
-import com.school.studentmanagementfx.model.DBConnection;
+import com.school.studentmanagementfx.model.DatabaseConnector;
 import com.school.studentmanagementfx.view.ViewManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class LoginViewController {
+public class LoginController {
 
     private static final String FIXED_USERNAME = "admin";
     private static final String FIXED_PASSWORD = "admin";
@@ -22,7 +22,7 @@ public class LoginViewController {
     @FXML
     private void onLoginAction(ActionEvent event) {
         try {
-            DBConnection.getConnection();
+            DatabaseConnector.getConnection();
         } catch (SQLException e) {
             ViewManager.showErrorNoDB(event);
             return;

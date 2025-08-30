@@ -1,8 +1,8 @@
 package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.model.Student;
-import com.school.studentmanagementfx.service.DataBaseService;
-import com.school.studentmanagementfx.util.UIComponentHelper;
+import com.school.studentmanagementfx.service.DatabaseService;
+import com.school.studentmanagementfx.util.UIHelper;
 import com.school.studentmanagementfx.view.StageManager;
 import com.school.studentmanagementfx.view.ViewManager;
 import javafx.event.ActionEvent;
@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class HomeViewController {
+public class HomeController {
 
     @FXML
     private TextField searchTextField;
@@ -34,8 +34,8 @@ public class HomeViewController {
 
     @FXML
     private void initialize() {
-        DataBaseService.loadAllStudents();
-        UIComponentHelper.configureTable(
+        DatabaseService.loadAllStudents();
+        UIHelper.configureTable(
                 studentsTableView,
                 idTableColumn,
                 nameTableColumn,
@@ -53,7 +53,7 @@ public class HomeViewController {
             return;
         }
 
-        Student foundStudent = DataBaseService.findStudentById(queryId);
+        Student foundStudent = DatabaseService.findStudentById(queryId);
 
         if (foundStudent == null) {
             ViewManager.showNotFoundChild(indicatorVboxContainer);

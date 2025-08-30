@@ -1,9 +1,9 @@
 package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.model.Student;
-import com.school.studentmanagementfx.service.DataBaseService;
-import com.school.studentmanagementfx.util.StudentFormValidator;
-import com.school.studentmanagementfx.util.UIComponentHelper;
+import com.school.studentmanagementfx.service.DatabaseService;
+import com.school.studentmanagementfx.util.StudentFromUtil;
+import com.school.studentmanagementfx.util.UIHelper;
 import com.school.studentmanagementfx.view.StageManager;
 import com.school.studentmanagementfx.view.ViewManager;
 import javafx.application.Platform;
@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 
 import java.util.Map;
 
-public class StudentDetailViewController {
+public class StudentDetailController {
 
     @FXML
     private TextField idTextField;
@@ -115,15 +115,15 @@ public class StudentDetailViewController {
 
     @FXML
     private void onSaveAction(ActionEvent event) {
-        if (StudentFormValidator.validateAndShowErrors(errorLabels, textFields)) {
+        if (StudentFromUtil.validateAndShowErrors(errorLabels, textFields)) {
             return;
         }
 
         if (hasChanges()) {
             Stage current = StageManager.getCurrentStage(event);
             if (ViewManager.showWarningSaveView(current)) {
-                Student student = UIComponentHelper.getStudentFromFields(textFields);
-                DataBaseService.updateStudent(student);
+                Student student = UIHelper.getStudentFromFields(textFields);
+                DatabaseService.updateStudent(student);
                 setReadOnlyModeState();
             }
         }
@@ -134,7 +134,7 @@ public class StudentDetailViewController {
         Stage current = StageManager.getCurrentStage(event);
         if (ViewManager.showWarningDeleteView(current)) {
             String id = idTextField.getText();
-            DataBaseService.deleteStudent(id);
+            DatabaseService.deleteStudent(id);
             current.close();
         }
     }
@@ -170,21 +170,21 @@ public class StudentDetailViewController {
 
     private void setEditModeState() {
         headerLabel.setText("Student Details  (Edit Mode)");
-        UIComponentHelper.showButton(saveButton, true);
-        UIComponentHelper.showButton(deleteButton, true);
-        UIComponentHelper.showButton(cancelButton, true);
-        UIComponentHelper.showButton(editButton, false);
-        UIComponentHelper.showButton(closeButton, false);
-        UIComponentHelper.setFieldsEditable(textFields, true);
+        UIHelper.showButton(saveButton, true);
+        UIHelper.showButton(deleteButton, true);
+        UIHelper.showButton(cancelButton, true);
+        UIHelper.showButton(editButton, false);
+        UIHelper.showButton(closeButton, false);
+        UIHelper.setFieldsEditable(textFields, true);
     }
 
     private void setReadOnlyModeState() {
         headerLabel.setText("Student Details");
-        UIComponentHelper.showButton(saveButton, false);
-        UIComponentHelper.showButton(deleteButton, false);
-        UIComponentHelper.showButton(cancelButton, false);
-        UIComponentHelper.showButton(editButton, true);
-        UIComponentHelper.showButton(closeButton, true);
-        UIComponentHelper.setFieldsEditable(textFields, false);
+        UIHelper.showButton(saveButton, false);
+        UIHelper.showButton(deleteButton, false);
+        UIHelper.showButton(cancelButton, false);
+        UIHelper.showButton(editButton, true);
+        UIHelper.showButton(closeButton, true);
+        UIHelper.setFieldsEditable(textFields, false);
     }
 }

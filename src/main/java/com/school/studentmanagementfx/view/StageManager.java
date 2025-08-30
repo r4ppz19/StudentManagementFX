@@ -1,6 +1,6 @@
 package com.school.studentmanagementfx.view;
 
-import com.school.studentmanagementfx.util.IconSetter;
+import com.school.studentmanagementfx.util.IconUtil;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -17,7 +17,7 @@ public class StageManager {
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        IconSetter.setAppIcon(stage);
+        IconUtil.setAppIcon(stage);
         stage.setTitle(title);
         stage.setResizable(false);
         stage.setFullScreen(false);

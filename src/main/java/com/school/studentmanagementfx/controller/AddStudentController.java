@@ -1,8 +1,8 @@
 package com.school.studentmanagementfx.controller;
 
-import com.school.studentmanagementfx.service.DataBaseService;
-import com.school.studentmanagementfx.util.StudentFormValidator;
-import com.school.studentmanagementfx.util.UIComponentHelper;
+import com.school.studentmanagementfx.service.DatabaseService;
+import com.school.studentmanagementfx.util.StudentFromUtil;
+import com.school.studentmanagementfx.util.UIHelper;
 import com.school.studentmanagementfx.view.StageManager;
 import com.school.studentmanagementfx.view.ViewManager;
 import javafx.event.ActionEvent;
@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 
 import java.util.Map;
 
-public class AddStudentViewController {
+public class AddStudentController {
     @FXML
     private TextField idTextField;
     @FXML
@@ -80,13 +80,13 @@ public class AddStudentViewController {
 
     @FXML
     private void onAddStudentAction(ActionEvent event) {
-        if (StudentFormValidator.validateAndShowErrors(errorLabels, textFields)) {
+        if (StudentFromUtil.validateAndShowErrors(errorLabels, textFields)) {
             return;
         }
 
-        if (DataBaseService.addStudent(UIComponentHelper.getStudentFromFields(textFields))) {
+        if (DatabaseService.addStudent(UIHelper.getStudentFromFields(textFields))) {
             ViewManager.showSuccessStudentAddView(event);
-            UIComponentHelper.clearFields(textFields);
+            UIHelper.clearFields(textFields);
         }
     }
 }

@@ -5,16 +5,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.school.studentmanagementfx.model.DBConnection;
+import com.school.studentmanagementfx.model.DatabaseConnector;
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
 
-public class DataBaseService {
+public class DatabaseService {
 
     public static boolean addStudent(Student student) {
         String sql = "INSERT INTO student (id, name, age, birthday, address, course, year, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
 
-        try (PreparedStatement statement = DBConnection.getConnection().prepareStatement(sql)) {
+        try (PreparedStatement statement = DatabaseConnector.getConnection().prepareStatement(sql)) {
             statement.setString(1, student.getId().get());
             statement.setString(2, student.getName().get());
             statement.setString(3, student.getAge().get());
@@ -38,7 +38,7 @@ public class DataBaseService {
     public static boolean deleteStudent(String id) {
         String sql = "DELETE FROM student WHERE id = ?";
 
-        try (PreparedStatement statement = DBConnection.getConnection().prepareStatement(sql)) {
+        try (PreparedStatement statement = DatabaseConnector.getConnection().prepareStatement(sql)) {
             statement.setString(1, id);
 
             int rowsDeleted = statement.executeUpdate();
@@ -56,7 +56,7 @@ public class DataBaseService {
     public static Student findStudentById(String id) {
         String sql = "SELECT * FROM student WHERE id = ?";
 
-        try (PreparedStatement statement = DBConnection.getConnection().prepareStatement(sql)) {
+        try (PreparedStatement statement = DatabaseConnector.getConnection().prepareStatement(sql)) {
             statement.setString(1, id);
             try (ResultSet result = statement.executeQuery()) {
                 if (result.next()) {
@@ -79,7 +79,7 @@ public class DataBaseService {
 
     public static boolean updateStudent(Student student) {
         String sql = "UPDATE student SET name = ?, age = ?, birthday = ?, address = ?, course = ?, year = ?, email = ? WHERE id = ?";
-        try (PreparedStatement statement = DBConnection.getConnection().prepareStatement(sql)) {
+        try (PreparedStatement statement = DatabaseConnector.getConnection().prepareStatement(sql)) {
             statement.setString(1, student.getName().get());
             statement.setString(2, student.getAge().get());
             statement.setString(3, student.getBirthday().get());
@@ -105,9 +105,8 @@ public class DataBaseService {
     public static void loadAllStudents() {
         String sql = "SELECT id, name, age, birthday, address, course, year, email FROM student";
 
-        try (Statement statement = DBConnection.getConnection().createStatement();
-                ResultSet result = statement.executeQuery(sql)) {
-            System.out.println("CONNECTION IS OPEN!!!!!!!!!");
+        try (Statement statement = DatabaseConnector.getConnection().createStatement();
+             ResultSet result = statement.executeQuery(sql)) {
             StudentRepo.getStudents().clear();
 
             while (result.next()) {

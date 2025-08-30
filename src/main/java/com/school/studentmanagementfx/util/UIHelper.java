@@ -8,7 +8,7 @@ import javafx.scene.control.*;
 import java.util.Map;
 import java.util.Objects;
 
-public class UIComponentHelper {
+public class UIHelper {
 
     public static Student getStudentFromFields(Map<String, TextField> textFields) {
         return new Student(
