@@ -1,5 +1,9 @@
 package com.school.studentmanagementfx.service;
 
+import com.school.studentmanagementfx.model.Student;
+import com.school.studentmanagementfx.model.StudentRepo;
+import javafx.collections.ObservableList;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +22,8 @@ public class StudentValidator {
 
         if (id == null || id.trim().isEmpty()) {
             errors.put("id", "ID required");
+        } else if (!isIdUnique(id)) {
+            errors.put("id", "ID already exists");
         } else if (!id.matches("\\d+")) {
             errors.put("id", "Invalid ID");
         }
@@ -51,5 +57,10 @@ public class StudentValidator {
             errors.put("email", "Invalid email");
         }
         return errors;
+    }
+
+    public static boolean isIdUnique(String id) {
+        ObservableList<Student> students = StudentRepo.getStudents();
+        return students.stream().noneMatch(student -> student.getId().get().equals(id));
     }
 }

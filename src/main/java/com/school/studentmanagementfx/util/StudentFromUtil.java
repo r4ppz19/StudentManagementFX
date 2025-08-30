@@ -37,7 +37,7 @@ public class StudentFromUtil {
         });
     }
 
-    private static void clearErrorLabels(Map<String, Label> errorLabels) {
+    public static void clearErrorLabels(Map<String, Label> errorLabels) {
         errorLabels.values().forEach(label -> label.setText(""));
     }
 }

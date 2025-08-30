@@ -19,7 +19,7 @@ public class StudentRepo {
             if (DatabaseService.findStudentById(String.valueOf(i)) == null) {
                 Student dummy = new Student(
                         String.valueOf(i),
-                        "Dummy Name " + i,
+                        "Dummy Name",
                         "20",
                         "12/31/2005",
                         "Prk " + i + "Address",

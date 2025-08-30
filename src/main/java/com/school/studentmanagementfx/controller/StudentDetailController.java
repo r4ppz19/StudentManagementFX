@@ -2,6 +2,7 @@ package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.service.DatabaseService;
+import com.school.studentmanagementfx.service.StudentValidator;
 import com.school.studentmanagementfx.util.StudentFromUtil;
 import com.school.studentmanagementfx.util.UIHelper;
 import com.school.studentmanagementfx.view.StageManager;
@@ -105,6 +106,7 @@ public class StudentDetailController {
             }
         }
         setStudent(currentStudent);
+        StudentFromUtil.clearErrorLabels(errorLabels);
         setReadOnlyModeState();
     }
 
