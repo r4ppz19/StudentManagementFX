@@ -9,7 +9,34 @@ import java.util.Map;
 import java.util.Objects;
 
 public class UIComponentHelper {
-    public static void configureTable(TableView<Student> studentsTableView,
+
+    public static Student getStudentFromFields(Map<String, TextField> textFields) {
+        return new Student(
+                textFields.get("id").getText().trim(),
+                textFields.get("name").getText().trim(),
+                textFields.get("age").getText().trim(),
+                textFields.get("birthday").getText().trim(),
+                textFields.get("address").getText().trim(),
+                textFields.get("course").getText().trim(),
+                textFields.get("year").getText().trim(),
+                textFields.get("email").getText().trim());
+    }
+
+    public static void setFieldsEditable(Map<String, TextField> textFields, boolean editable) {
+        textFields.values().forEach((field) -> field.setEditable(editable));
+    }
+
+    public static void showButton(Button button, boolean visible) {
+        button.setVisible(visible);
+        button.setManaged(visible);
+    }
+
+    public static void clearFields(Map<String, TextField> textFields) {
+        textFields.values().forEach(TextField::clear);
+    }
+
+    public static void configureTable(
+            TableView<Student> studentsTableView,
             TableColumn<Student, String> idTableColumn,
             TableColumn<Student, String> nameTableColumn,
             TableColumn<Student, String> courseTableColumn,
@@ -25,9 +52,13 @@ public class UIComponentHelper {
         nameTableColumn.setCellValueFactory(cellData -> cellData.getValue().getName());
         courseTableColumn.setCellValueFactory(cellData -> cellData.getValue().getCourse());
         yearTableColumn.setCellValueFactory(cellData -> cellData.getValue().getYear());
+        configureDetailTableColumn(detailTableColumn);
+        studentsTableView.setItems(StudentRepo.getStudents());
+    }
+
+    private static void configureDetailTableColumn(TableColumn<Student, Void> detailTableColumn) {
         detailTableColumn.setCellFactory(col -> new TableCell<>() {
             private final Button viewButton = new Button("View");
-
             {
                 viewButton.setOnAction(event -> {
                     Student student = getTableView().getItems().get(getIndex());
@@ -44,19 +75,5 @@ public class UIComponentHelper {
                 setGraphic(empty ? null : viewButton);
             }
         });
-        studentsTableView.setItems(StudentRepo.getStudents());
-    }
-
-    public static void setFieldsEditable(Map<String, TextField> textFields, boolean editable) {
-        textFields.values().forEach((field) -> field.setEditable(editable));
-    }
-
-    public static void showButton(Button button, boolean visible) {
-        button.setVisible(visible);
-        button.setManaged(visible);
-    }
-
-    public static void clearFields(Map<String, TextField> textFields) {
-        textFields.values().forEach(TextField::clear);
     }
 }

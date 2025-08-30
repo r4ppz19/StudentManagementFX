@@ -85,21 +85,9 @@ public class AddStudentViewController {
             return;
         }
 
-        if (StudentService.addStudent(getStudentFromFields())) {
+        if (StudentService.addStudent(UIComponentHelper.getStudentFromFields(textFields))) {
             ViewManager.showSuccessStudentAddView(event);
             UIComponentHelper.clearFields(textFields);
         }
-    }
-
-    private Student getStudentFromFields() {
-        return new Student(
-                textFields.get("id").getText().trim(),
-                textFields.get("name").getText().trim(),
-                textFields.get("age").getText().trim(),
-                textFields.get("birthday").getText().trim(),
-                textFields.get("address").getText().trim(),
-                textFields.get("course").getText().trim(),
-                textFields.get("year").getText().trim(),
-                textFields.get("email").getText().trim());
     }
 }

@@ -122,7 +122,8 @@ public class StudentDetailViewController {
         if (hasChanges()) {
             Stage current = StageManager.getCurrentStage(event);
             if (ViewManager.showWarningSaveView(current)) {
-                StudentService.updateStudent(getStudentFromFields());
+                Student student = UIComponentHelper.getStudentFromFields(textFields);
+                StudentService.updateStudent(student);
                 setReadOnlyModeState();
             }
         }
@@ -154,18 +155,6 @@ public class StudentDetailViewController {
         courseTextField.setText(student.getCourse().get());
         yearTextField.setText(student.getYear().get());
         emailTextField.setText(student.getEmail().get());
-    }
-
-    private Student getStudentFromFields() {
-        return new Student(
-                idTextField.getText(),
-                nameTextField.getText(),
-                ageTextField.getText(),
-                birthdayTextField.getText(),
-                addressTextField.getText(),
-                courseTextField.getText(),
-                yearTextField.getText(),
-                emailTextField.getText());
     }
 
     private boolean hasChanges() {
