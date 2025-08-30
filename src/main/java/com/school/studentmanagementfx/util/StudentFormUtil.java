@@ -1,17 +1,18 @@
 package com.school.studentmanagementfx.util;
 
 import com.school.studentmanagementfx.service.StudentValidator;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.util.Map;
 
-public class StudentFromUtil {
-    public static boolean validateUniqueIdField(
+public class StudentFormUtil {
+    public static boolean validateStudentIdAndShowErrors(
             Map<String, Label> errorLabels,
             Map<String, TextField> textFields) {
 
-        Map<String, String> errors = StudentValidator.validateIdUniqueness(
+        Map<String, String> errors = StudentValidator.validateStudentIdUniqueness(
                 textFields.get("id").getText(),
                 textFields.get("name").getText(),
                 textFields.get("age").getText(),
@@ -28,13 +29,13 @@ public class StudentFromUtil {
         return false;
     }
 
-    public static boolean validateAndShowErrors(
+    public static boolean validateFieldsAndShowErrors(
             Map<String, Label> errorLabels,
             Map<String, TextField> textFields) {
 
         clearErrorLabels(errorLabels);
 
-        Map<String, String> errors = StudentValidator.validateFields(
+        Map<String, String> errors = StudentValidator.validateStudentFields(
                 textFields.get("id").getText(),
                 textFields.get("name").getText(),
                 textFields.get("age").getText(),

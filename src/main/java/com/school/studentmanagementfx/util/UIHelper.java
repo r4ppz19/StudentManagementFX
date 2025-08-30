@@ -46,8 +46,28 @@ public class UIHelper {
         studentsTableView.getColumns().forEach(col -> {
             col.setResizable(false);
             col.setReorderable(false);
-            col.setSortable(false);
+            if (col == idTableColumn) {
+                col.setSortable(true);
+            } else {
+                col.setSortable(false);
+            }
         });
+        idTableColumn.setComparator((s1, s2) -> {
+            if (s1 == s2)
+                return 0;
+            if (s1 == null)
+                return -1;
+            if (s2 == null)
+                return 1;
+            try {
+                long n1 = Long.parseLong(s1);
+                long n2 = Long.parseLong(s2);
+                return Long.compare(n1, n2);
+            } catch (NumberFormatException e) {
+                return s1.compareToIgnoreCase(s2);
+            }
+        });
+
         idTableColumn.setCellValueFactory(cellData -> cellData.getValue().getId());
         nameTableColumn.setCellValueFactory(cellData -> cellData.getValue().getName());
         courseTableColumn.setCellValueFactory(cellData -> cellData.getValue().getCourse());

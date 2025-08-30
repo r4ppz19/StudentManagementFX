@@ -1,7 +1,7 @@
 package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.service.DatabaseService;
-import com.school.studentmanagementfx.util.StudentFromUtil;
+import com.school.studentmanagementfx.util.StudentFormUtil;
 import com.school.studentmanagementfx.util.UIHelper;
 import com.school.studentmanagementfx.view.StageManager;
 import com.school.studentmanagementfx.view.ViewManager;
@@ -80,11 +80,13 @@ public class AddStudentController {
 
     @FXML
     private void onAddStudentAction(ActionEvent event) {
-        if (StudentFromUtil.validateAndShowErrors(errorLabels, textFields)) {
+        if (StudentFormUtil.validateFieldsAndShowErrors(errorLabels, textFields)) {
             return;
-        } else if (StudentFromUtil.validateUniqueIdField(errorLabels, textFields)) {
+        }
+        if (StudentFormUtil.validateStudentIdAndShowErrors(errorLabels, textFields)) {
             return;
-        } else if (DatabaseService.addStudent(UIHelper.getStudentFromFields(textFields))) {
+        }
+        if (DatabaseService.addStudent(UIHelper.getStudentFromFields(textFields))) {
             ViewManager.showSuccessStudentAddView(event);
             UIHelper.clearFields(textFields);
         }
