@@ -80,10 +80,10 @@ public class AddStudentController {
 
     @FXML
     private void onAddStudentAction(ActionEvent event) {
-        if (StudentFormUtil.validateFieldsAndShowErrors(errorLabels, textFields)) {
+        if (StudentFormUtil.validateAndShowFieldErrors(errorLabels, textFields)) {
             return;
         }
-        if (StudentFormUtil.validateStudentIdAndShowErrors(errorLabels, textFields)) {
+        if (StudentFormUtil.showIdUniquenessErrorIfDuplicate(errorLabels, textFields)) {
             return;
         }
         if (DatabaseService.addStudent(UIHelper.getStudentFromFields(textFields))) {

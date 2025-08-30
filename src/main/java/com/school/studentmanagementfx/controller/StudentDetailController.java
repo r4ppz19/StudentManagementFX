@@ -116,7 +116,7 @@ public class StudentDetailController {
 
     @FXML
     private void onSaveAction(ActionEvent event) {
-        if (StudentFormUtil.validateFieldsAndShowErrors(errorLabels, textFields)) {
+        if (StudentFormUtil.validateAndShowFieldErrors(errorLabels, textFields)) {
             return;
         }
 

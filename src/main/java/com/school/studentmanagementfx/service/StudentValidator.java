@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StudentValidator {
-    public static Map<String, String> validateStudentFields(
+    public static Map<String, String> validateFields(
             String id,
             String name,
             String age,
@@ -57,7 +57,7 @@ public class StudentValidator {
         return errors;
     }
 
-    public static Map<String, String> validateStudentIdUniqueness(
+    public static Map<String, String> validateIdUniqueness(
             String id,
             String name,
             String age,

@@ -8,34 +8,14 @@ import javafx.scene.control.TextField;
 import java.util.Map;
 
 public class StudentFormUtil {
-    public static boolean validateStudentIdAndShowErrors(
-            Map<String, Label> errorLabels,
-            Map<String, TextField> textFields) {
 
-        Map<String, String> errors = StudentValidator.validateStudentIdUniqueness(
-                textFields.get("id").getText(),
-                textFields.get("name").getText(),
-                textFields.get("age").getText(),
-                textFields.get("birthday").getText(),
-                textFields.get("address").getText(),
-                textFields.get("course").getText(),
-                textFields.get("year").getText(),
-                textFields.get("email").getText());
-
-        if (!errors.isEmpty()) {
-            showErrors(errors, errorLabels);
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean validateFieldsAndShowErrors(
+    public static boolean validateAndShowFieldErrors(
             Map<String, Label> errorLabels,
             Map<String, TextField> textFields) {
 
         clearErrorLabels(errorLabels);
 
-        Map<String, String> errors = StudentValidator.validateStudentFields(
+        Map<String, String> errors = StudentValidator.validateFields(
                 textFields.get("id").getText(),
                 textFields.get("name").getText(),
                 textFields.get("age").getText(),
@@ -46,7 +26,28 @@ public class StudentFormUtil {
                 textFields.get("email").getText());
 
         if (!errors.isEmpty()) {
-            showErrors(errors, errorLabels);
+            populateErrorLabels(errors, errorLabels);
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean showIdUniquenessErrorIfDuplicate(
+            Map<String, Label> errorLabels,
+            Map<String, TextField> textFields) {
+
+        Map<String, String> errors = StudentValidator.validateIdUniqueness(
+                textFields.get("id").getText(),
+                textFields.get("name").getText(),
+                textFields.get("age").getText(),
+                textFields.get("birthday").getText(),
+                textFields.get("address").getText(),
+                textFields.get("course").getText(),
+                textFields.get("year").getText(),
+                textFields.get("email").getText());
+
+        if (!errors.isEmpty()) {
+            populateErrorLabels(errors, errorLabels);
             return true;
         }
         return false;
@@ -56,7 +57,7 @@ public class StudentFormUtil {
         errorLabels.values().forEach(label -> label.setText(""));
     }
 
-    private static void showErrors(Map<String, String> errors, Map<String, Label> errorLabels) {
+    private static void populateErrorLabels(Map<String, String> errors, Map<String, Label> errorLabels) {
         errors.forEach((field, message) -> {
             Label label = errorLabels.get(field);
             if (label != null) {
