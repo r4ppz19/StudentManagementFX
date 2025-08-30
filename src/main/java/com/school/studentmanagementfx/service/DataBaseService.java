@@ -9,7 +9,7 @@ import com.school.studentmanagementfx.model.DBConnection;
 import com.school.studentmanagementfx.model.Student;
 import com.school.studentmanagementfx.model.StudentRepo;
 
-public class StudentService {
+public class DataBaseService {
 
     public static boolean addStudent(Student student) {
         String sql = "INSERT INTO student (id, name, age, birthday, address, course, year, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";

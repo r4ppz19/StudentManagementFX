@@ -1,7 +1,6 @@
 package com.school.studentmanagementfx.controller;
 
-import com.school.studentmanagementfx.model.Student;
-import com.school.studentmanagementfx.service.StudentService;
+import com.school.studentmanagementfx.service.DataBaseService;
 import com.school.studentmanagementfx.util.StudentFormValidator;
 import com.school.studentmanagementfx.util.UIComponentHelper;
 import com.school.studentmanagementfx.view.StageManager;
@@ -85,7 +84,7 @@ public class AddStudentViewController {
             return;
         }
 
-        if (StudentService.addStudent(UIComponentHelper.getStudentFromFields(textFields))) {
+        if (DataBaseService.addStudent(UIComponentHelper.getStudentFromFields(textFields))) {
             ViewManager.showSuccessStudentAddView(event);
             UIComponentHelper.clearFields(textFields);
         }

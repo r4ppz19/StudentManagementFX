@@ -1,7 +1,7 @@
 package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.model.Student;
-import com.school.studentmanagementfx.service.StudentService;
+import com.school.studentmanagementfx.service.DataBaseService;
 import com.school.studentmanagementfx.util.StudentFormValidator;
 import com.school.studentmanagementfx.util.UIComponentHelper;
 import com.school.studentmanagementfx.view.StageManager;
@@ -123,7 +123,7 @@ public class StudentDetailViewController {
             Stage current = StageManager.getCurrentStage(event);
             if (ViewManager.showWarningSaveView(current)) {
                 Student student = UIComponentHelper.getStudentFromFields(textFields);
-                StudentService.updateStudent(student);
+                DataBaseService.updateStudent(student);
                 setReadOnlyModeState();
             }
         }
@@ -134,7 +134,7 @@ public class StudentDetailViewController {
         Stage current = StageManager.getCurrentStage(event);
         if (ViewManager.showWarningDeleteView(current)) {
             String id = idTextField.getText();
-            StudentService.deleteStudent(id);
+            DataBaseService.deleteStudent(id);
             current.close();
         }
     }
