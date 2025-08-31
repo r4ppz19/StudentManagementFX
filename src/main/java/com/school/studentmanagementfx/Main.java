@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    // It’s easy to make a complicated program
     public static void main(String[] args) {
         launch(args);
     }

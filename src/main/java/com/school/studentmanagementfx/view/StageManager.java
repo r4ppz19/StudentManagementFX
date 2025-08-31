@@ -3,9 +3,9 @@ package com.school.studentmanagementfx.view;
 import com.school.studentmanagementfx.util.IconUtil;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.Node;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -13,27 +13,20 @@ import java.io.IOException;
 
 public class StageManager {
 
-    public static Stage createWindow(Parent root, Stage owner, String title, boolean modal) {
+    public static void setupPrimaryStage(Stage stage, Parent root, String title) {
+        configureStage(stage, root, title, false, null);
+        stage.show();
+    }
+
+    public static Stage createModalWindow(Parent root, Stage owner, String title) {
         Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        IconUtil.setAppIcon(stage);
-        stage.setScene(scene);
-        stage.setTitle(title);
-        stage.setResizable(false);
-        stage.setFullScreen(false);
-        centerWindow(owner, stage);
-        if (modal) {
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(owner);
-        }
+        configureStage(stage, root, title, true, owner);
         return stage;
     }
 
     public static void switchScene(Stage stage, Parent root, String title) {
-        Scene scene = new Scene(root);
+        stage.setScene(new Scene(root));
         stage.setTitle(title);
-        stage.setScene(scene);
-        stage.show();
     }
 
     public static Stage getCurrentStage(Event event) {
@@ -58,5 +51,19 @@ public class StageManager {
             childStage.setX(centerX);
             childStage.setY(centerY);
         });
+    }
+
+    private static void configureStage(Stage stage, Parent root, String title, boolean modal, Stage owner) {
+        stage.setScene(new Scene(root));
+        stage.setTitle(title);
+        stage.setResizable(false);
+        stage.setFullScreen(false);
+        IconUtil.setAppIcon(stage);
+
+        if (modal && owner != null) {
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(owner);
+            centerWindow(owner, stage);
+        }
     }
 }

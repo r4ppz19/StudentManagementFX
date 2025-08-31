@@ -2,9 +2,7 @@ package com.school.studentmanagementfx.view;
 
 import com.school.studentmanagementfx.controller.*;
 import com.school.studentmanagementfx.model.Student;
-import com.school.studentmanagementfx.util.IconUtil;
 import javafx.event.Event;
-import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -14,13 +12,7 @@ public class ViewManager {
     public static void initializeMainStage(Stage stage) {
         String fxmlPath = "/com/school/studentmanagementfx/view/LoginView.fxml";
         LoadedView<LoginController> view = StageManager.loadView(fxmlPath);
-        Scene scene = new Scene(view.getRoot());
-        IconUtil.setAppIcon(stage);
-        stage.setTitle("Student Management");
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.setFullScreen(false);
-        stage.show();
+        StageManager.setupPrimaryStage(stage, view.getRoot(), "Student Management");
     }
 
     public static void showLoginView(Stage stage) {
@@ -40,7 +32,7 @@ public class ViewManager {
         String fxmlPath = "/com/school/studentmanagementfx/view/HomeView.fxml";
         LoadedView<HomeController> view = StageManager.loadView(fxmlPath);
         Stage current = StageManager.getCurrentStage(event);
-        StageManager.createWindow(view.getRoot(), current, "Student Management", false).show();
+        StageManager.createModalWindow(view.getRoot(), current, "Student Management").show();
         current.close();
     }
 
@@ -50,13 +42,13 @@ public class ViewManager {
         LoadedView<StudentDetailController> view = StageManager.loadView(fxmlPath);
         view.getController().setStudent(student);
         Stage current = StageManager.getCurrentStage(event);
-        StageManager.createWindow(view.getRoot(), current, "Student Detail", true).showAndWait();
+        StageManager.createModalWindow(view.getRoot(), current, "Student Detail").showAndWait();
     }
 
     public static void showAddStudentView(Stage owner) {
         String fxmlPath = "/com/school/studentmanagementfx/view/modal/AddStudent.fxml";
         LoadedView<AddStudentController> view = StageManager.loadView(fxmlPath);
-        StageManager.createWindow(view.getRoot(), owner, "Add Student", true).showAndWait();
+        StageManager.createModalWindow(view.getRoot(), owner, "Add Student").showAndWait();
     }
 
     @Deprecated // might delete later
@@ -64,7 +56,7 @@ public class ViewManager {
         String fxmlPath = "/com/school/studentmanagementfx/view/dialog/ErrorEmptyField.fxml";
         LoadedView<DialogController> view = StageManager.loadView(fxmlPath);
         Stage current = StageManager.getCurrentStage(event);
-        StageManager.createWindow(view.getRoot(), current, "Error", true).showAndWait();
+        StageManager.createModalWindow(view.getRoot(), current, "Error").showAndWait();
     }
 
     // Insert child views
@@ -90,21 +82,21 @@ public class ViewManager {
         String fxmlPath = "/com/school/studentmanagementfx/view/dialog/ErrorUserPass.fxml";
         LoadedView<DialogController> view = StageManager.loadView(fxmlPath);
         Stage current = StageManager.getCurrentStage(event);
-        StageManager.createWindow(view.getRoot(), current, "Error", true).showAndWait();
+        StageManager.createModalWindow(view.getRoot(), current, "Error").showAndWait();
     }
 
     public static void showSuccessStudentAddView(Event event) {
         Stage current = StageManager.getCurrentStage(event);
         String fxmlPath = "/com/school/studentmanagementfx/view/dialog/SuccessStudentAdd.fxml";
         LoadedView<DialogController> view = StageManager.loadView(fxmlPath);
-        StageManager.createWindow(view.getRoot(), current, "Success", true).showAndWait();
+        StageManager.createModalWindow(view.getRoot(), current, "Success").showAndWait();
     }
 
     public static void showErrorNoDB(Event event) {
         String fxmlPath = "/com/school/studentmanagementfx/view/dialog/ErrorNoDB.fxml";
         LoadedView<DialogController> view = StageManager.loadView(fxmlPath);
         Stage current = StageManager.getCurrentStage(event);
-        StageManager.createWindow(view.getRoot(), current, "Error", true).showAndWait();
+        StageManager.createModalWindow(view.getRoot(), current, "Error").showAndWait();
     }
 
     // Pop up warning dialog modals
@@ -125,7 +117,7 @@ public class ViewManager {
 
     private static boolean showWarning(Stage owner, String fxmlPath) {
         LoadedView<WarningController> view = StageManager.loadView(fxmlPath);
-        StageManager.createWindow(view.getRoot(), owner, "Warning", true).showAndWait();
+        StageManager.createModalWindow(view.getRoot(), owner, "Warning").showAndWait();
         return view.getController().isConfirmed();
     }
 }
