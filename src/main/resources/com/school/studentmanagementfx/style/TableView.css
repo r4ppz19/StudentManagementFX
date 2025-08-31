@@ -6,6 +6,8 @@
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
     -fx-font-size: 11px;
+    -fx-selection-bar: #EEEEEE;
+    -fx-selection-bar-non-focused: #EEEEEE;
 }
 
 .table-view:focused {
