@@ -16,8 +16,8 @@ public class StageManager {
     public static Stage createWindow(Parent root, Stage owner, String title, boolean modal) {
         Stage stage = new Stage();
         Scene scene = new Scene(root);
-        stage.setScene(scene);
         IconUtil.setAppIcon(stage);
+        stage.setScene(scene);
         stage.setTitle(title);
         stage.setResizable(false);
         stage.setFullScreen(false);
@@ -27,6 +27,13 @@ public class StageManager {
             stage.initOwner(owner);
         }
         return stage;
+    }
+
+    public static void switchScene(Stage stage, Parent root, String title) {
+        Scene scene = new Scene(root);
+        stage.setTitle(title);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public static Stage getCurrentStage(Event event) {

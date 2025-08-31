@@ -3,11 +3,13 @@ package com.school.studentmanagementfx.controller;
 import java.sql.SQLException;
 
 import com.school.studentmanagementfx.model.DatabaseConnector;
+import com.school.studentmanagementfx.view.StageManager;
 import com.school.studentmanagementfx.view.ViewManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class LoginController {
 
@@ -30,9 +32,10 @@ public class LoginController {
 
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
+        Stage current = StageManager.getCurrentStage(event);
 
         if (FIXED_USERNAME.equals(username) && FIXED_PASSWORD.equals(password)) {
-            ViewManager.showHomeView(event);
+            ViewManager.showHomeView(event, current);
         } else {
             ViewManager.showErrorUserPassView(event);
         }
