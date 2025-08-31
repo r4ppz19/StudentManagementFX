@@ -92,6 +92,7 @@ public class ViewManager {
         StageManager.createModalWindow(view.getRoot(), current, "Success").showAndWait();
     }
 
+    @Deprecated // not used in sql lite
     public static void showErrorNoDB(Event event) {
         String fxmlPath = "/com/school/studentmanagementfx/view/dialog/ErrorNoDB.fxml";
         LoadedView<DialogController> view = StageManager.loadView(fxmlPath);

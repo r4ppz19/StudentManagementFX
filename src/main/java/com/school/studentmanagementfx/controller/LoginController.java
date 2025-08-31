@@ -1,8 +1,5 @@
 package com.school.studentmanagementfx.controller;
 
-import java.sql.SQLException;
-
-import com.school.studentmanagementfx.model.DatabaseConnector;
 import com.school.studentmanagementfx.view.StageManager;
 import com.school.studentmanagementfx.view.ViewManager;
 import javafx.event.ActionEvent;
@@ -23,13 +20,6 @@ public class LoginController {
 
     @FXML
     private void onLoginAction(ActionEvent event) {
-        try {
-            DatabaseConnector.getConnection();
-        } catch (SQLException e) {
-            ViewManager.showErrorNoDB(event);
-            return;
-        }
-
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
         Stage current = StageManager.getCurrentStage(event);
