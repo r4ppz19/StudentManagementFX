@@ -57,15 +57,7 @@ public class StudentValidator {
         return errors;
     }
 
-    public static Map<String, String> validateIdUniqueness(
-            String id,
-            String name,
-            String age,
-            String birthday,
-            String address,
-            String course,
-            String year,
-            String email) {
+    public static Map<String, String> validateIdUniqueness(String id) {
 
         Map<String, String> errors = new HashMap<>();
 

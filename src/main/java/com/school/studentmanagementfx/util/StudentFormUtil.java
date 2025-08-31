@@ -36,15 +36,7 @@ public class StudentFormUtil {
             Map<String, Label> errorLabels,
             Map<String, TextField> textFields) {
 
-        Map<String, String> errors = StudentValidator.validateIdUniqueness(
-                textFields.get("id").getText(),
-                textFields.get("name").getText(),
-                textFields.get("age").getText(),
-                textFields.get("birthday").getText(),
-                textFields.get("address").getText(),
-                textFields.get("course").getText(),
-                textFields.get("year").getText(),
-                textFields.get("email").getText());
+        Map<String, String> errors = StudentValidator.validateIdUniqueness(textFields.get("id").getText());
 
         if (!errors.isEmpty()) {
             populateErrorLabels(errors, errorLabels);
