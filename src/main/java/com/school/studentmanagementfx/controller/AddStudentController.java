@@ -1,10 +1,8 @@
 package com.school.studentmanagementfx.controller;
 
-import com.school.studentmanagementfx.model.Student;
-import com.school.studentmanagementfx.model.StudentRepo;
-import com.school.studentmanagementfx.service.StudentFileService;
-import com.school.studentmanagementfx.util.StudentFormValidator;
-import com.school.studentmanagementfx.util.UIComponentHelper;
+import com.school.studentmanagementfx.service.DatabaseService;
+import com.school.studentmanagementfx.util.StudentFormUtil;
+import com.school.studentmanagementfx.util.UIHelper;
 import com.school.studentmanagementfx.view.StageManager;
 import com.school.studentmanagementfx.view.ViewManager;
 import javafx.event.ActionEvent;
@@ -14,7 +12,7 @@ import javafx.scene.control.TextField;
 
 import java.util.Map;
 
-public class AddStudentViewController {
+public class AddStudentController {
     @FXML
     private TextField idTextField;
     @FXML
@@ -82,25 +80,15 @@ public class AddStudentViewController {
 
     @FXML
     private void onAddStudentAction(ActionEvent event) {
-        if (StudentFormValidator.validateAndShowErrors(errorLabels, textFields)) {
+        if (StudentFormUtil.validateAndShowFieldErrors(errorLabels, textFields)) {
             return;
         }
-
-        StudentRepo.getStudents().add(getStudentFromFields());
-        StudentFileService.saveToDataBase();
-        ViewManager.showSuccessStudentAddView(event);
-        UIComponentHelper.clearFields(textFields);
-    }
-
-    private Student getStudentFromFields() {
-        return new Student(
-                textFields.get("id").getText().trim(),
-                textFields.get("name").getText().trim(),
-                textFields.get("age").getText().trim(),
-                textFields.get("birthday").getText().trim(),
-                textFields.get("address").getText().trim(),
-                textFields.get("course").getText().trim(),
-                textFields.get("year").getText().trim(),
-                textFields.get("email").getText().trim());
+        if (StudentFormUtil.showIdUniquenessErrorIfDuplicate(errorLabels, textFields)) {
+            return;
+        }
+        if (DatabaseService.addStudent(UIHelper.getStudentFromFields(textFields))) {
+            ViewManager.showSuccessStudentAddView(event);
+            UIHelper.clearFields(textFields);
+        }
     }
 }

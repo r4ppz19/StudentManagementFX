@@ -10,7 +10,7 @@
     <children>
         <VBox alignment="CENTER" minHeight="41.0" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #1E1E2E;">
             <children>
-                <Label text="Error!" textFill="WHITE">
+                <Label text="No Database!" textFill="WHITE">
                     <font>
                         <Font name="Segoe UI Black" size="20.0" />
                     </font>
@@ -20,7 +20,7 @@
                 </Label>
             </children>
         </VBox>
-      <Label prefHeight="58.0" prefWidth="172.0" text="Username or password is incorrect. Please try again." textAlignment="CENTER" textFill="#1e1e2e" wrapText="true">
+      <Label prefHeight="58.0" prefWidth="172.0" text="Make sure to run the MySQL server before running" textAlignment="CENTER" textFill="#1e1e2e" wrapText="true">
          <font>
             <Font name="Segoe UI Black" size="11.0" />
          </font>

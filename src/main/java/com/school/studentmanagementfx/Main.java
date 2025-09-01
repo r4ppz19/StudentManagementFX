@@ -1,23 +1,24 @@
 package com.school.studentmanagementfx;
 
-import com.school.studentmanagementfx.service.StudentFileService;
+import com.school.studentmanagementfx.model.DatabaseConnector;
 import com.school.studentmanagementfx.view.ViewManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    // It’s easy to make a complicated program
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage stage) {
-        ViewManager.showLoginView(stage);
+        ViewManager.initializeMainStage(stage);
     }
 
     @Override
     public void stop() {
-        StudentFileService.saveToDataBase();
+        DatabaseConnector.closeConnection();
     }
 }

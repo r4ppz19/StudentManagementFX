@@ -1,10 +1,9 @@
 package com.school.studentmanagementfx.controller;
 
 import com.school.studentmanagementfx.model.Student;
-import com.school.studentmanagementfx.model.StudentRepo;
-import com.school.studentmanagementfx.service.StudentFileService;
-import com.school.studentmanagementfx.util.StudentFormValidator;
-import com.school.studentmanagementfx.util.UIComponentHelper;
+import com.school.studentmanagementfx.service.DatabaseService;
+import com.school.studentmanagementfx.util.StudentFormUtil;
+import com.school.studentmanagementfx.util.UIHelper;
 import com.school.studentmanagementfx.view.StageManager;
 import com.school.studentmanagementfx.view.ViewManager;
 import javafx.application.Platform;
@@ -17,7 +16,7 @@ import javafx.stage.Stage;
 
 import java.util.Map;
 
-public class StudentDetailViewController {
+public class StudentDetailController {
 
     @FXML
     private TextField idTextField;
@@ -106,6 +105,7 @@ public class StudentDetailViewController {
             }
         }
         setStudent(currentStudent);
+        StudentFormUtil.clearErrorLabels(errorLabels);
         setReadOnlyModeState();
     }
 
@@ -116,15 +116,15 @@ public class StudentDetailViewController {
 
     @FXML
     private void onSaveAction(ActionEvent event) {
-        if (StudentFormValidator.validateAndShowErrors(errorLabels, textFields)) {
+        if (StudentFormUtil.validateAndShowFieldErrors(errorLabels, textFields)) {
             return;
         }
 
         if (hasChanges()) {
             Stage current = StageManager.getCurrentStage(event);
             if (ViewManager.showWarningSaveView(current)) {
-                updateStudentFromFields();
-                StudentFileService.saveToDataBase();
+                Student student = UIHelper.getStudentFromFields(textFields);
+                DatabaseService.updateStudent(student);
                 setReadOnlyModeState();
             }
         }
@@ -134,8 +134,8 @@ public class StudentDetailViewController {
     private void onDeleteAction(ActionEvent event) {
         Stage current = StageManager.getCurrentStage(event);
         if (ViewManager.showWarningDeleteView(current)) {
-            StudentRepo.getStudents().remove(currentStudent);
-            StudentFileService.saveToDataBase();
+            String id = idTextField.getText();
+            DatabaseService.deleteStudent(id);
             current.close();
         }
     }
@@ -158,17 +158,6 @@ public class StudentDetailViewController {
         emailTextField.setText(student.getEmail().get());
     }
 
-    private void updateStudentFromFields() {
-        currentStudent.getId().set(idTextField.getText());
-        currentStudent.getName().set(nameTextField.getText());
-        currentStudent.getAge().set(ageTextField.getText());
-        currentStudent.getBirthday().set(birthdayTextField.getText());
-        currentStudent.getAddress().set(addressTextField.getText());
-        currentStudent.getCourse().set(courseTextField.getText());
-        currentStudent.getYear().set(yearTextField.getText());
-        currentStudent.getEmail().set(emailTextField.getText());
-    }
-
     private boolean hasChanges() {
         return !currentStudent.getId().get().equals(idTextField.getText()) ||
                 !currentStudent.getName().get().equals(nameTextField.getText()) ||
@@ -182,21 +171,21 @@ public class StudentDetailViewController {
 
     private void setEditModeState() {
         headerLabel.setText("Student Details  (Edit Mode)");
-        UIComponentHelper.showButton(saveButton, true);
-        UIComponentHelper.showButton(deleteButton, true);
-        UIComponentHelper.showButton(cancelButton, true);
-        UIComponentHelper.showButton(editButton, false);
-        UIComponentHelper.showButton(closeButton, false);
-        UIComponentHelper.setFieldsEditable(textFields, true);
+        UIHelper.showButton(saveButton, true);
+        UIHelper.showButton(deleteButton, true);
+        UIHelper.showButton(cancelButton, true);
+        UIHelper.showButton(editButton, false);
+        UIHelper.showButton(closeButton, false);
+        UIHelper.setFieldsEditable(textFields, true);
     }
 
     private void setReadOnlyModeState() {
         headerLabel.setText("Student Details");
-        UIComponentHelper.showButton(saveButton, false);
-        UIComponentHelper.showButton(deleteButton, false);
-        UIComponentHelper.showButton(cancelButton, false);
-        UIComponentHelper.showButton(editButton, true);
-        UIComponentHelper.showButton(closeButton, true);
-        UIComponentHelper.setFieldsEditable(textFields, false);
+        UIHelper.showButton(saveButton, false);
+        UIHelper.showButton(deleteButton, false);
+        UIHelper.showButton(cancelButton, false);
+        UIHelper.showButton(editButton, true);
+        UIHelper.showButton(closeButton, true);
+        UIHelper.setFieldsEditable(textFields, false);
     }
 }

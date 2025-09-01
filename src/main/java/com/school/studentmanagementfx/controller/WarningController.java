@@ -4,7 +4,7 @@ import com.school.studentmanagementfx.view.StageManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-public class WarningViewController {
+public class WarningController {
 
     private boolean confirmed = false;
 

@@ -1,5 +1,7 @@
 package com.school.studentmanagementfx.model;
 
+import com.school.studentmanagementfx.service.DatabaseService;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -13,82 +15,19 @@ public class StudentRepo {
 
     // For testing
     public static void createDummyStudent() {
-        Student student1 = new Student(
-                "1",
-                "John Rey Rabosa",
-                "19",
-                "12/31/2005",
-                "Panacan Davao City",
-                "BSIT",
-                "2nd Year",
-                "john.rabosa@example.com");
-
-        Student student2 = new Student(
-                "2",
-                "Erwin Curato",
-                "20",
-                "08/15/2004",
-                "Bajada Davao City",
-                "BSIT",
-                "3rd Year",
-                "erwin.curato@example.com");
-
-        Student student3 = new Student(
-                "3",
-                "Mark Anthony Villanueva",
-                "18",
-                "05/20/2006",
-                "Toril Davao City",
-                "BSIT",
-                "1st Year",
-                "mark.villanueva@example.com");
-
-        Student student4 = new Student(
-                "4",
-                "Anna Mae Castillo",
-                "21",
-                "09/02/2003",
-                "Matina Davao City",
-                "BSIT",
-                "4th Year",
-                "anna.castillo@example.com");
-
-        Student student5 = new Student(
-                "5",
-                "Christian James Delos Santos",
-                "19",
-                "02/18/2005",
-                "Lanang Davao City",
-                "BSIT",
-                "2nd Year",
-                "christian.santos@example.com");
-
-        Student student6 = new Student(
-                "6",
-                "Rochelle Mae Bautista",
-                "20",
-                "11/10/2004",
-                "Mintal Davao City",
-                "BSIT",
-                "3rd Year",
-                "rochelle.bautista@example.com");
-
-        Student student7 = new Student(
-                "7",
-                "Joshua Emmanuel Cruz",
-                "22",
-                "07/25/2002",
-                "Sasa Davao City",
-                "BSIT",
-                "4th Year",
-                "joshua.cruz@example.com");
-
-        StudentRepo.getStudents().add(student1);
-        StudentRepo.getStudents().add(student2);
-        StudentRepo.getStudents().add(student3);
-        StudentRepo.getStudents().add(student4);
-        StudentRepo.getStudents().add(student5);
-        StudentRepo.getStudents().add(student6);
-        StudentRepo.getStudents().add(student7);
+        for (int i = 1; i <= 7; i++) {
+            if (DatabaseService.findStudentById(String.valueOf(i)) == null) {
+                Student dummy = new Student(
+                        String.valueOf(i),
+                        "Dummy Name",
+                        "20",
+                        "12/31/2005",
+                        "Prk " + i + "Address",
+                        "BSIT",
+                        "2nd",
+                        "dummy" + i + "@example.com");
+                DatabaseService.addStudent(dummy);
+            }
+        }
     }
 }

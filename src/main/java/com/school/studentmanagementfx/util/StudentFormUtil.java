@@ -1,14 +1,18 @@
 package com.school.studentmanagementfx.util;
 
 import com.school.studentmanagementfx.service.StudentValidator;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.util.Map;
 
-public class StudentFormValidator {
+public class StudentFormUtil {
 
-    public static boolean validateAndShowErrors(Map<String, Label> errorLabels, Map<String, TextField> textFields) {
+    public static boolean validateAndShowFieldErrors(
+            Map<String, Label> errorLabels,
+            Map<String, TextField> textFields) {
+
         clearErrorLabels(errorLabels);
 
         Map<String, String> errors = StudentValidator.validateFields(
@@ -22,22 +26,35 @@ public class StudentFormValidator {
                 textFields.get("email").getText());
 
         if (!errors.isEmpty()) {
-            showErrors(errors, errorLabels);
+            populateErrorLabels(errors, errorLabels);
             return true;
         }
         return false;
     }
 
-    private static void showErrors(Map<String, String> errors, Map<String, Label> errorLabels) {
+    public static boolean showIdUniquenessErrorIfDuplicate(
+            Map<String, Label> errorLabels,
+            Map<String, TextField> textFields) {
+
+        Map<String, String> errors = StudentValidator.validateIdUniqueness(textFields.get("id").getText());
+
+        if (!errors.isEmpty()) {
+            populateErrorLabels(errors, errorLabels);
+            return true;
+        }
+        return false;
+    }
+
+    public static void clearErrorLabels(Map<String, Label> errorLabels) {
+        errorLabels.values().forEach(label -> label.setText(""));
+    }
+
+    private static void populateErrorLabels(Map<String, String> errors, Map<String, Label> errorLabels) {
         errors.forEach((field, message) -> {
             Label label = errorLabels.get(field);
             if (label != null) {
                 label.setText(message == null ? "" : message.trim());
             }
         });
-    }
-
-    private static void clearErrorLabels(Map<String, Label> errorLabels) {
-        errorLabels.values().forEach(label -> label.setText(""));
     }
 }
